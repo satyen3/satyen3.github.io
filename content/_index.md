@@ -7,5 +7,5 @@ under Rukmini Dey. My research is in deformation quantization and Poisson
 geometry — I work on Fedosov quantization, formal symplectic groupoids, and
 the BV/AKSZ formalism.
 
-I am also 
+I am also a fag
 Contact: satyen2003 [at] gmail [dot] com
