@@ -1,10 +1,7 @@
 ---
 title: "Home"
 ---
-
-I'm a BS-MS student at IISER Pune, finishing my thesis at ICTS-TIFR Bengaluru
-under Rukmini Dey. My research is in deformation quantization and Poisson
-geometry — I work on Fedosov quantization, formal symplectic groupoids, and
+I recently completed a BS-MS in mathematics at IISER Pune, with my thesis carried out at ICTS-TIFR Bengaluru under Rukmini Dey. I'm currently based at ICTS, working on deformation quantization, formal/relational symplectic groupoids, and
 the BV/AKSZ formalism.
 
 $abc \frac{1}{2}$  $\alpha$
