@@ -1,0 +1,39 @@
+:root {
+  --main-width: 720px;
+}
+
+body {
+  font-family: "Literata", Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.post-content {
+  font-family: "Literata", Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.post-content p {
+  margin-bottom: 1em;
+}
+
+.post-title, .entry-header h1, .post-header h1 {
+  font-family: "Literata", Georgia, serif;
+  font-weight: 500;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Literata", Georgia, serif;
+  font-weight: 500;
+}
+
+code, pre, kbd {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+/* Don't override math fonts — let KaTeX use its own */
+.katex, .katex * {
+  font-family: KaTeX_Main, "Times New Roman", serif !important;
+}
