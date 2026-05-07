@@ -5,16 +5,6 @@
 body {
   font-family: "Literata", Georgia, "Times New Roman", serif;
   font-size: 18px;
-  line-height: 1.65;
-}
-.logo a {
-  font-weight: 700;
-  font-style: italic;
-
-}
-.post-content {
-  font-family: "Literata", Georgia, "Times New Roman", serif;
-  font-size: 18px;
   line-height: 1.7;
 }
 
@@ -36,10 +26,26 @@ code, pre, kbd {
   font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.9em;
 }
-
-/* Don't override math fonts — let KaTeX use its own */
-.katex, .katex * {
-  font-family: KaTeX_Main, "Times New Roman", serif !important;
+.logo a {
+  font-family: "Literata", Georgia, serif;
+  font-weight: 700;
+ font-style: italic;
 }
 
+/* MathJax 4 selects its own configured math font. */
 
+.home-info {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 3.5rem 0 2rem;
+}
+
+.home-info p {
+  margin: 0 0 1.35rem;
+}
+
+@media (max-width: 640px) {
+  .home-info {
+    padding: 2rem 0 1.25rem;
+  }
+}

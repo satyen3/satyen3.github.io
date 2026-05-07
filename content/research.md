@@ -1,18 +1,17 @@
 ---
-title: "Research"
 ---
-
-I work in deformation quantization and Poisson geometry, at the intersection
+## Research
+Presently, I work in deformation quantization and Poisson geometry, at the intersection
 of differential geometry and mathematical physics. The broad question
 underlying my work is how the algebra of observables of a classical mechanical
 system can be deformed into a noncommutative algebra of quantum observables,
-and how the geometric structure of the classical phase space — its Poisson
-bracket, its symmetries, its symplectic groupoid — controls the structure of
+and how the geometric structures of the classical phase space -- the Poisson
+bracket, its symmetries, and its symplectic groupoid -- controls the structure of
 the resulting quantization.
 
 My thesis work, carried out at ICTS-TIFR Bengaluru under Rukmini Dey, extends
 the construction of Esposito–Nest–Schnitzer–Tsygan, who built quantum moment
-maps for symplectic manifolds via Fedosov quantization. I generalize their
+maps for Poisson manifolds via symmetry-adapted formality. I generalize their
 construction to the Poisson setting using the Cattaneo–Dherin–Felder formal
 symplectic groupoid as the source of a globalized Fedosov-type star product.
 The result is a quantum moment map for any Poisson manifold equipped with a
@@ -34,9 +33,6 @@ symplectic geometry (Calaque–Pantev–Toën–Vaquié–Vezzosi, Safronov), an
 broader homotopical/∞-categorical reformulation of mathematical physics in
 the style of Schreiber and Lurie.
 
-$$
-\alpha \mu
-$$
 ## Paper
 
 *Fedosov Quantization of Poisson Manifolds and Quantum Moment Maps*. Under
