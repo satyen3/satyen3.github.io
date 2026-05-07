@@ -7,7 +7,11 @@ body {
   font-size: 18px;
   line-height: 1.65;
 }
+.logo a {
+  font-weight: 700;
+  font-style: italic;
 
+}
 .post-content {
   font-family: "Literata", Georgia, "Times New Roman", serif;
   font-size: 18px;
