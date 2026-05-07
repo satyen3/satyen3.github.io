@@ -7,6 +7,6 @@ math: true
 ---
 
 $$
-\frac{1}{2} \int_{x \in \mathcal{H}} \{ \rho (\xi), \rho(\mu)\} = \mu_{[X_{f},X_{g}]}
+\frac{1}{2} \int_{x \in \mathcal{H}} \{ \rho (\xi), \rho(\mu)\} = \mu_{[X_{f},X_{h}]}
 $$
 

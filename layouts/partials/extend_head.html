@@ -10,15 +10,12 @@ window.MathJax = {
     inlineMath: [['$', '$'], ['\\(', '\\)']],
     displayMath: [['$$', '$$'], ['\\[', '\\]']]
   },
-  output: {
-    font: 'mathjax-stix2'
-  },
   chtml: {
-    scale: 1.03,
+    fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2',
     mtextInheritFont: true
   },
   loader: { load: ['[tex]/ams'] }
 };
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml-nofont.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 {{ end }}
