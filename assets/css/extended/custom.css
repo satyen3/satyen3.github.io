@@ -8,6 +8,13 @@ body {
   line-height: 1.7;
 }
 
+em,
+i,
+cite {
+  font-family: "Lora", "Literata", Georgia, serif;
+  font-weight: 500;
+}
+
 .post-content p {
   margin-bottom: 1em;
 }
@@ -48,4 +55,44 @@ code, pre, kbd {
   .home-info {
     padding: 2rem 0 1.25rem;
   }
+}
+
+
+
+.callout {
+  border: 1px solid #ccc;
+  border-left: 4px solid #888;
+  border-radius: 6px;
+  padding: 1em 1.2em;
+  margin: 1.5em 0;
+  background: #fafafa;
+}
+
+.callout-title {
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  font-size: 1.05em;
+}
+
+.callout-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Color variants per type */
+.callout-definition {
+  border-left-color: #4a6fa5;
+}
+
+.callout-theorem {
+  border-left-color: #6b4a8a;
+  background: #faf7fc;
+}
+
+.callout-example {
+  border-left-color: #5a8a4a;
+  background: #f7faf6;
+}
+
+.callout-remark {
+  border-left-color: #888;
 }

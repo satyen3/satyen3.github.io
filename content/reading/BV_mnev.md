@@ -2,7 +2,7 @@
 title: "Lectures on BV formalism and its applications in topological quantum field theory"
 author: "Pavel Mnev"
 date: 2026-05-07
-draft: false
+draft: true
 math: true
 ---
 
