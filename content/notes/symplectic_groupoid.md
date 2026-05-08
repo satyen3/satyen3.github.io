@@ -15,6 +15,10 @@ $$
 for all $\alpha, \beta \in \Gamma(A)$ and $f \in C^\infty(M)$. The anchor is then automatically a Lie algebra morphism $\rho \colon (\Gamma(A), [\cdot,\cdot]_A) \to (\mathfrak{X}(M), [\cdot,\cdot])$.
 
 Equivalently, a Lie algebroid structure on $A$ is a degree-$1$ derivation $d_A$ on $\Gamma(\Lambda^\bullet A^*)$ with $d_A^2 = 0$, i.e. a homological vector field on the graded manifold $A[1]$.
+
 {{< /definition >}}
 
+$\alpha$
+
+a*a*
 

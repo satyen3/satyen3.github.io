@@ -13,6 +13,7 @@ i,
 cite {
   font-family: "Lora", "Literata", Georgia, serif;
   font-weight: 500;
+  font-size: 1.03em;
 }
 
 .post-content p {
@@ -47,6 +48,12 @@ code, pre, kbd {
   padding: 3.5rem 0 2rem;
 }
 
+.home-figure {
+  display: block;
+  width: min(100%, 34rem);
+  margin: 0 auto 2rem 1.8rem;
+}
+
 .home-info p {
   margin: 0 0 1.35rem;
 }
@@ -54,6 +61,10 @@ code, pre, kbd {
 @media (max-width: 640px) {
   .home-info {
     padding: 2rem 0 1.25rem;
+  }
+
+  .home-figure {
+    margin-bottom: 1.5rem;
   }
 }
 
