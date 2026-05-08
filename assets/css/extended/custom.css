@@ -51,7 +51,7 @@ code, pre, kbd {
 .home-figure {
   display: block;
   width: min(100%, 34rem);
-  margin: 0 auto 2rem 1.8rem;
+  margin: 0 auto 2rem;
 }
 
 .home-info p {
