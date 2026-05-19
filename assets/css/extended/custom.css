@@ -3,7 +3,7 @@
 }
 
 body {
-  font-family: "Literata", Georgia, "Times New Roman", serif;
+  font-family: "Larken", Georgia, "Times New Roman", serif;
   font-size: 18px;
   line-height: 1.7;
 }
@@ -11,9 +11,11 @@ body {
 em,
 i,
 cite {
-  font-family: "Lora", "Literata", Georgia, serif;
-  font-weight: 500;
-  font-size: 1.03em;
+  font-family: "Larken", Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.23em;
+  letter-spacing: 0.01em;
 }
 
 .post-content p {
@@ -21,12 +23,12 @@ cite {
 }
 
 .post-title, .entry-header h1, .post-header h1 {
-  font-family: "Literata", Georgia, serif;
+  font-family: "Larken", Georgia, serif;
   font-weight: 500;
 }
 
 h1, h2, h3, h4 {
-  font-family: "Literata", Georgia, serif;
+  font-family: "Larken", Georgia, serif;
   font-weight: 500;
 }
 
@@ -35,7 +37,7 @@ code, pre, kbd {
   font-size: 0.9em;
 }
 .logo a {
-  font-family: "Literata", Georgia, serif;
+  font-family: "Larken", Georgia, serif;
   font-weight: 700;
  font-style: italic;
 }
