@@ -35,11 +35,11 @@ theme = "PaperMod"
   url = "/notes/"
   weight = 20
 
-[[menu.main]]
-  identifier = "reading"
-  name = "Reading"
-  weight = 30
-  url = "/reading/"
+#[[menu.main]]
+#  identifier = "reading"
+#  name = "Reading"
+#  weight = 30
+#  url = "/reading/"
 
 [[menu.main]]
   identifier = "essays"
