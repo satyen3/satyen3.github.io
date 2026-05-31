@@ -37,10 +37,20 @@ code, pre, kbd {
 .logo a {
   font-family: "Literata", Georgia, serif;
   font-weight: 700;
- font-style: italic;
+  font-style: italic;
 }
 
-/* MathJax 4 selects its own configured math font. */
+mjx-container[jax="SVG"] {
+  font-size: 0.94em;
+}
+
+mjx-container[jax="SVG"] svg *,
+mjx-container.MathJax svg * {
+  paint-order: stroke fill;
+  stroke: currentColor !important;
+  stroke-linejoin: round;
+  stroke-width: 15px !important;
+}
 
 .home-info {
   max-width: 40rem;

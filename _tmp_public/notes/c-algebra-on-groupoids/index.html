@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="light">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Symplectic Groupoids and Berezin Quantization | Satyen Patel</title>
+<meta name="keywords" content="">
+<meta name="description" content="1. The Symplectic Groupoid
+Lie groupoid $\mathcal{G} \rightrightarrows M$ is a space of arrows between points of $M$, equipped with source and target maps $s, t: \mathcal{G} \to M$, a composition law $m: \mathcal{G}_2 \to \mathcal{G}$ on the space of composable pairs $\mathcal{G}_2 = \{(g,h) : s(g) = t(h)\} $,
+a unit section $\epsilon: M \hookrightarrow \mathcal{G}$, and an inversion $\iota: \mathcal{G} \to \mathcal{G}$. The nerve $\mathcal{G}_{\bullet}$ is the simplicial manifold with $\mathcal{G}_0 = M$, $\mathcal{G}_1 = \mathcal{G}$, $\mathcal{G}_2 = \mathcal{G} \times_M \mathcal{G}$, and so on, with face maps $s, t$ at level 1 and $\mathrm{pr}_1, m, \mathrm{pr}_2$ at level 2.">
+<meta name="author" content="">
+<link rel="canonical" href="https://satyen3.github.io/notes/c-algebra-on-groupoids/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.ae264c64fa238e691131aaa9611a1f87a7edfd5286dc958681fa9edf2f946d23.css" integrity="sha256-riZMZPojjmkRMaqpYRofh6ft/VKG3JWGgfqe3y&#43;UbSM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://satyen3.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://satyen3.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://satyen3.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://satyen3.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://satyen3.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://satyen3.github.io/notes/c-algebra-on-groupoids/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,700;1,7..72,400;1,7..72,500;1,7..72,700&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/libertinus-serif" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/kaufmann-bt" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Literata:ital,opsz,wght@0,7..72,700;1,7..72,700&display=swap" rel="stylesheet">
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      packages: {'[+]': ['ams']},
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+      fontCache: 'global'
+    },
+    loader: {load: ['[tex]/ams']}
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<meta property="og:url" content="https://satyen3.github.io/notes/c-algebra-on-groupoids/">
+  <meta property="og:site_name" content="Satyen Patel">
+  <meta property="og:title" content="Symplectic Groupoids and Berezin Quantization">
+  <meta property="og:description" content="1. The Symplectic Groupoid Lie groupoid $\mathcal{G} \rightrightarrows M$ is a space of arrows between points of $M$, equipped with source and target maps $s, t: \mathcal{G} \to M$, a composition law $m: \mathcal{G}_2 \to \mathcal{G}$ on the space of composable pairs $\mathcal{G}_2 = \{(g,h) : s(g) = t(h)\} $, a unit section $\epsilon: M \hookrightarrow \mathcal{G}$, and an inversion $\iota: \mathcal{G} \to \mathcal{G}$. The nerve $\mathcal{G}_{\bullet}$ is the simplicial manifold with $\mathcal{G}_0 = M$, $\mathcal{G}_1 = \mathcal{G}$, $\mathcal{G}_2 = \mathcal{G} \times_M \mathcal{G}$, and so on, with face maps $s, t$ at level 1 and $\mathrm{pr}_1, m, \mathrm{pr}_2$ at level 2.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="notes">
+    <meta property="article:published_time" content="2026-05-14T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-05-14T00:00:00+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Symplectic Groupoids and Berezin Quantization">
+  <meta name="twitter:description" content="1. The Symplectic Groupoid Lie groupoid $\mathcal{G} \rightrightarrows M$ is a space of arrows between points of $M$, equipped with source and target maps $s, t: \mathcal{G} \to M$, a composition law $m: \mathcal{G}_2 \to \mathcal{G}$ on the space of composable pairs $\mathcal{G}_2 = \{(g,h) : s(g) = t(h)\} $, a unit section $\epsilon: M \hookrightarrow \mathcal{G}$, and an inversion $\iota: \mathcal{G} \to \mathcal{G}$. The nerve $\mathcal{G}_{\bullet}$ is the simplicial manifold with $\mathcal{G}_0 = M$, $\mathcal{G}_1 = \mathcal{G}$, $\mathcal{G}_2 = \mathcal{G} \times_M \mathcal{G}$, and so on, with face maps $s, t$ at level 1 and $\mathrm{pr}_1, m, \mathrm{pr}_2$ at level 2.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "",
+      "item": "https://satyen3.github.io/notes/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Symplectic Groupoids and Berezin Quantization",
+      "item": "https://satyen3.github.io/notes/c-algebra-on-groupoids/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Symplectic Groupoids and Berezin Quantization",
+  "name": "Symplectic Groupoids and Berezin Quantization",
+  "description": "1. The Symplectic Groupoid Lie groupoid $\\mathcal{G} \\rightrightarrows M$ is a space of arrows between points of $M$, equipped with source and target maps $s, t: \\mathcal{G} \\to M$, a composition law $m: \\mathcal{G}_2 \\to \\mathcal{G}$ on the space of composable pairs $\\mathcal{G}_2 = \\{(g,h) : s(g) = t(h)\\} $, a unit section $\\epsilon: M \\hookrightarrow \\mathcal{G}$, and an inversion $\\iota: \\mathcal{G} \\to \\mathcal{G}$. The nerve $\\mathcal{G}_{\\bullet}$ is the simplicial manifold with $\\mathcal{G}_0 = M$, $\\mathcal{G}_1 = \\mathcal{G}$, $\\mathcal{G}_2 = \\mathcal{G} \\times_M \\mathcal{G}$, and so on, with face maps $s, t$ at level 1 and $\\mathrm{pr}_1, m, \\mathrm{pr}_2$ at level 2.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "1. The Symplectic Groupoid Lie groupoid $\\mathcal{G} \\rightrightarrows M$ is a space of arrows between points of $M$, equipped with source and target maps $s, t: \\mathcal{G} \\to M$, a composition law $m: \\mathcal{G}_2 \\to \\mathcal{G}$ on the space of composable pairs $\\mathcal{G}_2 = \\{(g,h) : s(g) = t(h)\\} $, a unit section $\\epsilon: M \\hookrightarrow \\mathcal{G}$, and an inversion $\\iota: \\mathcal{G} \\to \\mathcal{G}$. The nerve $\\mathcal{G}_{\\bullet}$ is the simplicial manifold with $\\mathcal{G}_0 = M$, $\\mathcal{G}_1 = \\mathcal{G}$, $\\mathcal{G}_2 = \\mathcal{G} \\times_M \\mathcal{G}$, and so on, with face maps $s, t$ at level 1 and $\\mathrm{pr}_1, m, \\mathrm{pr}_2$ at level 2.\nThe nerve carries a simplicial coboundary operator $\\partial^\\ast$ on differential forms. For $\\theta \\in \\Omega^\\bullet(M)$, $$\\partial^\\ast\\theta := t^\\ast\\theta - s^\\ast\\theta \\in \\Omega^\\bullet(\\mathcal{G}),$$and for $\\omega \\in \\Omega^\\bullet(\\mathcal{G})$,\n$$\\partial^\\ast\\omega := \\mathrm{pr}_1^\\ast\\omega - m^\\ast\\omega + \\mathrm{pr}_2^\\ast\\omega \\in \\Omega^\\bullet(\\mathcal{G}_2).$$The geometric content of $\\partial^\\ast\\theta = t^\\ast\\theta - s^\\ast\\theta$ is immediate: it measures the change of $\\theta$ from the source to the target of an arrow. A form $\\omega \\in \\Omega^2(\\mathcal{G})$ is multiplicative if $\\partial^\\ast\\omega = 0$, i.e., $m^\\ast\\omega = \\mathrm{pr}_1^\\ast\\omega + \\mathrm{pr}_2^\\ast\\omega$. This says that the symplectic “area” assigned to a composed arrow equals the sum of the areas of its factors.\nA symplectic groupoid is a Lie groupoid $\\Sigma \\rightrightarrows M$ equipped with a symplectic form $\\omega \\in \\Omega^2(\\Sigma)$ that is multiplicative. Equivalently, the graph of multiplication $\\Lambda = \\{(g, h, gh)\\} \\subset \\Sigma \\times \\Sigma \\times \\Sigma$ is Lagrangian with respect to $\\omega \\oplus \\omega \\oplus (-\\omega)$. This is Weinstein’s principle: groupoid composition is a Lagrangian correspondence.\n2. The Poisson Structure on the Base Multiplicativity forces a Poisson structure on $M$. The argument has four steps.\nStep 1. The unit section $\\epsilon(M)$ is Lagrangian. Define $\\delta: M \\to \\mathcal{G}_2$ by $\\delta(x) = (\\epsilon(x), \\epsilon(x))$. Since $m \\circ \\delta = \\mathrm{pr}_1 \\circ \\delta = \\mathrm{pr}_2 \\circ \\delta = \\epsilon$, pulling back $m^\\ast\\omega = \\mathrm{pr}_1^\\ast\\omega + \\mathrm{pr}_2^\\ast\\omega$ through $\\delta$ gives $\\epsilon^\\ast\\omega = 2\\epsilon^\\ast\\omega$, hence $\\epsilon^\\ast\\omega = 0$. The unit section is isotropic. A dimension count (using multiplicativity, inversion, and non-degeneracy of $\\omega$) forces $\\dim \\Sigma = 2\\dim M$, so $\\epsilon(M)$ is in fact Lagrangian.\nStep 2. The Lie algebroid $A = \\ker(ds)|_{\\epsilon(M)}$ is identified with $T^\\ast M$. At $\\epsilon(x)$, the splitting $T{\\epsilon(x)}\\Sigma = T_x(\\epsilon(M)) \\oplus A_x$ and the Lagrangian condition on $\\epsilon(M)$ set up a non-degenerate pairing $A_x \\times T_x(\\epsilon(M)) \\to \\mathbb{R}$ via $\\omega$, giving a canonical isomorphism $A_x \\xrightarrow{\\sim} T^\\ast_x M$.\nStep 3. The anchor $\\rho = dt|_A: A \\to TM$, transferred to $T^*M$ via $A \\cong T^*M$, defines a bundle map $\\pi^\\sharp: T^*M \\to TM$. Skew-symmetry of $\\omega$ gives skew-symmetry of $\\pi^\\sharp$, defining a bivector $\\pi \\in \\Gamma(\\wedge^2 TM)$.\nStep 4. The Lie algebroid bracket on $\\Gamma(A)$ transfers to the Koszul bracket $[df, dg]_{\\pi} = d\\{f,g\\}$ on $\\Omega^1(M)$. The Jacobi identity for the bracket implies $[\\pi, \\pi]_{\\mathrm{SN}} = 0$, so $\\pi$ is Poisson.\nThe source map $s: (\\Sigma, \\omega) \\to (M, \\pi)$ is Poisson and the target map $t$ is anti-Poisson. The Poisson bracket on $M$ is recovered by restricting the symplectic bracket on $\\Sigma$ to source-pullbacks evaluated at the units: $\\{f, g\\}_{\\pi} \\circ \\epsilon = \\{s^\\ast f, s^\\ast g\\}_{\\omega} \\circ \\epsilon$.\n3. Line Bundles and the Coboundary The simplicial coboundary extends to line bundles. For a line bundle $\\Lambda \\to M$,\nis a line bundle over the groupoid. For a line bundle $L \\to \\Sigma$,\n$$\\partial^\\ast L := \\mathrm{pr}_1^\\ast L \\otimes m^\\ast L^\\ast \\otimes \\mathrm{pr}_2^\\ast L \\to \\mathcal{G}_2.$$$\\Lambda$ is a prequantum line bundle for $(M, \\omega_M)$ if it carries a connection $\\nabla$ with $\\mathrm{curv}(\\nabla) = \\omega_M$. The coboundary $\\partial^\\ast\\Lambda$ then inherits a natural connection over $\\Sigma$ with curvature $\\omega_\\Sigma$ (multiplicativity of the curvature follows from multiplicativity of $\\omega$). The key structural property is $\\partial^\\ast(\\partial^\\ast\\Lambda) \\cong \\mathbf{1}$ - the coboundary of a coboundary is canonically trivial.\n4. The Convolution Algebra Sections of $\\partial^\\ast\\Lambda$ over $\\Sigma$ form a convolution algebra. The product is defined by integrating over the fibers of the multiplication map: for $a, b \\in \\Gamma_c(\\Sigma, \\partial^\\ast\\Lambda \\otimes \\Omega^{1/2})$,\n$$(a * b)(\\gamma) := \\int_{\\eta \\in t^{-1}(t\\gamma)} a(\\eta)\\, b(\\eta^{-1}\\gamma).$$Here $\\Omega^{1/2}$ is the half-density bundle (Hawkins, Section 5), which provides the integration measure along the $t$-fibers. The product $a(\\eta) \\otimes b(\\eta^{-1}\\gamma)$ lands in the correct fiber of $\\partial^\\ast\\Lambda$ over $\\gamma$ because the triviality $\\partial^\\ast(\\partial^\\ast\\Lambda) \\cong \\mathbf{1}$ ensures the intermediate $\\Lambda$-factors at $s(\\eta) = t(\\eta^{-1}\\gamma)$ cancel.\nThe convolution product is associative (from associativity of groupoid composition) and, with appropriate completion, gives a $C^\\ast$-algebra. Involution comes from inversion: $a^\\ast(\\gamma) = \\overline{a(\\gamma^{-1})}$, using the canonical isomorphism $\\iota^\\ast\\Omega^{1/2} \\cong \\overline{\\Omega^{1/2}}$.\nThis is the operator algebra. Sections of $\\partial^\\ast\\Lambda$ over $\\Sigma$ are not states - they are observables. The convolution product is the quantum multiplication. Noncommutativity comes entirely from the groupoid composition law.\n5. The Pair Groupoid and Berezin Quantization For a symplectic manifold $(M, \\omega)$ (non-degenerate Poisson structure $\\pi = \\omega^{-1}$), the symplectic groupoid is the pair groupoid $\\Sigma = M \\times M$ with $\\omega_\\Sigma = \\mathrm{pr}_1^\\ast\\omega - \\mathrm{pr}_2^\\ast\\omega$, $s = \\mathrm{pr}_2$, $t = \\mathrm{pr}_1$, and composition $(x,y) \\cdot (y,z) = (x,z)$.\nThe coboundary line bundle is $\\partial^\\ast\\Lambda = \\mathrm{pr}_1^\\ast\\Lambda \\otimes \\mathrm{pr}_2^\\ast\\Lambda^\\ast$ over $M \\times M$. A section $a(x,y) \\in \\Lambda_x \\otimes \\Lambda_y^\\ast$ is an integral kernel. The convolution product becomes\n$$(a * b)(x, z) = \\int_{y \\in M} a(x,y) \\otimes b(y,z)\\, d\\mu(y),$$which is composition of integral kernels - matrix multiplication.\nNow suppose $(M, \\omega, J)$ is Kähler. The pair groupoid $M \\times M$ is Kähler with complex structure $J \\oplus (-J)$, giving a polarization $\\mathcal{F}_{\\Sigma} = T^{0,1}_{\\mathrm{pr}_1}M \\oplus T^{1,0}_{\\mathrm{pr}_2}M$. A polarized section of $\\partial^\\ast\\Lambda$ is a kernel $a(x,y)$ that is holomorphic in $x$ and anti-holomorphic in $y$.\nThe reproducing kernel of Berezin-Toeplitz quantization, $K(\\bar{z}, w) \\in \\Lambda_z^\\ast \\otimes \\Lambda_w$, is precisely such a polarized section (after transposing arguments to match the $(t, s)$ convention). It is the identity element of the polarized convolution algebra: the section of $\\partial^\\ast\\Lambda$ corresponding to the identity operator $\\hat{1}$.\nThe Berezin-Toeplitz star product is then the groupoid convolution on $M \\times M$:\n$$\\widehat{f \\star g}(x, z) = (a_f * a_g)(x, z) = \\int_M a_f(x,y)\\, a_g(y,z)\\, d\\mu(y),$$where $a_f$ is the integral kernel (polarized section of $\\partial^\\ast\\Lambda$) corresponding to the Toeplitz operator $\\hat{f}$.\n6. Berezin Symbols as Sections of the Coboundary Bundle In Berezin quantization on a compact Kähler manifold $(M, \\omega)$ with prequantum line bundle $\\Lambda = \\mathcal{O}(m)$:\nThe Hilbert space is $\\mathcal{H} = H^0(M, \\Lambda)$, the space of holomorphic sections. These are states, living in $\\Gamma(M, \\Lambda)$. The coherent state at $w$ is $|w\\rangle \\in \\mathcal{H}$, with $\\langle z | w \\rangle = K(\\bar{z}, w)$. An operator $\\hat{f}: \\mathcal{H} \\to \\mathcal{H}$ has integral kernel $\\langle z | \\hat{f} | w \\rangle$, which is a section of $\\Lambda_z^\\ast \\otimes \\Lambda_w \\cong (\\partial^\\ast\\Lambda)_{(w,z)}$. This is an observable, living in $\\Gamma(\\Sigma, \\partial^\\ast\\Lambda)$. The covariant (Berezin) symbol of $\\hat{f}$ is the restriction to the diagonal: $\\check{f}(x) = \\langle x | \\hat{f} | x \\rangle / \\langle x | x \\rangle$. The full off-diagonal kernel is the section of $\\partial^\\ast\\Lambda$ - it contains strictly more information than the symbol, encoding the full operator and not just its diagonal matrix elements.\nIn the concrete case of $\\mathbb{CP}^1$ with $\\Lambda = \\mathcal{O}(m)$: the reproducing kernel is $K(\\bar{z}, w) = (1 + \\bar{z}w)^m$, the Hilbert space is polynomials of degree $\\leq m$, and the convolution algebra is the algebra of $(m+1) \\times (m+1)$ matrices - with the groupoid convolution reducing to matrix multiplication.\n7. Connection to the Poisson Sigma Model The Poisson Sigma Model on a surface $\\Sigma_2$ with target $(M, \\pi)$ has fields $X: \\Sigma_2 \\to M$ and $\\eta \\in \\Omega^1(\\Sigma_2, X^*T^*M)$, with action\n$$S_{\\mathrm{PSM}} = \\int_{\\Sigma_2} \\eta_i \\wedge dX^i + \\frac{1}{2}\\pi^{ij}(X)\\,\\eta_i \\wedge \\eta_j.$$On the disc $D^2$, the path integral with boundary insertions $f, g$ computes the star product $(f \\star g)(x)$. On the cylinder $[0,1] \\times S^1$, the moduli space of classical solutions is the symplectic groupoid $\\Sigma$ (or its formal version, the Cattaneo-Dherin-Felder formal symplectic groupoid $X$), and the partition function with no insertions gives the reproducing kernel.\nFor a symplectic target ($\\pi$ invertible, $\\omega = \\pi^{-1}$), integrating out $\\eta$ via its equation of motion $\\eta_j = -\\omega_{ji}\\,dX^i$ reduces the on-shell action to\n$$S_{\\mathrm{eff}} = \\frac{1}{2}\\int_{D^2} X^\\ast\\omega = \\frac{1}{2}\\int_{S^1} X^\\ast\\theta,$$where $\\theta$ is the symplectic potential ($\\omega = d\\theta$). The PSM path integral becomes a path integral over loops $\\gamma: S^1 \\to M$ with action $\\frac{1}{2}\\oint_\\gamma \\theta$. This is the coherent state path integral: discretizing $\\gamma \\mapsto (z_0, z_1, \\ldots, z_N)$ gives\n$$e^{\\frac{i}{2\\hbar}\\oint \\theta} \\approx \\prod_{k=0}^{N-1} K(\\bar{z}_{k}, z_{k+1}),$$identifying each short-distance propagator with the reproducing kernel.\nFor a general Poisson target (degenerate $\\pi$), $\\eta$ cannot be integrated out - the kinetic term $\\pi^{ij}\\eta_i \\eta_j$ is degenerate, and the PSM has genuine gauge symmetry handled by the BV-BRST formalism. The PSM generalizes the coherent state path integral from symplectic to Poisson manifolds. The groupoid convolution provides the non-perturbative finite-dimensional reduction: cutting the disc along a diameter and BV-localizing each half onto the moduli space replaces the infinite-dimensional path integral with a single finite-dimensional convolution on $\\Sigma$.\n8. The Fedosov Connection as Formal Polarization The Fedosov construction on the formal symplectic groupoid $X$ gives a formal version of the above. The Weyl bundle $\\mathcal{W} \\to M$ is the algebra of formal functions on the formal neighborhood of $\\epsilon(M)$ in $\\Sigma$. A flat section $\\tau(f) \\in \\Gamma(\\mathcal{W})$ satisfying $D\\,\\tau(f) = 0$ (where $D$ is the Fedosov connection) is the formal Taylor expansion of a polarized section $a_f \\in \\Gamma(\\Sigma, \\partial^\\ast\\Lambda)$ around the diagonal, relative to the reproducing kernel.\nThe reproducing kernel itself is absorbed into the background: $\\tau(1) = 1$ because the Fedosov connection already encodes the data of $K$. The full operator kernel is recovered as $\\langle z | \\hat{f} | w \\rangle = K(\\bar{z}, w) \\cdot \\tau(f)|_{y = w - z}$ (schematically). The Fedosov flatness condition $D\\,\\tau(f) = 0$ is the formal analogue of the polarization condition on $\\partial^\\ast\\Lambda$, and the star product $\\sigma(\\tau(f) \\circ \\tau(g)) = f \\star g$ is the formal version of the groupoid convolution.\nSummary of the Dictionary Groupoid (Hawkins) Berezin-Toeplitz PSM (Cattaneo-Felder) Fedosov $\\Sigma \\rightrightarrows M$ $M \\times M$ (pair groupoid) Moduli space of PSM on cylinder Formal symplectic groupoid $X$ $\\partial^\\ast\\Lambda \\to \\Sigma$ $\\mathrm{pr}_1^\\ast\\Lambda \\otimes \\mathrm{pr}_2^\\ast\\Lambda^\\ast$ - Weyl bundle $\\mathcal{W}$ (formally) Polarized section of $\\partial^\\ast\\Lambda$ Operator kernel $\\langle z \\mid \\hat{f} \\mid w\\rangle$ BV-localized half-disc with insertion $f$ Flat section $\\tau(f)$ Convolution $a_f * a_g$ $\\int a_f(x,y)\\,a_g(y,z)\\,d\\mu(y)$ Gluing half-discs along cut $\\sigma(\\tau(f) \\circ \\tau(g))$ Identity section Reproducing kernel $K(\\bar{z}, w)$ PSM partition function on cylinder $\\tau(1) = 1$ (absorbed into $D$) Hilbert space $\\Gamma_{\\mathcal{F}}(M, \\Lambda)$ $H^0(M, \\Lambda)$ Boundary Hilbert space - Polarization $\\mathcal{F}$ on $\\Sigma$ Kähler structure $J \\oplus (-J)$ BV gauge-fixing Fedosov connection $D$ ",
+  "wordCount" : "1752",
+  "inLanguage": "en",
+  "datePublished": "2026-05-14T00:00:00Z",
+  "dateModified": "2026-05-14T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://satyen3.github.io/notes/c-algebra-on-groupoids/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Satyen Patel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://satyen3.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://satyen3.github.io/" accesskey="h" title="Satyen Patel (Alt + H)">Satyen Patel</a>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://satyen3.github.io/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://satyen3.github.io/notes/" title="Notes">
+                    <span>Notes</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://satyen3.github.io/reading/" title="Reading">
+                    <span>Reading</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://satyen3.github.io/essays/" title="Essays">
+                    <span>Essays</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://satyen3.github.io/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Symplectic Groupoids and Berezin Quantization
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-05-14 00:00:00 +0000 UTC'>May 14, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><h2 id="1-the-symplectic-groupoid">1. The Symplectic Groupoid<a hidden class="anchor" aria-hidden="true" href="#1-the-symplectic-groupoid">#</a></h2>
+<p>Lie groupoid $\mathcal{G} \rightrightarrows M$ is a space of arrows between points of $M$, equipped with source and target maps $s, t: \mathcal{G} \to M$, a composition law $m: \mathcal{G}_2 \to \mathcal{G}$ on the space of composable pairs $\mathcal{G}_2 = \{(g,h) : s(g) = t(h)\} $,
+a unit section $\epsilon: M \hookrightarrow \mathcal{G}$, and an inversion $\iota: \mathcal{G} \to \mathcal{G}$. The nerve $\mathcal{G}_{\bullet}$ is the simplicial manifold with $\mathcal{G}_0 = M$, $\mathcal{G}_1 = \mathcal{G}$, $\mathcal{G}_2 = \mathcal{G} \times_M \mathcal{G}$, and so on, with face maps $s, t$ at level 1 and $\mathrm{pr}_1, m, \mathrm{pr}_2$ at level 2.</p>
+<p>The nerve carries a simplicial coboundary operator $\partial^\ast$ on differential forms. For $\theta \in \Omega^\bullet(M)$,
+</p>
+$$\partial^\ast\theta := t^\ast\theta - s^\ast\theta \in \Omega^\bullet(\mathcal{G}),$$<p>and for $\omega \in \Omega^\bullet(\mathcal{G})$,</p>
+$$\partial^\ast\omega := \mathrm{pr}_1^\ast\omega - m^\ast\omega + \mathrm{pr}_2^\ast\omega \in \Omega^\bullet(\mathcal{G}_2).$$<p>The geometric content of $\partial^\ast\theta = t^\ast\theta - s^\ast\theta$ is immediate: it measures the change of $\theta$ from the source to the target of an arrow. A form $\omega \in \Omega^2(\mathcal{G})$ is <em>multiplicative</em> if $\partial^\ast\omega = 0$, i.e., $m^\ast\omega = \mathrm{pr}_1^\ast\omega + \mathrm{pr}_2^\ast\omega$. This says that the symplectic &ldquo;area&rdquo; assigned to a composed arrow equals the sum of the areas of its factors.</p>
+<p>A <em>symplectic groupoid</em> is a Lie groupoid $\Sigma \rightrightarrows M$ equipped with a symplectic form $\omega \in \Omega^2(\Sigma)$ that is multiplicative. Equivalently, the graph of multiplication $\Lambda = \{(g, h, gh)\} \subset \Sigma \times \Sigma \times \Sigma$ is Lagrangian with respect to $\omega \oplus \omega \oplus (-\omega)$. This is Weinstein&rsquo;s principle: groupoid composition is a Lagrangian correspondence.</p>
+<h2 id="2-the-poisson-structure-on-the-base">2. The Poisson Structure on the Base<a hidden class="anchor" aria-hidden="true" href="#2-the-poisson-structure-on-the-base">#</a></h2>
+<p>Multiplicativity forces a Poisson structure on $M$. The argument has four steps.</p>
+<p><strong>Step 1.</strong> The unit section $\epsilon(M)$ is Lagrangian. Define $\delta: M \to \mathcal{G}_2$ by $\delta(x) = (\epsilon(x), \epsilon(x))$. Since $m \circ \delta = \mathrm{pr}_1 \circ \delta = \mathrm{pr}_2 \circ \delta = \epsilon$, pulling back $m^\ast\omega = \mathrm{pr}_1^\ast\omega + \mathrm{pr}_2^\ast\omega$ through $\delta$ gives $\epsilon^\ast\omega = 2\epsilon^\ast\omega$, hence $\epsilon^\ast\omega = 0$. The unit section is isotropic. A dimension count (using multiplicativity, inversion, and non-degeneracy of $\omega$) forces $\dim \Sigma = 2\dim M$, so $\epsilon(M)$ is in fact Lagrangian.</p>
+<p><strong>Step 2.</strong> The Lie algebroid $A = \ker(ds)|&#95;{\epsilon(M)}$ is identified with $T^\ast M$. At $\epsilon(x)$, the splitting $T{\epsilon(x)}\Sigma = T_x(\epsilon(M)) \oplus A_x$ and the Lagrangian condition on $\epsilon(M)$ set up a non-degenerate pairing $A_x \times T_x(\epsilon(M)) \to \mathbb{R}$ via $\omega$, giving a canonical isomorphism $A_x \xrightarrow{\sim} T^\ast&#95;x M$.</p>
+<p><strong>Step 3.</strong> The anchor $\rho = dt|_A: A \to TM$, transferred to $T^*M$ via $A \cong T^*M$, defines a bundle map $\pi^\sharp: T^*M \to TM$. Skew-symmetry of $\omega$ gives skew-symmetry of $\pi^\sharp$, defining a bivector $\pi \in \Gamma(\wedge^2 TM)$.</p>
+<p><strong>Step 4.</strong> The Lie algebroid bracket on $\Gamma(A)$ transfers to the Koszul bracket $[df, dg]&#95;{\pi} = d\{f,g\}$ on $\Omega^1(M)$. The Jacobi identity for the bracket implies $[\pi, \pi]&#95;{\mathrm{SN}} = 0$, so $\pi$ is Poisson.</p>
+<p>The source map $s: (\Sigma, \omega) \to (M, \pi)$ is Poisson and the target map $t$ is anti-Poisson. The Poisson bracket on $M$ is recovered by restricting the symplectic bracket on $\Sigma$ to source-pullbacks evaluated at the units: $\{f, g\}&#95;{\pi} \circ \epsilon = \{s^\ast f, s^\ast g\}&#95;{\omega} \circ \epsilon$.</p>
+<h2 id="3-line-bundles-and-the-coboundary">3. Line Bundles and the Coboundary<a hidden class="anchor" aria-hidden="true" href="#3-line-bundles-and-the-coboundary">#</a></h2>
+<p>The simplicial coboundary extends to line bundles. For a line bundle $\Lambda \to M$,</p>
+<p>is a line bundle over the groupoid. For a line bundle $L \to \Sigma$,</p>
+$$\partial^\ast L := \mathrm{pr}_1^\ast L \otimes m^\ast L^\ast \otimes \mathrm{pr}_2^\ast L \to \mathcal{G}_2.$$<p>$\Lambda$ is a <em>prequantum line bundle</em> for $(M, \omega_M)$ if it carries a connection $\nabla$ with $\mathrm{curv}(\nabla) = \omega_M$. The coboundary $\partial^\ast\Lambda$ then inherits a natural connection over $\Sigma$ with curvature $\omega_\Sigma$ (multiplicativity of the curvature follows from multiplicativity of $\omega$). The key structural property is $\partial^\ast(\partial^\ast\Lambda) \cong \mathbf{1}$ - the coboundary of a coboundary is canonically trivial.</p>
+<h2 id="4-the-convolution-algebra">4. The Convolution Algebra<a hidden class="anchor" aria-hidden="true" href="#4-the-convolution-algebra">#</a></h2>
+<p>Sections of $\partial^\ast\Lambda$ over $\Sigma$ form a convolution algebra. The product is defined by integrating over the fibers of the multiplication map: for $a, b \in \Gamma_c(\Sigma, \partial^\ast\Lambda \otimes \Omega^{1/2})$,</p>
+$$(a * b)(\gamma) := \int_{\eta \in t^{-1}(t\gamma)} a(\eta)\, b(\eta^{-1}\gamma).$$<p>Here $\Omega^{1/2}$ is the half-density bundle (Hawkins, Section 5), which provides the integration measure along the $t$-fibers. The product $a(\eta) \otimes b(\eta^{-1}\gamma)$ lands in the correct fiber of $\partial^\ast\Lambda$ over $\gamma$ because the triviality $\partial^\ast(\partial^\ast\Lambda) \cong \mathbf{1}$ ensures the intermediate $\Lambda$-factors at $s(\eta) = t(\eta^{-1}\gamma)$ cancel.</p>
+<p>The convolution product is associative (from associativity of groupoid composition) and, with appropriate completion, gives a $C^\ast$-algebra. Involution comes from inversion: $a^\ast(\gamma) = \overline{a(\gamma^{-1})}$, using the canonical isomorphism $\iota^\ast\Omega^{1/2} \cong \overline{\Omega^{1/2}}$.</p>
+<p><strong>This is the operator algebra.</strong> Sections of $\partial^\ast\Lambda$ over $\Sigma$ are not states - they are observables. The convolution product is the quantum multiplication. Noncommutativity comes entirely from the groupoid composition law.</p>
+<h2 id="5-the-pair-groupoid-and-berezin-quantization">5. The Pair Groupoid and Berezin Quantization<a hidden class="anchor" aria-hidden="true" href="#5-the-pair-groupoid-and-berezin-quantization">#</a></h2>
+<p>For a symplectic manifold $(M, \omega)$ (non-degenerate Poisson structure $\pi = \omega^{-1}$), the symplectic groupoid is the pair groupoid $\Sigma = M \times M$ with $\omega_\Sigma = \mathrm{pr}_1^\ast\omega - \mathrm{pr}_2^\ast\omega$, $s = \mathrm{pr}_2$, $t = \mathrm{pr}_1$, and composition $(x,y) \cdot (y,z) = (x,z)$.</p>
+<p>The coboundary line bundle is $\partial^\ast\Lambda = \mathrm{pr}_1^\ast\Lambda \otimes \mathrm{pr}_2^\ast\Lambda^\ast$ over $M \times M$. A section $a(x,y) \in \Lambda_x \otimes \Lambda_y^\ast$ is an integral kernel. The convolution product becomes</p>
+$$(a * b)(x, z) = \int_{y \in M} a(x,y) \otimes b(y,z)\, d\mu(y),$$<p>which is composition of integral kernels - matrix multiplication.</p>
+<p>Now suppose $(M, \omega, J)$ is Kähler. The pair groupoid $M \times M$ is Kähler with complex structure $J \oplus (-J)$, giving a polarization $\mathcal{F}&#95;{\Sigma} = T^{0,1}&#95;{\mathrm{pr}_1}M \oplus T^{1,0}&#95;{\mathrm{pr}_2}M$. A polarized section of $\partial^\ast\Lambda$ is a kernel $a(x,y)$ that is holomorphic in $x$ and anti-holomorphic in $y$.</p>
+<p>The reproducing kernel of Berezin-Toeplitz quantization, $K(\bar{z}, w) \in \Lambda_z^\ast \otimes \Lambda_w$, is precisely such a polarized section (after transposing arguments to match the $(t, s)$ convention). It is the identity element of the polarized convolution algebra: the section of $\partial^\ast\Lambda$ corresponding to the identity operator $\hat{1}$.</p>
+<p>The Berezin-Toeplitz star product is then the groupoid convolution on $M \times M$:</p>
+$$\widehat{f \star g}(x, z) = (a_f * a_g)(x, z) = \int_M a_f(x,y)\, a_g(y,z)\, d\mu(y),$$<p>where $a_f$ is the integral kernel (polarized section of $\partial^\ast\Lambda$) corresponding to the Toeplitz operator $\hat{f}$.</p>
+<h2 id="6-berezin-symbols-as-sections-of-the-coboundary-bundle">6. Berezin Symbols as Sections of the Coboundary Bundle<a hidden class="anchor" aria-hidden="true" href="#6-berezin-symbols-as-sections-of-the-coboundary-bundle">#</a></h2>
+<p>In Berezin quantization on a compact Kähler manifold $(M, \omega)$ with prequantum line bundle $\Lambda = \mathcal{O}(m)$:</p>
+<ul>
+<li>The Hilbert space is $\mathcal{H} = H^0(M, \Lambda)$, the space of holomorphic sections. These are <strong>states</strong>, living in $\Gamma(M, \Lambda)$.</li>
+<li>The coherent state at $w$ is $|w\rangle \in \mathcal{H}$, with $\langle z | w \rangle = K(\bar{z}, w)$.</li>
+<li>An operator $\hat{f}: \mathcal{H} \to \mathcal{H}$ has integral kernel $\langle z | \hat{f} | w \rangle$, which is a section of $\Lambda_z^\ast \otimes \Lambda_w \cong (\partial^\ast\Lambda)_{(w,z)}$. This is an <strong>observable</strong>, living in $\Gamma(\Sigma, \partial^\ast\Lambda)$.</li>
+</ul>
+<p>The covariant (Berezin) symbol of $\hat{f}$ is the restriction to the diagonal: $\check{f}(x) = \langle x | \hat{f} | x \rangle / \langle x | x \rangle$. The full off-diagonal kernel is the section of $\partial^\ast\Lambda$ - it contains strictly more information than the symbol, encoding the full operator and not just its diagonal matrix elements.</p>
+<p>In the concrete case of $\mathbb{CP}^1$ with $\Lambda = \mathcal{O}(m)$: the reproducing kernel is $K(\bar{z}, w) = (1 + \bar{z}w)^m$, the Hilbert space is polynomials of degree $\leq m$, and the convolution algebra is the algebra of $(m+1) \times (m+1)$ matrices - with the groupoid convolution reducing to matrix multiplication.</p>
+<h2 id="7-connection-to-the-poisson-sigma-model">7. Connection to the Poisson Sigma Model<a hidden class="anchor" aria-hidden="true" href="#7-connection-to-the-poisson-sigma-model">#</a></h2>
+<p>The Poisson Sigma Model on a surface $\Sigma_2$ with target $(M, \pi)$ has fields $X: \Sigma_2 \to M$ and $\eta \in \Omega^1(\Sigma_2, X^*T^*M)$, with action</p>
+$$S_{\mathrm{PSM}} = \int_{\Sigma_2} \eta_i \wedge dX^i + \frac{1}{2}\pi^{ij}(X)\,\eta_i \wedge \eta_j.$$<p>On the disc $D^2$, the path integral with boundary insertions $f, g$ computes the star product $(f \star g)(x)$. On the cylinder $[0,1] \times S^1$, the moduli space of classical solutions is the symplectic groupoid $\Sigma$ (or its formal version, the Cattaneo-Dherin-Felder formal symplectic groupoid $X$), and the partition function with no insertions gives the reproducing kernel.</p>
+<p>For a symplectic target ($\pi$ invertible, $\omega = \pi^{-1}$), integrating out $\eta$ via its equation of motion $\eta_j = -\omega_{ji}\,dX^i$ reduces the on-shell action to</p>
+$$S_{\mathrm{eff}} = \frac{1}{2}\int_{D^2} X^\ast\omega = \frac{1}{2}\int_{S^1} X^\ast\theta,$$<p>where $\theta$ is the symplectic potential ($\omega = d\theta$). The PSM path integral becomes a path integral over loops $\gamma: S^1 \to M$ with action $\frac{1}{2}\oint_\gamma \theta$. This is the coherent state path integral: discretizing $\gamma \mapsto (z_0, z_1, \ldots, z_N)$ gives</p>
+$$e^{\frac{i}{2\hbar}\oint \theta} \approx \prod_{k=0}^{N-1} K(\bar{z}&#95;{k}, z_{k+1}),$$<p>identifying each short-distance propagator with the reproducing kernel.</p>
+<p>For a general Poisson target (degenerate $\pi$), $\eta$ cannot be integrated out - the kinetic term $\pi^{ij}\eta_i \eta_j$ is degenerate, and the PSM has genuine gauge symmetry handled by the BV-BRST formalism. The PSM generalizes the coherent state path integral from symplectic to Poisson manifolds. The groupoid convolution provides the non-perturbative finite-dimensional reduction: cutting the disc along a diameter and BV-localizing each half onto the moduli space replaces the infinite-dimensional path integral with a single finite-dimensional convolution on $\Sigma$.</p>
+<h2 id="8-the-fedosov-connection-as-formal-polarization">8. The Fedosov Connection as Formal Polarization<a hidden class="anchor" aria-hidden="true" href="#8-the-fedosov-connection-as-formal-polarization">#</a></h2>
+<p>The Fedosov construction on the formal symplectic groupoid $X$ gives a formal version of the above. The Weyl bundle $\mathcal{W} \to M$ is the algebra of formal functions on the formal neighborhood of $\epsilon(M)$ in $\Sigma$. A flat section $\tau(f) \in \Gamma(\mathcal{W})$ satisfying $D\,\tau(f) = 0$ (where $D$ is the Fedosov connection) is the formal Taylor expansion of a polarized section $a_f \in \Gamma(\Sigma, \partial^\ast\Lambda)$ around the diagonal, relative to the reproducing kernel.</p>
+<p>The reproducing kernel itself is absorbed into the background: $\tau(1) = 1$ because the Fedosov connection already encodes the data of $K$. The full operator kernel is recovered as $\langle z | \hat{f} | w \rangle = K(\bar{z}, w) \cdot \tau(f)|_{y = w - z}$ (schematically). The Fedosov flatness condition $D\,\tau(f) = 0$ is the formal analogue of the polarization condition on $\partial^\ast\Lambda$, and the star product $\sigma(\tau(f) \circ \tau(g)) = f \star g$ is the formal version of the groupoid convolution.</p>
+<h2 id="summary-of-the-dictionary">Summary of the Dictionary<a hidden class="anchor" aria-hidden="true" href="#summary-of-the-dictionary">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Groupoid (Hawkins)</th>
+          <th>Berezin-Toeplitz</th>
+          <th>PSM (Cattaneo-Felder)</th>
+          <th>Fedosov</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$\Sigma \rightrightarrows M$</td>
+          <td>$M \times M$ (pair groupoid)</td>
+          <td>Moduli space of PSM on cylinder</td>
+          <td>Formal symplectic groupoid $X$</td>
+      </tr>
+      <tr>
+          <td>$\partial^\ast\Lambda \to \Sigma$</td>
+          <td>$\mathrm{pr}_1^\ast\Lambda \otimes \mathrm{pr}_2^\ast\Lambda^\ast$</td>
+          <td>-</td>
+          <td>Weyl bundle $\mathcal{W}$ (formally)</td>
+      </tr>
+      <tr>
+          <td>Polarized section of $\partial^\ast\Lambda$</td>
+          <td>Operator kernel $\langle z \mid \hat{f} \mid w\rangle$</td>
+          <td>BV-localized half-disc with insertion $f$</td>
+          <td>Flat section $\tau(f)$</td>
+      </tr>
+      <tr>
+          <td>Convolution $a_f * a_g$</td>
+          <td>$\int a_f(x,y)\,a_g(y,z)\,d\mu(y)$</td>
+          <td>Gluing half-discs along cut</td>
+          <td>$\sigma(\tau(f) \circ \tau(g))$</td>
+      </tr>
+      <tr>
+          <td>Identity section</td>
+          <td>Reproducing kernel $K(\bar{z}, w)$</td>
+          <td>PSM partition function on cylinder</td>
+          <td>$\tau(1) = 1$ (absorbed into $D$)</td>
+      </tr>
+      <tr>
+          <td>Hilbert space $\Gamma&#95;{\mathcal{F}}(M, \Lambda)$</td>
+          <td>$H^0(M, \Lambda)$</td>
+          <td>Boundary Hilbert space</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>Polarization $\mathcal{F}$ on $\Sigma$</td>
+          <td>Kähler structure $J \oplus (-J)$</td>
+          <td>BV gauge-fixing</td>
+          <td>Fedosov connection $D$</td>
+      </tr>
+  </tbody>
+</table>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://satyen3.github.io/notes/bvbasics/">
+    <span class="title">« Prev</span>
+    <span>Basics of BFV-BV</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://satyen3.github.io/">Satyen Patel</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

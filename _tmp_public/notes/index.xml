@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Satyen Patel</title>
+    <link>https://satyen3.github.io/notes/</link>
+    <description>Recent content on Satyen Patel</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 May 2026 00:00:00 +0530</lastBuildDate>
+    <atom:link href="https://satyen3.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Basics of BFV-BV</title>
+      <link>https://satyen3.github.io/notes/bvbasics/</link>
+      <pubDate>Wed, 20 May 2026 00:00:00 +0530</pubDate>
+      <guid>https://satyen3.github.io/notes/bvbasics/</guid>
+      <description>&lt;h3 id=&#34;categories&#34;&gt;&lt;strong&gt;Categories&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$\mathrm{SuperVect}_{\mathbb{K}}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;elements-of-supergeometry&#34;&gt;Elements of supergeometry&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Definition&lt;/strong&gt;: A &lt;em&gt;supermanifold&lt;/em&gt; $\mathcal{M}$ is a locally ringed space $(M,\mathcal{O}_{M})$ which locally looks like&lt;/p&gt;
+$$
+\left( \mathcal{U},C^\infty(\mathcal{U}) \otimes \bigwedge V^{*} \right)
+$$&lt;p&gt;where $\mathcal{U} \subset \mathbb{R}^{n}$ is open and $V$ is a finite dimensional real vector space. $M$ is called the body of $\mathcal{M}$ and $\mathcal{O}_{M}$ the structure sheaf.&lt;/p&gt;
+&lt;p&gt;A &lt;em&gt;supervector field&lt;/em&gt; is a vector field $X$ on a supermanfold $\mathcal{M}$, with local coordinates $(x^{i},\theta^{\mu})$, which is given by&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Symplectic Groupoids and Berezin Quantization</title>
+      <link>https://satyen3.github.io/notes/c-algebra-on-groupoids/</link>
+      <pubDate>Thu, 14 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://satyen3.github.io/notes/c-algebra-on-groupoids/</guid>
+      <description>&lt;h2 id=&#34;1-the-symplectic-groupoid&#34;&gt;1. The Symplectic Groupoid&lt;/h2&gt;
+&lt;p&gt;Lie groupoid $\mathcal{G} \rightrightarrows M$ is a space of arrows between points of $M$, equipped with source and target maps $s, t: \mathcal{G} \to M$, a composition law $m: \mathcal{G}_2 \to \mathcal{G}$ on the space of composable pairs $\mathcal{G}_2 = \{(g,h) : s(g) = t(h)\} $,
+a unit section $\epsilon: M \hookrightarrow \mathcal{G}$, and an inversion $\iota: \mathcal{G} \to \mathcal{G}$. The nerve $\mathcal{G}_{\bullet}$ is the simplicial manifold with $\mathcal{G}_0 = M$, $\mathcal{G}_1 = \mathcal{G}$, $\mathcal{G}_2 = \mathcal{G} \times_M \mathcal{G}$, and so on, with face maps $s, t$ at level 1 and $\mathrm{pr}_1, m, \mathrm{pr}_2$ at level 2.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

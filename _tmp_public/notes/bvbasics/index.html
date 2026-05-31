@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="light">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Basics of BFV-BV | Satyen Patel</title>
+<meta name="keywords" content="">
+<meta name="description" content="Categories
+
+$\mathrm{SuperVect}_{\mathbb{K}}$
+
+Elements of supergeometry
+Definition: A supermanifold $\mathcal{M}$ is a locally ringed space $(M,\mathcal{O}_{M})$ which locally looks like
+$$
+\left( \mathcal{U},C^\infty(\mathcal{U}) \otimes \bigwedge V^{*} \right)
+$$where $\mathcal{U} \subset \mathbb{R}^{n}$ is open and $V$ is a finite dimensional real vector space. $M$ is called the body of $\mathcal{M}$ and $\mathcal{O}_{M}$ the structure sheaf.
+A supervector field is a vector field $X$ on a supermanfold $\mathcal{M}$, with local coordinates $(x^{i},\theta^{\mu})$, which is given by">
+<meta name="author" content="">
+<link rel="canonical" href="https://satyen3.github.io/notes/bvbasics/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.ae264c64fa238e691131aaa9611a1f87a7edfd5286dc958681fa9edf2f946d23.css" integrity="sha256-riZMZPojjmkRMaqpYRofh6ft/VKG3JWGgfqe3y&#43;UbSM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://satyen3.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://satyen3.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://satyen3.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://satyen3.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://satyen3.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://satyen3.github.io/notes/bvbasics/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,700;1,7..72,400;1,7..72,500;1,7..72,700&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/libertinus-serif" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/kaufmann-bt" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Literata:ital,opsz,wght@0,7..72,700;1,7..72,700&display=swap" rel="stylesheet">
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      packages: {'[+]': ['ams']},
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+      fontCache: 'global'
+    },
+    loader: {load: ['[tex]/ams']}
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<meta property="og:url" content="https://satyen3.github.io/notes/bvbasics/">
+  <meta property="og:site_name" content="Satyen Patel">
+  <meta property="og:title" content="Basics of BFV-BV">
+  <meta property="og:description" content="Categories $\mathrm{SuperVect}_{\mathbb{K}}$ Elements of supergeometry Definition: A supermanifold $\mathcal{M}$ is a locally ringed space $(M,\mathcal{O}_{M})$ which locally looks like
+$$ \left( \mathcal{U},C^\infty(\mathcal{U}) \otimes \bigwedge V^{*} \right) $$where $\mathcal{U} \subset \mathbb{R}^{n}$ is open and $V$ is a finite dimensional real vector space. $M$ is called the body of $\mathcal{M}$ and $\mathcal{O}_{M}$ the structure sheaf.
+A supervector field is a vector field $X$ on a supermanfold $\mathcal{M}$, with local coordinates $(x^{i},\theta^{\mu})$, which is given by">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="notes">
+    <meta property="article:published_time" content="2026-05-20T00:00:00+05:30">
+    <meta property="article:modified_time" content="2026-05-20T00:00:00+05:30">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Basics of BFV-BV">
+  <meta name="twitter:description" content="Categories $\mathrm{SuperVect}_{\mathbb{K}}$ Elements of supergeometry Definition: A supermanifold $\mathcal{M}$ is a locally ringed space $(M,\mathcal{O}_{M})$ which locally looks like
+$$ \left( \mathcal{U},C^\infty(\mathcal{U}) \otimes \bigwedge V^{*} \right) $$where $\mathcal{U} \subset \mathbb{R}^{n}$ is open and $V$ is a finite dimensional real vector space. $M$ is called the body of $\mathcal{M}$ and $\mathcal{O}_{M}$ the structure sheaf.
+A supervector field is a vector field $X$ on a supermanfold $\mathcal{M}$, with local coordinates $(x^{i},\theta^{\mu})$, which is given by">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "",
+      "item": "https://satyen3.github.io/notes/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Basics of BFV-BV",
+      "item": "https://satyen3.github.io/notes/bvbasics/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Basics of BFV-BV",
+  "name": "Basics of BFV-BV",
+  "description": "Categories $\\mathrm{SuperVect}_{\\mathbb{K}}$ Elements of supergeometry Definition: A supermanifold $\\mathcal{M}$ is a locally ringed space $(M,\\mathcal{O}_{M})$ which locally looks like\n$$ \\left( \\mathcal{U},C^\\infty(\\mathcal{U}) \\otimes \\bigwedge V^{*} \\right) $$where $\\mathcal{U} \\subset \\mathbb{R}^{n}$ is open and $V$ is a finite dimensional real vector space. $M$ is called the body of $\\mathcal{M}$ and $\\mathcal{O}_{M}$ the structure sheaf.\nA supervector field is a vector field $X$ on a supermanfold $\\mathcal{M}$, with local coordinates $(x^{i},\\theta^{\\mu})$, which is given by\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Categories $\\mathrm{SuperVect}_{\\mathbb{K}}$ Elements of supergeometry Definition: A supermanifold $\\mathcal{M}$ is a locally ringed space $(M,\\mathcal{O}_{M})$ which locally looks like\n$$ \\left( \\mathcal{U},C^\\infty(\\mathcal{U}) \\otimes \\bigwedge V^{*} \\right) $$where $\\mathcal{U} \\subset \\mathbb{R}^{n}$ is open and $V$ is a finite dimensional real vector space. $M$ is called the body of $\\mathcal{M}$ and $\\mathcal{O}_{M}$ the structure sheaf.\nA supervector field is a vector field $X$ on a supermanfold $\\mathcal{M}$, with local coordinates $(x^{i},\\theta^{\\mu})$, which is given by\n$$ X = \\sum_{i,\\mu} X^{i}\\partial_{x^{i}} + Y^{\\mu}\\partial_{\\theta^{\\mu}} $$Example: Let $\\mathcal{N}$ be a $(k|n-k)$-supermanifold and let $\\Psi \\in C^\\infty(\\mathcal{N})_{\\mathrm{odd}}$ an odd function. One has a Lagrangian\n$$ \\begin{align} \\mathcal{N}_{\\Psi} \u0026:= \\mathrm{graph}(d\\Psi) \\subset \\Pi T^{*}\\mathcal{N} \\\\ \\mathcal{F}^{\\partial}_{\\partial N} \u0026= \\underbrace{\\mathfrak{g}\\otimes \\Omega^{1}(\\partial N)[1]}_{\\ni A} \\oplus \\underbrace{\\mathfrak{g} \\otimes \\Omega^{n-2}(\\partial N) [n-2]}_{\\ni B} \\oplus \\underbrace{\\mathfrak{g} \\otimes \\Omega^{0} (\\partial N) [1]}_{\\ni c} \\oplus \\underbrace{\\mathfrak{g}\\otimes \\Omega^{n-2}(N)[n-2]}_{\\ni A^{+}} \\end{align} $$ The boundary action and its corresponding Hamiltonian vector field with respect to $\\omega^{\\partial}_{\\partial N}$ are given by\n$$ \\begin{aligned} \\mathcal{S}^{\\partial}_{\\partial N} \u0026= \\int_{\\partial N} \\mathrm{tr} \\left( B \\mathrm{d}_{A}c + \\frac{1}{2}A^{+}[c,c] \\right) \\\\ Q^{\\partial}_{\\partial N} \u0026= \\int_{\\partial N} \\mathrm{tr} \\left( \\mathrm{d}_{A}c \\frac{\\delta}{\\delta A} + [B,c] \\frac{\\delta}{\\delta B} + (\\mathrm{d}_{A}B + [A^{+},c])\\frac{\\delta}{\\delta A^{+}} + \\frac{1}{2}[c,c]\\frac{\\delta}{\\delta c} \\right) \\end{aligned} $$",
+  "wordCount" : "192",
+  "inLanguage": "en",
+  "datePublished": "2026-05-20T00:00:00+05:30",
+  "dateModified": "2026-05-20T00:00:00+05:30",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://satyen3.github.io/notes/bvbasics/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Satyen Patel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://satyen3.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://satyen3.github.io/" accesskey="h" title="Satyen Patel (Alt + H)">Satyen Patel</a>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://satyen3.github.io/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://satyen3.github.io/notes/" title="Notes">
+                    <span>Notes</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://satyen3.github.io/reading/" title="Reading">
+                    <span>Reading</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://satyen3.github.io/essays/" title="Essays">
+                    <span>Essays</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://satyen3.github.io/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Basics of BFV-BV
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-05-20 00:00:00 +0530 IST'>May 20, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><h3 id="categories"><strong>Categories</strong><a hidden class="anchor" aria-hidden="true" href="#categories">#</a></h3>
+<ul>
+<li>$\mathrm{SuperVect}_{\mathbb{K}}$</li>
+</ul>
+<h2 id="elements-of-supergeometry">Elements of supergeometry<a hidden class="anchor" aria-hidden="true" href="#elements-of-supergeometry">#</a></h2>
+<p><strong>Definition</strong>: A <em>supermanifold</em> $\mathcal{M}$ is a locally ringed space $(M,\mathcal{O}_{M})$ which locally looks like</p>
+$$
+\left( \mathcal{U},C^\infty(\mathcal{U}) \otimes \bigwedge V^{*} \right)
+$$<p>where $\mathcal{U} \subset \mathbb{R}^{n}$ is open and $V$ is a finite dimensional real vector space. $M$ is called the body of $\mathcal{M}$ and $\mathcal{O}_{M}$ the structure sheaf.</p>
+<p>A <em>supervector field</em> is a vector field $X$ on a supermanfold $\mathcal{M}$, with local coordinates $(x^{i},\theta^{\mu})$, which is given by</p>
+$$
+X = \sum_{i,\mu} X^{i}\partial_{x^{i}} + Y^{\mu}\partial_{\theta^{\mu}}
+$$<p><strong>Example:</strong> Let $\mathcal{N}$ be a $(k|n-k)$-supermanifold and let $\Psi \in C^\infty(\mathcal{N})_{\mathrm{odd}}$ an odd function. One has a Lagrangian</p>
+$$
+\begin{align}
+\mathcal{N}_{\Psi}
+  &:= \mathrm{graph}(d\Psi) \subset \Pi T^{*}\mathcal{N} \\ 
+\mathcal{F}^{\partial}_{\partial N}
+  &= \underbrace{\mathfrak{g}\otimes \Omega^{1}(\partial N)[1]}_{\ni A}
+    \oplus \underbrace{\mathfrak{g} \otimes \Omega^{n-2}(\partial N) [n-2]}_{\ni B}
+    \oplus \underbrace{\mathfrak{g} \otimes \Omega^{0} (\partial N) [1]}_{\ni c}
+    \oplus \underbrace{\mathfrak{g}\otimes \Omega^{n-2}(N)[n-2]}_{\ni A^{+}}
+\end{align}
+$$<p>
+The boundary action and its corresponding Hamiltonian vector field with respect to $\omega^{\partial}_{\partial N}$ are given by</p>
+$$
+\begin{aligned}
+\mathcal{S}^{\partial}_{\partial N}
+  &= \int_{\partial N} \mathrm{tr} \left( B \mathrm{d}_{A}c + \frac{1}{2}A^{+}[c,c] \right) \\
+Q^{\partial}_{\partial N}
+  &= \int_{\partial N} \mathrm{tr} \left( \mathrm{d}_{A}c \frac{\delta}{\delta A} + [B,c] \frac{\delta}{\delta B} + (\mathrm{d}_{A}B + [A^{+},c])\frac{\delta}{\delta A^{+}} + \frac{1}{2}[c,c]\frac{\delta}{\delta c} \right)
+\end{aligned}
+$$
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://satyen3.github.io/notes/c-algebra-on-groupoids/">
+    <span class="title">Next »</span>
+    <span>Symplectic Groupoids and Berezin Quantization</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://satyen3.github.io/">Satyen Patel</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

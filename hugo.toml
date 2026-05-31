@@ -16,6 +16,13 @@ theme = "PaperMod"
   math = true
   hideSummary = true
 
+[markup.goldmark.extensions.passthrough]
+  enable = true
+
+[markup.goldmark.extensions.passthrough.delimiters]
+  block = [['$$', '$$'], ['\\[', '\\]']]
+  inline = [['$', '$'], ['\\(', '\\)']]
+
 [[menu.main]]
   identifier = "research"
   name = "Research"
