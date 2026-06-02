@@ -33,7 +33,9 @@ symplectic geometry (Calaque–Pantev–Toën–Vaquié–Vezzosi, Safronov), an
 broader homotopical/∞-categorical reformulation of mathematical physics in
 the style of Schreiber and Lurie.
 
-## Paper
+## Papers
 
 *Fedosov Quantization of Poisson Manifolds and Quantum Moment Maps*. Under
 review at *Letters in Mathematical Physics*. [PDF](/papers/fedosov.pdf)
+
+

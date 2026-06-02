@@ -112,8 +112,8 @@ A supervector field is a vector field $X$ on a supermanfold $\mathcal{M}$, with 
   "keywords": [
     
   ],
-  "articleBody": "Categories $\\mathrm{SuperVect}_{\\mathbb{K}}$ Elements of supergeometry Definition: A supermanifold $\\mathcal{M}$ is a locally ringed space $(M,\\mathcal{O}_{M})$ which locally looks like\n$$ \\left( \\mathcal{U},C^\\infty(\\mathcal{U}) \\otimes \\bigwedge V^{*} \\right) $$where $\\mathcal{U} \\subset \\mathbb{R}^{n}$ is open and $V$ is a finite dimensional real vector space. $M$ is called the body of $\\mathcal{M}$ and $\\mathcal{O}_{M}$ the structure sheaf.\nA supervector field is a vector field $X$ on a supermanfold $\\mathcal{M}$, with local coordinates $(x^{i},\\theta^{\\mu})$, which is given by\n$$ X = \\sum_{i,\\mu} X^{i}\\partial_{x^{i}} + Y^{\\mu}\\partial_{\\theta^{\\mu}} $$Example: Let $\\mathcal{N}$ be a $(k|n-k)$-supermanifold and let $\\Psi \\in C^\\infty(\\mathcal{N})_{\\mathrm{odd}}$ an odd function. One has a Lagrangian\n$$ \\begin{align} \\mathcal{N}_{\\Psi} \u0026:= \\mathrm{graph}(d\\Psi) \\subset \\Pi T^{*}\\mathcal{N} \\\\ \\mathcal{F}^{\\partial}_{\\partial N} \u0026= \\underbrace{\\mathfrak{g}\\otimes \\Omega^{1}(\\partial N)[1]}_{\\ni A} \\oplus \\underbrace{\\mathfrak{g} \\otimes \\Omega^{n-2}(\\partial N) [n-2]}_{\\ni B} \\oplus \\underbrace{\\mathfrak{g} \\otimes \\Omega^{0} (\\partial N) [1]}_{\\ni c} \\oplus \\underbrace{\\mathfrak{g}\\otimes \\Omega^{n-2}(N)[n-2]}_{\\ni A^{+}} \\end{align} $$ The boundary action and its corresponding Hamiltonian vector field with respect to $\\omega^{\\partial}_{\\partial N}$ are given by\n$$ \\begin{aligned} \\mathcal{S}^{\\partial}_{\\partial N} \u0026= \\int_{\\partial N} \\mathrm{tr} \\left( B \\mathrm{d}_{A}c + \\frac{1}{2}A^{+}[c,c] \\right) \\\\ Q^{\\partial}_{\\partial N} \u0026= \\int_{\\partial N} \\mathrm{tr} \\left( \\mathrm{d}_{A}c \\frac{\\delta}{\\delta A} + [B,c] \\frac{\\delta}{\\delta B} + (\\mathrm{d}_{A}B + [A^{+},c])\\frac{\\delta}{\\delta A^{+}} + \\frac{1}{2}[c,c]\\frac{\\delta}{\\delta c} \\right) \\end{aligned} $$",
-  "wordCount" : "192",
+  "articleBody": "Categories $\\mathrm{SuperVect}_{\\mathbb{K}}$ Elements of supergeometry Definition: A supermanifold $\\mathcal{M}$ is a locally ringed space $(M,\\mathcal{O}_{M})$ which locally looks like\n$$ \\left( \\mathcal{U},C^\\infty(\\mathcal{U}) \\otimes \\bigwedge V^{*} \\right) $$where $\\mathcal{U} \\subset \\mathbb{R}^{n}$ is open and $V$ is a finite dimensional real vector space. $M$ is called the body of $\\mathcal{M}$ and $\\mathcal{O}_{M}$ the structure sheaf.\nA supervector field is a vector field $X$ on a supermanfold $\\mathcal{M}$, with local coordinates $(x^{i},\\theta^{\\mu})$, which is given by\n$$ X = \\sum_{i,\\mu} X^{i}\\partial_{x^{i}} + Y^{\\mu}\\partial_{\\theta^{\\mu}} $$ Functions $C^\\infty(\\mathcal{M})$ are locally defined as a power series $$ f(x^{i}, \\theta^{\\mu}) = \\sum_{1 \\le \\mu_{1},\\ldots,\\mu_{m} \\le m} f_{0} + f_{\\mu_{1}}\\theta^{\\mu_{1}} + f_{\\mu_{1}\\mu_{2}}\\theta^{\\mu_{1}}\\theta^{\\mu_{2}} + \\cdots f_{\\mu_{1},\\ldots,\\mu_{m}}\\theta^{\\mu_{1}} \\cdots \\theta^{\\mu_{m}} $$",
+  "wordCount" : "110",
   "inLanguage": "en",
   "datePublished": "2026-05-20T00:00:00+05:30",
   "dateModified": "2026-05-20T00:00:00+05:30",
@@ -147,11 +147,6 @@ A supervector field is a vector field $X$ on a supermanfold $\mathcal{M}$, with 
             <li>
                 <a href="https://satyen3.github.io/notes/" title="Notes">
                     <span>Notes</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://satyen3.github.io/reading/" title="Reading">
-                    <span>Reading</span>
                 </a>
             </li>
             <li>
@@ -193,26 +188,11 @@ $$<p>where $\mathcal{U} \subset \mathbb{R}^{n}$ is open and $V$ is a finite dime
 <p>A <em>supervector field</em> is a vector field $X$ on a supermanfold $\mathcal{M}$, with local coordinates $(x^{i},\theta^{\mu})$, which is given by</p>
 $$
 X = \sum_{i,\mu} X^{i}\partial_{x^{i}} + Y^{\mu}\partial_{\theta^{\mu}}
-$$<p><strong>Example:</strong> Let $\mathcal{N}$ be a $(k|n-k)$-supermanifold and let $\Psi \in C^\infty(\mathcal{N})_{\mathrm{odd}}$ an odd function. One has a Lagrangian</p>
-$$
-\begin{align}
-\mathcal{N}_{\Psi}
-  &:= \mathrm{graph}(d\Psi) \subset \Pi T^{*}\mathcal{N} \\ 
-\mathcal{F}^{\partial}_{\partial N}
-  &= \underbrace{\mathfrak{g}\otimes \Omega^{1}(\partial N)[1]}_{\ni A}
-    \oplus \underbrace{\mathfrak{g} \otimes \Omega^{n-2}(\partial N) [n-2]}_{\ni B}
-    \oplus \underbrace{\mathfrak{g} \otimes \Omega^{0} (\partial N) [1]}_{\ni c}
-    \oplus \underbrace{\mathfrak{g}\otimes \Omega^{n-2}(N)[n-2]}_{\ni A^{+}}
-\end{align}
 $$<p>
-The boundary action and its corresponding Hamiltonian vector field with respect to $\omega^{\partial}_{\partial N}$ are given by</p>
+Functions $C^\infty(\mathcal{M})$ are locally defined as a power series
+</p>
 $$
-\begin{aligned}
-\mathcal{S}^{\partial}_{\partial N}
-  &= \int_{\partial N} \mathrm{tr} \left( B \mathrm{d}_{A}c + \frac{1}{2}A^{+}[c,c] \right) \\
-Q^{\partial}_{\partial N}
-  &= \int_{\partial N} \mathrm{tr} \left( \mathrm{d}_{A}c \frac{\delta}{\delta A} + [B,c] \frac{\delta}{\delta B} + (\mathrm{d}_{A}B + [A^{+},c])\frac{\delta}{\delta A^{+}} + \frac{1}{2}[c,c]\frac{\delta}{\delta c} \right)
-\end{aligned}
+f(x^{i}, \theta^{\mu}) = \sum_{1 \le \mu_{1},\ldots,\mu_{m} \le m} f_{0} + f_{\mu_{1}}\theta^{\mu_{1}} + f_{\mu_{1}\mu_{2}}\theta^{\mu_{1}}\theta^{\mu_{2}} + \cdots f_{\mu_{1},\ldots,\mu_{m}}\theta^{\mu_{1}} \cdots \theta^{\mu_{m}}
 $$
 
   </div>
