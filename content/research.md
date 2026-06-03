@@ -10,12 +10,12 @@ bracket, its symmetries, and its symplectic groupoid -- controls the structure o
 the resulting quantization.
 
 My thesis work, carried out at ICTS-TIFR Bengaluru under Rukmini Dey, extends
-the construction of Esposito–Nest–Schnitzer–Tsygan, who built quantum moment
-maps for Poisson manifolds via symmetry-adapted formality. I generalize their
-construction to the Poisson setting using the Cattaneo–Dherin–Felder formal
+the framework of Esposito–Nest–Schnitzer–Tsygan, who showed the existence of quantum moment
+maps for Poisson manifolds via symmetry-adapted formality. I construct an explicit example
+in the Poisson setting using the Cattaneo–Dherin–Felder formal
 symplectic groupoid as the source of a globalized Fedosov-type star product.
 The result is a quantum moment map for any Poisson manifold equipped with a
-Hamiltonian Lie algebra action.
+Hamiltonian Lie algebra action which admits an invariant connection.
 
 I'm currently developing a related observation: the Poisson sigma model on a
 cylinder $S^1 \times [0,1]$ with target $T^*[1]M$ has, in its zero-mode
