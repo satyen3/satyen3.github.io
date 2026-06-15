@@ -124,15 +124,3 @@ The Fedosov construction on the formal symplectic groupoid $X$ gives a formal ve
 
 The reproducing kernel itself is absorbed into the background: $\tau(1) = 1$ because the Fedosov connection already encodes the data of $K$. The full operator kernel is recovered as $\langle z | \hat{f} | w \rangle = K(\bar{z}, w) \cdot \tau(f)|_{y = w - z}$ (schematically). The Fedosov flatness condition $D\,\tau(f) = 0$ is the formal analogue of the polarization condition on $\partial^\ast\Lambda$, and the star product $\sigma(\tau(f) \circ \tau(g)) = f \star g$ is the formal version of the groupoid convolution.
 
-
-## Summary of the Dictionary
-
-| Groupoid (Hawkins) | Berezin-Toeplitz | PSM (Cattaneo-Felder) | Fedosov |
-|---|---|---|---|
-| $\Sigma \rightrightarrows M$ | $M \times M$ (pair groupoid) | Moduli space of PSM on cylinder | Formal symplectic groupoid $X$ |
-| $\partial^\ast\Lambda \to \Sigma$ | $\mathrm{pr}_1^\ast\Lambda \otimes \mathrm{pr}_2^\ast\Lambda^\ast$ | - | Weyl bundle $\mathcal{W}$ (formally) |
-| Polarized section of $\partial^\ast\Lambda$ | Operator kernel $\langle z \mid \hat{f} \mid w\rangle$ | BV-localized half-disc with insertion $f$ | Flat section $\tau(f)$ |
-| Convolution $a_f * a_g$ | $\int a_f(x,y)\,a_g(y,z)\,d\mu(y)$ | Gluing half-discs along cut | $\sigma(\tau(f) \circ \tau(g))$ |
-| Identity section | Reproducing kernel $K(\bar{z}, w)$ | PSM partition function on cylinder | $\tau(1) = 1$ (absorbed into $D$) |
-| Hilbert space $\Gamma&#95;{\mathcal{F}}(M, \Lambda)$ | $H^0(M, \Lambda)$ | Boundary Hilbert space | - |
-| Polarization $\mathcal{F}$ on $\Sigma$ | Kähler structure $J \oplus (-J)$ | BV gauge-fixing | Fedosov connection $D$ |
