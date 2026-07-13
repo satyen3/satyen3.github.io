@@ -1,2 +1,1 @@
-
-Papers I'm currently working through, with notes.
+Notes on some recent papers I've read.
