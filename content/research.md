@@ -4,22 +4,21 @@
 I work at the intersection of Poisson and Courant geometry, deformation
 quantization, and the BV-BFV formalism. A question presently guiding me is how
 a dimensional reduction of geometric targets can be promoted to an equivalence
-of quantum field theories: not merely an agreement of effective actions or
-expectation values, but a homological equivalence that preserves observables,
+of quantum field theories at the level of a homological equivalence that preserves observables,
 boundary data, and cutting and gluing.
 
 ### Current direction: BV-BFV transfer from Courant to Poisson sigma models
 
-For an integrable Lie bialgebroid $(A,A^*)$, Cabrera and Cueca showed that the
-three-dimensional Courant sigma model on a thickened surface
+For an integrable Lie bialgebroid $(A,A^*)$, [Cabrera and Cueca](https://arxiv.org/abs/2204.07193) showed that the
+three-dimensional Courant sigma model on a cylinder
 $\Sigma\times I$ reduces, at the target and classical levels, to the
 two-dimensional Poisson sigma model on $\Sigma$ with target the Poisson
-groupoid $(G_A,\pi_G)$. The quantum statement remains subtler: one must control
+groupoid $(G_A,\pi_G)$. The quantum statement remains: one must control
 the observables, residual fields, propagators and BV measures, as well as the
 BFV data carried by the boundary faces, edges, and corners.
 
-My proposed PhD project is to formulate this reduction as a **BV-BFV transfer
-kernel**. The aim is to construct, first in linear and Lie-bialgebra models and
+My proposed PhD project is to formulate this reduction as a BV-BFV transfer
+kernel. The aim is to construct, first in linear and Lie-bialgebra models and
 then perturbatively in the nonlinear theory, a strong deformation retract
 
 $$
@@ -34,7 +33,7 @@ Homological perturbation should transfer the Courant interaction to the
 multiplicative Poisson structure on $G_A$ and simultaneously correct the
 observable lift.
 
-The boundary question is central rather than auxiliary. I want to understand
+The boundary question is central. I want to understand
 whether dimensional pushforward intertwines the two BFV operators and modified
 quantum master equations, and whether it commutes with gluing up to a canonical
 chain homotopy. Possible failures should be computable: bulk, face, edge, and
