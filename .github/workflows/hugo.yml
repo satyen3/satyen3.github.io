@@ -17,11 +17,24 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      # Personal notes are only built when both secrets exist, so they can
+      # never be published without a password.
+      NOTES_ENABLED: ${{ secrets.NOTES_PASSWORD != '' && secrets.PERSONAL_NOTES_KEY != '' }}
+      NOTES_PASSWORD: ${{ secrets.NOTES_PASSWORD }}
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
+      - name: Check out personal notes (private repo)
+        if: env.NOTES_ENABLED == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: satyen3/personal-notes
+          path: content/personal
+          ssh-key: ${{ secrets.PERSONAL_NOTES_KEY }}
+          persist-credentials: false
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
@@ -29,6 +42,36 @@ jobs:
           extended: true
       - name: Build
         run: hugo --minify
+      - name: Encrypt personal notes
+        if: env.NOTES_ENABLED == 'true'
+        working-directory: public
+        # The salt is not secret; keeping it fixed keeps "Remember me" valid
+        # across deploys.
+        run: >
+          npx --yes staticrypt@3.5.4 personal -r -d . -p "$NOTES_PASSWORD"
+          --short --remember 30 -s c368fd0c831f9aa10abc224bb972e18a -c false
+          --template-title "Personal" --template-instructions ""
+          --template-color-primary "#1d1e20" --template-color-secondary "#f5f5f5"
+      - name: Verify nothing private is published in plaintext
+        working-directory: public
+        run: |
+          set -euo pipefail
+          fail=0
+          if [ -d personal ]; then
+            # Only HTML gets encrypted, so anything else would be public.
+            if find personal -type f ! -name '*.html' | grep .; then
+              echo "::error::Non-HTML files under /personal/ would be published unencrypted"; fail=1
+            fi
+            while IFS= read -r f; do
+              if ! grep -q staticryptConfig "$f" || grep -q notes-tree "$f"; then
+                echo "::error::Not encrypted: $f"; fail=1
+              fi
+            done < <(find personal -name '*.html')
+          fi
+          if grep -rl --exclude-dir=personal '/personal/' .; then
+            echo "::error::Pages outside /personal/ mention it"; fail=1
+          fi
+          exit $fail
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./public

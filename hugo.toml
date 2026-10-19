@@ -2,6 +2,8 @@ baseURL = "https://satyen3.github.io/"
 languageCode = "en-us"
 title = "Satyen Patel"
 theme = "PaperMod"
+# README of the private notes repo is not a note.
+ignoreFiles = ['personal[/\\]README\.md$']
 
 [params]
   DateFormat = "January 2, 2006"
@@ -52,3 +54,21 @@ theme = "PaperMod"
   name = "CV"
   url = "/cv.pdf"
   weight = 50
+
+# Personal notes (content/personal, a clone of the private satyen3/personal-notes
+# repo). Hidden: no menu entry, noindex, no sitemap/RSS, left out of site-wide
+# listings. The deploy workflow encrypts everything under /personal/.
+
+[[cascade]]
+  outputs = ['html']
+  [cascade.target]
+    path = '{/personal,/personal/**}'
+  [cascade.build]
+    list = 'local'
+  [cascade.sitemap]
+    disable = true
+  [cascade.params]
+    robotsNoIndex = true
+    hideMeta = true
+    ShowPostNavLinks = false
+    math = true

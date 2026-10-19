@@ -117,3 +117,87 @@ mjx-container.MathJax svg * {
 .callout-remark {
   border-left-color: #888;
 }
+
+/* Personal notes: folder browser */
+.notes-path {
+  font-size: 0.85em;
+  color: var(--secondary);
+  margin-bottom: 0.4em;
+}
+
+.notes-path span {
+  margin: 0 0.25em;
+}
+
+.notes-browser {
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.notes-browser-full {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.notes-browser-side {
+  margin-bottom: 1.5rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.notes-browser-side > summary {
+  cursor: pointer;
+  color: var(--secondary);
+}
+
+.notes-tree,
+.notes-tree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.notes-tree ul {
+  padding-left: 1.1em;
+  border-left: 1px solid var(--border);
+  margin-left: 0.35em;
+}
+
+.notes-tree li {
+  margin: 0.15em 0;
+}
+
+.notes-tree-folder > details > summary {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.notes-tree-note a {
+  box-shadow: none;
+}
+
+.notes-tree-note.is-current a {
+  font-weight: 700;
+}
+
+@media (min-width: 1280px) {
+  .notes-browser-side {
+    position: fixed;
+    top: 6rem;
+    left: max(1rem, calc(50vw - 360px - 17rem));
+    width: 15rem;
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+    border: none;
+    padding: 0;
+  }
+
+  .notes-browser-side > summary {
+    pointer-events: none;
+    list-style: none;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+}

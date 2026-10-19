@@ -2,3 +2,6 @@ public/
 resources/
 .hugo_build.lock
 .DS_Store
+
+# Private notes: a separate clone of satyen3/personal-notes. Never commit here.
+content/personal/

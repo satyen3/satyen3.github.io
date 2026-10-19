@@ -1,0 +1,37 @@
+{{- define "main" }}
+{{- $root := site.GetPage "/personal" }}
+
+<details class="notes-browser notes-browser-side">
+  <summary>Browse notes</summary>
+  <nav aria-label="Notes">
+    {{- partial "personal/tree.html" (dict "dir" "personal/" "pages" $root.RegularPagesRecursive "page" . "openAll" false) }}
+  </nav>
+</details>
+
+<article class="post-single">
+  <header class="post-header">
+    {{- /* Folder path, e.g. Personal / math / groupoids */}}
+    <div class="notes-path">
+      <a href="{{ $root.RelPermalink }}">{{ $root.Title }}</a>
+      {{- range after 1 (split (strings.TrimSuffix "/" (replace .File.Dir "\\" "/")) "/") }}
+      <span>/</span> {{ . }}
+      {{- end }}
+    </div>
+    <h1 class="post-title">{{ .Title | default .File.ContentBaseName }}</h1>
+  </header>
+
+  {{- if .Content }}
+  <div class="post-content md-content">
+    {{- partial "anchored_headings.html" .Content -}}
+  </div>
+  {{- end }}
+</article>
+
+<script>
+  // The sidebar is always expanded on wide screens.
+  if (window.matchMedia("(min-width: 1280px)").matches) {
+    document.querySelector(".notes-browser-side").open = true;
+  }
+</script>
+
+{{- end }}{{/* end main */}}

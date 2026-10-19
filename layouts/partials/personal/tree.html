@@ -1,0 +1,35 @@
+{{- /*
+  Folder tree for the personal notes, built from file paths so plain folders
+  of .md files work without _index.md files (like an Obsidian vault).
+  Context: dict "dir" (e.g. "personal/"), "pages", "page" (current page),
+  "openAll" (bool). Calls itself once per subfolder.
+*/ -}}
+{{- $dir := .dir }}
+{{- $folders := slice }}
+{{- $notes := slice }}
+{{- range .pages }}
+  {{- $d := replace .File.Dir "\\" "/" }}
+  {{- if eq $d $dir }}
+    {{- $notes = $notes | append . }}
+  {{- else if hasPrefix $d $dir }}
+    {{- $folders = $folders | append (index (split (strings.TrimPrefix $dir $d) "/") 0) }}
+  {{- end }}
+{{- end }}
+{{- $current := "" }}
+{{- with .page.File }}{{ $current = replace .Dir "\\" "/" }}{{ end }}
+<ul class="notes-tree">
+  {{- range sort (uniq $folders) }}
+  {{- $sub := printf "%s%s/" $dir . }}
+  <li class="notes-tree-folder">
+    <details{{ if or $.openAll (hasPrefix $current $sub) }} open{{ end }}>
+      <summary>{{ . }}</summary>
+      {{- partial "personal/tree.html" (dict "dir" $sub "pages" $.pages "page" $.page "openAll" $.openAll) }}
+    </details>
+  </li>
+  {{- end }}
+  {{- range sort $notes "File.ContentBaseName" }}
+  <li class="notes-tree-note{{ if eq .RelPermalink $.page.RelPermalink }} is-current{{ end }}">
+    <a href="{{ .RelPermalink }}">{{ .Title | default .File.ContentBaseName }}</a>
+  </li>
+  {{- end }}
+</ul>
