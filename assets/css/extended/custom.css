@@ -201,3 +201,10 @@ mjx-container.MathJax svg * {
     margin-bottom: 0.5rem;
   }
 }
+
+.wikilink-missing {
+  color: var(--secondary);
+  opacity: 0.7;
+  border-bottom: 1px dashed var(--secondary);
+  cursor: help;
+}

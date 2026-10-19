@@ -1,0 +1,64 @@
+{{- /*
+  Turns Obsidian-style wikilinks in rendered note HTML into links:
+    [[Note]]  [[folder/Note]]  [[Note#Heading]]  [[Note|text]]  [[#Heading]]
+  Targets match a note's path (relative to personal/), file name or title,
+  case-insensitively; a path match wins over a file name, which wins over a
+  title. Unknown targets render as faded text. Code and math are left
+  untouched, so e.g. $[[a,b],c]$ stays math.
+  Context: dict "content" (HTML), "page". Returns HTML.
+*/ -}}
+{{- $html := string .content }}
+
+{{- /* Note lookup, built so that later (stronger) keys overwrite earlier ones. */}}
+{{- $notes := (site.GetPage "/personal").RegularPagesRecursive }}
+{{- $byTitle := dict }}
+{{- $byName := dict }}
+{{- $byPath := dict }}
+{{- range $notes }}
+  {{- $p := . }}
+  {{- $path := strings.TrimPrefix "personal/" (replace .File.Path "\\" "/") | strings.TrimSuffix (printf ".%s" .File.Ext) }}
+  {{- with .Title }}{{ $byTitle = merge $byTitle (dict (lower .) $p.RelPermalink) }}{{ end }}
+  {{- $byName = merge $byName (dict (lower .File.ContentBaseName) $p.RelPermalink) }}
+  {{- $byPath = merge $byPath (dict (lower $path) $p.RelPermalink) }}
+{{- end }}
+
+{{- /* Hide code and math behind placeholders while links are replaced. */}}
+{{- $protectRE := `(?s)<pre[\s>].*?</pre>|<code[\s>].*?</code>|\$\$.*?\$\$|\\\[.*?\\\]|\\\(.*?\\\)|\$[^$\n]+?\$` }}
+{{- $protected := findRE $protectRE $html }}
+{{- range $i, $chunk := $protected }}
+  {{- $html = replace $html $chunk (printf "@@wikilink-protected-%d@@" $i) 1 }}
+{{- end }}
+
+{{- range findRESubmatch `\[\[([^\[\]|#]*)(?:#([^\[\]|]+))?(?:\|([^\[\]]+))?\]\]` $html }}
+  {{- $full := index . 0 }}
+  {{- $target := index . 1 | htmlUnescape | strings.TrimSpace }}
+  {{- $heading := index . 2 | htmlUnescape | strings.TrimSpace }}
+  {{- $text := index . 3 | strings.TrimSpace }}
+  {{- if not $text }}
+    {{- $text = index . 1 | strings.TrimSpace }}
+    {{- with index . 2 }}{{ $text = printf "%s › %s" $text (strings.TrimSpace .) | strings.TrimPrefix " › " }}{{ end }}
+  {{- end }}
+
+  {{- $key := lower (strings.TrimSuffix ".md" $target) }}
+  {{- $url := "" }}
+  {{- if not $target }}
+    {{- $url = $.page.RelPermalink }}
+  {{- else }}
+    {{- $url = index $byPath $key | default (index $byName $key) | default (index $byTitle $key) | default "" }}
+  {{- end }}
+
+  {{- $link := "" }}
+  {{- if $url }}
+    {{- with $heading }}{{ $url = printf "%s#%s" $url (anchorize .) }}{{ end }}
+    {{- $link = printf `<a class="wikilink" href="%s">%s</a>` $url $text }}
+  {{- else }}
+    {{- $link = printf `<span class="wikilink wikilink-missing" title="No note named “%s”">%s</span>` (htmlEscape $target) $text }}
+  {{- end }}
+  {{- $html = replace $html $full $link }}
+{{- end }}
+
+{{- range $i, $chunk := $protected }}
+  {{- $html = replace $html (printf "@@wikilink-protected-%d@@" $i) $chunk 1 }}
+{{- end }}
+
+{{- return $html }}
