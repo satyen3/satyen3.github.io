@@ -1,10 +1,12 @@
 :root {
   --main-width: 720px;
+  /* Keep the header (name left, menu right) aligned with the content column. */
+  --nav-width: var(--main-width);
 }
 
 body {
   font-family: "Literata", Georgia, "Times New Roman", serif;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.7;
 }
 
@@ -37,7 +39,7 @@ code, pre, kbd {
 .logo a {
   font-family: "Literata", Georgia, serif;
   font-weight: 700;
-  font-style: italic;
+  font-style: normal;
 }
 
 mjx-container[jax="SVG"] {
@@ -53,15 +55,22 @@ mjx-container.MathJax svg * {
 }
 
 .home-info {
-  max-width: 40rem;
-  margin: 0 auto;
-  padding: 3.5rem 0 2rem;
+  padding: 1rem 0 1rem;
 }
 
-.home-figure {
+/* Figure floats left at half size; the text wraps around it. */
+.home-info .home-figure {
+  float: left;
+  width: 60%;
+  /* Slightly negative bottom margin so the line level with the figure's
+     bottom edge can run full width. */
+  margin: 0.4rem 1.75rem -0.3rem 0;
+}
+
+.home-info::after {
+  content: "";
   display: block;
-  width: min(100%, 39.1rem);
-  margin: 0 auto 2rem;
+  clear: both;
 }
 
 .home-info p {
@@ -70,11 +79,14 @@ mjx-container.MathJax svg * {
 
 @media (max-width: 640px) {
   .home-info {
-    padding: 2rem 0 1.25rem;
+    padding-bottom: 1.25rem;
   }
 
-  .home-figure {
-    margin-bottom: 1.5rem;
+  /* Stack on phones: figure full width, text below it. */
+  .home-info .home-figure {
+    float: none;
+    width: 100%;
+    margin: 0.4rem 0 1.5rem;
   }
 }
 
