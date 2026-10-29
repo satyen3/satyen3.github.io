@@ -3,7 +3,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,700;1,7..72,400;1,7..72,500;1,7..72,700&display=swap" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/libertinus-serif" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/kaufmann-bt" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Literata:ital,opsz,wght@0,7..72,700;1,7..72,700&display=swap" rel="stylesheet">{{ if or .Params.math .Site.Params.math }}
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@1,8..60,400..700&family=Literata:ital,opsz,wght@0,7..72,700;1,7..72,700&display=swap" rel="stylesheet">
+{{- /* Single pages are white by default; offWhite gives them the list-page background. */}}
+{{ if .Params.offWhite }}<style>body { background: var(--code-bg); }</style>{{ end }}
+{{ if or .Params.math .Site.Params.math }}
 <script>
   window.MathJax = {
     tex: {
