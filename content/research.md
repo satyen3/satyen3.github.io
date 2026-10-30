@@ -4,8 +4,7 @@ offWhite: true
 ## Research
 I work at the intersection of Poisson and Courant geometry, deformation
 quantization, and the BV-BFV formalism. A question I'm thinking about is how
-a dimensional reduction of geometric targets can be promoted to an equivalence
-of quantum field theories at the level of a homological equivalence that preserves observables,
+a dimensional reduction of geometric targets can be promoted to an homological (BV-BFV) equivalence of quantum field theories that preserves observables,
 boundary data, and cutting and gluing.
 
 ### Previous work
