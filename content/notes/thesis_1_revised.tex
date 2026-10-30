@@ -1,0 +1,2937 @@
+\documentclass[
+  12pt,
+  a4paper, oneside
+]{report}
+
+\usepackage{tocloft} 
+\makeatletter
+\renewcommand{\@chapapp}{} % optional if you removed "Chapter"
+\renewcommand{\numberline}[1]{\hb@xt@\@tempdima{\hfil #1\hspace{1em}}}
+\makeatother
+\usepackage{tocbasic}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\centering\Large\scshape}
+{\chaptername~\thechapter\\ [-10pt]\rule{0.5\linewidth}{0.8pt}}
+{-0pt}
+{\normalfont\Huge\bfseries}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em} % Adds vertical space between paragraphs
+\usepackage{tikz-cd}
+\usepackage{amsmath, amssymb, amsthm, mathtools,derivative}
+\usepackage{microtype}
+\usepackage{braket}
+\usepackage{svg}
+\microtypesetup{expansion=true,protrusion=true}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+%\setmainfont{Libertinus Serif}
+%\setmathfont{Libertinus Math}
+\setmainfont{STIX Two Text}[
+  Path = /usr/local/texlive/2026basic/texmf-dist/fonts/opentype/public/stix2-otf/,
+  UprightFont = STIXTwoText-Regular.otf,
+  ItalicFont = STIXTwoText-Italic.otf,
+  BoldFont = STIXTwoText-Bold.otf,
+  BoldItalicFont = STIXTwoText-BoldItalic.otf
+]
+\setmathfont{STIX Two Math}
+\setmathfont{Libertinus Math}[range=\mathbfup/{latin,Latin,greek,Greek}]
+\setmathfont{Libertinus Math}[range=\mathbfit/{latin,Latin,greek,Greek}]
+
+%\setmathfont{latinmodern-math}
+\setmathfont{latinmodern-math}[range={"22C6,"0302,"02C6,"1D453}]
+%\setmathfont{Libertinus Math}[range={\mathopen,\mathclose}]
+\emergencystretch=2em
+%\raggedbottom
+
+%\setlength{\skip\footins}{15pt}
+%\usepackage{MnSymbol}
+%\renewcommand{\star}{\filledstar}
+\renewcommand{\hbar}{\hslash}
+
+\usepackage[
+  margin=1in,
+  headheight=14pt
+]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+
+%\newtheoremstyle{mystyle}%                % Name
+%  {}%                                     % Space above
+%  {}%                                     % Space below
+%  {\itshape}%                                     % Body font
+%  {}%                                     % Indent amount
+%  {\bfseries}%                            % Theorem head font
+%  {.}%                                    % Punctuation after theorem head
+%  { }%                                    % Space after theorem head, ' ', or \newline
+%  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%      
+%\theoremstyle{mystyle}
+
+%==============================
+% AMS math
+%==============================
+\newtheoremstyle{bolddef}
+  {}{}                % Space above/below
+  {\normalfont}       % Body font
+  {}                  % Indent
+  {\bfseries}         % Head font
+  {.}                 % Punctuation
+  { }                 % Space after head
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+\theoremstyle{bolddef}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{definition}{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{notation}[theorem]{Notation}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks,pagebackref]{hyperref}
+\usepackage{bookmark}
+\usepackage{cleveref}
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+  \ifcase #1 %
+  \or\space #2%
+  \else\space #2%
+  \fi%
+}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\setlist[itemize]{nosep}
+\setlist[enumerate]{nosep}
+\usepackage{multicol}
+\setlist{noitemsep}
+\numberwithin{equation}{chapter}
+\setcounter{tocdepth}{2}
+\begin{document}
+
+\begin{titlepage}
+\thispagestyle{empty}
+
+\begin{center}
+
+
+{\huge\bfseries
+Geometric \\ 
+and deformation quantization\\
+through examples 
+\par}
+
+\vspace{0.5cm}
+
+{\large
+A Thesis
+\par}
+
+\vspace{0.8cm}
+
+{\large
+submitted to\\
+Indian Institute of Science Education and Research, Pune\\
+in partial fulfillment of the academic requirements for the\\
+BS--MS Dual Degree Programme
+\par}
+
+\vspace{0.8cm}
+
+{\large
+by
+\par}
+
+\vspace{0.4cm}
+
+{\Large\bfseries
+  Satyen Patel
+\par}
+
+\vspace{1.2cm}
+
+% -------- Logo --------
+\includegraphics[width=4cm]{iiser_logo.png}
+
+\vspace{1.2cm}
+
+{\large
+Indian Institute of Science Education and Research Pune\\
+Dr.\ Homi Bhabha Road,\\
+Pashan, Pune 411008, INDIA
+\par}
+
+\vspace{0.8cm}
+
+{\large
+April, 2026
+\par}
+
+\vfill
+
+{\large
+Supervisor: Dr. Rukmini Dey, ICTS-TIFR
+\par}
+
+\vspace{0.3cm}
+
+{\small
+© Satyen Patel 2026 
+\par}
+
+\end{center}
+\end{titlepage}
+
+% Certificate
+\begin{titlepage}
+
+\begin{center}
+{\huge \bfseries Certificate}\\[2.5cm]
+\end{center}
+
+
+This is to certify that this dissertation entitled ``Geometric and deformation quantization through examples'' submitted towards the partial fulfillment of the BS-MS degree at the Indian Institute of Science Education and Research, Pune represents expository and  original research carried out by Satyen Patel at International Center for Theoretical Sciences, Bengaluru, India, under the supervision of Dr. Rukmini Dey during academic year May 2025 to March 2026.\\[6cm]
+
+\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=west] at ([xshift=-5.7cm,yshift=13.15cm]current page.south east)
+  {\includegraphics[width=3.8cm]{path13.pdf}};
+\end{tikzpicture}
+\begin{flushright}
+Supervisor: \\
+Dr.\ Rukmini Dey
+\end{flushright}
+
+\vspace{1cm}
+
+\noindent
+Committee: \\
+Dr. Rukmini Dey \\
+Prof. Mainak Poddar
+\end{titlepage}
+
+
+
+\begin{titlepage}
+\vspace*{0.2\textheight}
+\begin{center}
+    \textit{“Das Wahre ist das Ganze”} -- Hegel, Preface to the \textit{Phenomenology of Spirit}
+\end{center}
+\vspace*{\fill}
+\end{titlepage}
+
+\clearpage
+\begin{titlepage}
+
+\begin{center}
+{\huge \bfseries Declaration}\\[2.5cm]
+\end{center}
+
+I hereby declare that the matter embodied in the report entitled “Deformation and geometric quantization through examples” are the results of the work carried out by me at the International Centre for Theoretical Sciences - Tata Institute of Fundamental Research (ICTS-TIFR), Bengaluru, under the
+supervision of Dr. Rukmini Dey, and the same has not been submitted elsewhere for any other degree. Wherever others contribute, every effort is made to indicate this clearly, with due reference to the literature and acknowledgement of collaborative research and discussions.\\[6cm]
+
+\begin{flushright}
+Satyen Patel \\
+(20211040)
+\end{flushright}
+
+\end{titlepage}
+\pagenumbering{roman}
+\phantomsection
+\tableofcontents
+\clearpage
+\renewcommand{\cftchapleader}{\cftdotfill{\cftnodots}}
+% ABSTRACT
+
+\chapter*{Acknowledgements}
+
+\addcontentsline{toc}{chapter}{Acknowledgements}
+I am deeply grateful to my supervisor, Dr.\ Rukmini Dey, for introducing me to this beautiful subject, for her constant encouragement, and for the many discussions that shaped both this thesis and the accompanying paper. Her guidance throughout my time at ICTS has been invaluable.
+
+I would like to thank the International Centre for Theoretical Sciences (ICTS-TIFR), Bengaluru, for hosting me through the Long Term Visiting Students Program and for providing an exceptional research environment.
+
+I thank the faculty and staff at IISER Pune, especially the Mathematics department, for five years of excellent education and guidance that made this work possible.
+
+Moreover, I thank my friends Arjun, Rahitya, Akshara, Kinjal and my roommate Aayush, who, along with our adoptive cat Epilepsy, made my formative undergraduate years full of positivity and growth. I am indebted to them for the many unforgettable memories we shared. 
+
+Finally, I am grateful to my family for always having confidence in me and for supporting me unconditionally in my every endeavour.
+
+\vspace{1em}
+
+
+\clearpage
+
+
+
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} 
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+We study the problem of quantization of classical mechanical systems from both geometric and algebraic perspectives, with the aim of understanding how the passage from commutative to non-commutative observable algebras is controlled by the geometric structures of the underlying phase space.
+
+We begin with the $C^*$-algebraic formulation of classical and quantum mechanics, showing how non-commutativity of the observable algebra leads to intrinsic uncertainty and the failure of simultaneous determinate values for incompatible observables. We then present geometric quantization via prequantization and polarization, followed by Berezin quantization on complex projective spaces using coherent states and reproducing kernel Hilbert spaces, including the induced quantization scheme of Dey-Ghosh for compact manifolds embedded in $\mathbb{CP}^n$.
+
+Turning to the algebraic approach, we develop deformation quantization as the problem of constructing associative star products on Poisson manifolds. We present Fedosov's construction for symplectic manifolds using flat connections on the Weyl bundle, and Kontsevich's formality theorem for general Poisson manifolds via $L_\infty$ morphisms between polyvector fields and polydifferential operators. We unify both perspectives through the Maurer-Cartan equation, identifying the flatness of connections, the Jacobi identity for Poisson structures, and the associativity of star products as instances of the same algebraic condition.
+
+In the main original contribution, we construct $G$-invariant star products with quantum moment maps on Poisson manifolds by embedding them into a formal symplectic groupoid and performing Fedosov quantization in the ambient symplectic manifold. The star product on the Poisson manifold is obtained by descending through an algebra isomorphism between the Weyl bundle on the ambient space and a Weyl bundle on the original manifold. When the manifold carries a Hamiltonian $G$-action with a $G$-invariant connection,we show that the descended star product is $G$-invariant and admits quantum moment maps.
+
+We conclude with a discussion of how the algebraic structures appearing in deformation quantization : Maurer-Cartan equations and differential graded Lie algebras, have a higher categorical interpretation.
+
+
+\clearpage
+
+\pagenumbering{arabic}
+\chapter{Introduction}
+Physics owes a lot of its structural scaffolding to symmetry. The object or system of its study must be independent of choices
+made to situate it in space and time to make it possible for us to quantitatively study them. In addition to solving the 
+relationships between observable quantites, we must also determine which of these relationships are physically relevant. Classical 
+mechanics deals with this using the manifold, with equivalence of physical structures encoded in the 
+diffeomorphism invariance of manifold structures. Since here we usually want to find how positions in the system relate with time, 
+the most convenient coordinates for this manifold are position variables, with a solution being a curve on it parametrized by the 
+time variable. In addition to this, the second order Euler-Lagrange equations require another set of choices, called 
+the conjugate momenta, in order to completely define a system from its starting configuration.
+
+\bigskip 
+Hence, the manifold describing a classical system with $n$ particles is naturally a $2n$ dimensional manifold $M^{2n}$
+known as the phase space.
+The coordinates of a point in the phase space correspond to a choice of variables, in whose perspective the system in a particular 
+state can be uniquely defined. This 
+set of choices is known as a \textit{gauge}. Other
+observable quantities relevant to the system are (smooth) functions on the phase space, since each one of these also requires
+a gauge to be described. One such function describes the energy of the system, and is called the Hamiltonian function $H(x,t)$.
+If a solution curve is to be physically reasonable, it must be that $H$ is constant on it. What a solution look like
+depends on the particularities of the system, but each one is infinitesmally a vector field $X_{H}$ called the
+\textit{Hamiltonian vector field} of $H$, with the Hamiltonian being constant along its flow.\footnote{We talk only of 
+vector fields since in general not every system integrates to a diffeomorphism. The ones that \textit{do} integrate 
+often correspond to genuine symmetries coming from gauge redundancy.} Since we now know how the system evolves with time
+(infinitesmally atleast), we can find how other observables change along these fields. This is simply $X_{H}(df)$, where $f$ is 
+the function that corresponds to an observable. It can be written as a bivector  $$
+\{ dH,df \} \equiv X_{H}(df)
+\vspace{0.6cm}$$ 
+known as the \textit{Poisson bivector}, and with that we have repackaged the particularities of the system into the coefficients of this bivector.
+This bracket has the following properties :
+\begin{itemize}
+\item  Antisymmetry in its arguments, implied by its definition : $\{ df,df \}=0$, and linearity. 
+\item Jacobi identity : $$
+\{ df, \{ dg,dh \} \} = \{ \{ df,dg \},dh \} + \{ dg,\{ df,dh \} \}
+$$
+which follows from the associativity of the diffeomorphism maps induced by their flows.
+\end{itemize}
+
+\bigskip
+
+
+Change in the observable would manifest to the observer as its apparent change with time,
+happening \textit{after} the gauge has been chosen. Thus the observer can claim: 
+$$
+\frac{\mathrm{d}f}{\mathrm{d}t} = \{ dH,df \}  
+$$
+which is a fundamental equation in classical mechanics.\\
+Any function $f$ which satisfies $\{ df,dH \}=0$ appears static, and its Hamiltonian vector field\ $X_{f}$ is called 
+a \textit{symmetry} of the system. The reason for this becomes clear in the following paragraph. 
+
+\subsubsection{Symmetry groups}
+There exists a family of functions $\mu_{X}$ on $M$, labelled by variables $X$, which act as degeneracies of the bivector. That is,
+$$
+\{d\mu_{X},df\} = 0 \enskip \forall \, f \in C^{\infty}(M)
+$$
+Since no observable can change along their Hamiltonian vector fields, transforming the manifold along their curves leaves the
+physical system intact, which is exactly what a symmetry is. Many symmetries in nature behave nice enough
+so as to act on the system as a Lie group, in which case the family $\{ X \}$ naturally gets a Lie algebra structure and a bracket $[\,,\,]$   compatible with the 
+Poisson bracket: 
+$$  
+\{ d\mu_{X},d\mu_{Y} \} = \mu_{[X,Y]}
+$$
+
+\section{First principles}
+This section follows the standard $C^*$-algebraic viewpoint on classical and quantum observables, and draws mainly on Hall \cite{Hall2013}.
+
+At the smallest scales observation and interaction are indistinguisable from each other. Quantum mechanics posits that it is impossible to observe a system without fundamentally changing its state. How we observe a system has to be taken into account, and in what order. A different way to understand states is as a dual algebra to the observable algebra. Thus if functions $f$ and $g$ are observables on a phase space $M$, then a state would be a dual functional $\omega : C^\infty(M) \longrightarrow \mathbb{R}$. This map takes an observable to its value in that state. Since we are considering abstract states, we can abstract away the phase space and only work with an algebra $A$ of observables, with some product (classically commutative). We also need additional structure on $A$, such that we can work with $\mathbb{C}$ instead of $\mathbb{R}$. These properties form the axioms of a $C^{*}$ algebra.
+\begin{definition}[$C^{*}$ algebra]
+A $C^{*}$ algebra $A$ is a normed, complete space which is also an algebra over $\mathbb{C}$, together with an adjoint map $x \longrightarrow x^{*}$ for $x \in A$ satisfying the following properties: 
+\begin{itemize}
+\item $x^{**} = (x^{*})^{*} = x$ 
+\item $(x+y)^{*} = x^{*} + y^{*}$ 
+\item $(xy)^{*} = y^{*}x^{*}$ 
+\item $(\lambda x)^{*} = \bar{\lambda}x^{*}$ 
+\item $\|xx^{*}\| = \|x\| \|x^{*}\|$ 
+\end{itemize}
+for all $x, y \in A, \; \lambda \in \mathbb{C}$
+\end{definition}
+To work with these, we would need a representation on a metric space. We can build such a representation, known as a $*$-representation, on a Hilbert space $\mathcal{H}$, with representation map $\pi : A \longrightarrow \mathcal{B}(\mathcal{H})$, where $\mathcal{B}(H)$ are bounded operators on $\mathcal{H}$.
+\begin{definition}
+A \textit{state} is a positive linear functional on $A$ with norm $1$. that is, $$
+\|\omega\| = \sup_{\|x\| \le 1}|\omega(x)| = 1
+$$
+\end{definition}
+With this, we can define the GNS construction for representing states.
+\begin{theorem}[Gelfand-Naimark-Segal]
+Let $\pi$ be a $*$-representation of a $C^{*}$ algebra $A$ with Hilbert space $\mathcal{H}$. Then given any state $\omega$, there exists a cyclic vector $\xi$ such that for all $x \in A$, $
+\omega(x) = \left\langle \pi(x)(\xi),\xi \right\rangle $
+ \label{thm:GNS}
+\end{theorem}
+A cyclic vector is a vector $\xi$ in $\mathcal{H}$ such that $\{ \pi(x)(\xi) \: : \:x \in A\}$ is norm dense in $\mathcal{H}$, meaning $\xi$ generates almost every vector in $\mathcal{H}$. 
+
+\bigskip 
+
+Relating this back to our classical system, assume that we are working with a compact phase space $M$. The observable $C^{*}$ algebra for this system would be $C(M)$, the continuous functions on $M$, with sup norm $\|f\| = \sup_{x \in M}|f(x)|$. Using Riesz representation theorem for Banach spaces, a state corresponds to a measure $d\mu$ on this space, such that it acts on observables as 
+\begin{equation}
+    \omega_{\mu}(f) = \int_{M}  f d \mu
+\end{equation}
+ Theorem \ref{thm:GNS} provides a representation on the Hilbert space $L^{2}(M,d\mu)$, with the representation map defined as 
+\begin{equation}
+    \begin{split}
+       & \pi : C(M) \longrightarrow \mathcal{B}(L^{2}(M,d\mu)) \\
+       & \pi(f)(\psi)(x) = f(x)\psi(x)
+    \end{split}
+\end{equation}
+We can see now that classical states, which we consider to be points of the phase space, are actually just a small class of states $\{\omega_{x}, x \in M\}$ defined as $\omega_{x}(f) = f(x)$, and the GNS construction for which gives a one dimensional Hilbert space $\mathcal{H}_{cl} \cong \mathbb{C}$. $\mathcal{H}_{cl}$ is all the values observables can take at the point $x_{0}$.\\
+This resembles our physical intuition that the value an observable quantity takes, depends only on the configuration under observation. This setup however allows for all possible configurations to weign in on the observation, which has interesting implications. Another assumption we made before is that the observer is passive, and measurement doesn't change the state. We can show that this corresponds to the $C^{*}$ algebra being commutative in the following way. \\
+Commutativity implies that 
+$$ 
+\pi(a)\pi(b)=\pi(ab)=\pi(ba)=\pi(b)\pi(a)
+$$ 
+so the image $\pi(A) \subset \mathcal{B}(\mathcal{H})$ are commuting operators. By Schur’s lemma, every irreducible representation of a commutative $C^*$-algebra is one-dimensional.
+Therefore, for pure states (whose GNS representations are irreducible), the Hilbert space satisfies
+$\mathcal{H}_{\text{cl}} \cong \mathbb{C}.$
+
+In such a representation, every observable acts by multiplication with a complex number:
+$$\pi(f) = f(x_0)$$
+for some point $x_0 \in M$. The state is multiplicative:
+$\omega(fg) = \omega(f)\omega(g)$
+which means that a system in configuration $x_0$ assigns definite values to all observables simultaneously. Measurement does not disturb the system; it merely reveals the value already intrinsic to the configuration. 
+\bigskip
+
+
+Now let us forgo the commutativity condition, and assume that $\mathcal A$ is a generally non-commutative $C^*$ algebra. 
+In this case irreducible representations need not be one-dimensional, and 
+$\pi(\mathcal A)$ consists in general of non-commuting operators. 
+Let $\omega$ be a state with GNS triple $(\pi,\mathcal H,\xi)$, where $\xi$ is cyclic. 
+Let $a=a^*\in\mathcal A$ be an observable. Consider the quantity obtained from measuring the observable $a^2$:
+$$
+\omega(a^2)
+=
+\langle \pi(a^2)\xi , \xi \rangle
+=
+\langle \pi(a)\pi(a)\xi , \xi \rangle
+$$
+Since $a^2$ represents the square of the observable $a$, we would expect $\omega(a^2)$ to equal  $\omega(a)^2.$
+However this doesn't always hold.\\
+Indeed, set
+$\eta := \pi(a)\xi.$
+Then
+$\omega(a^2)
+=
+\langle \pi(a)\eta , \xi \rangle.$
+On the other hand,
+$\omega(a)
+=
+\langle \eta , \xi \rangle$
+\\
+The equality $\omega(a^2)=\omega(a)^2$ holds if and only if
+$$
+\langle \pi(a)\eta , \xi \rangle
+=
+\langle \eta , \xi \rangle^2
+$$
+This happens precisely when $\eta$ is proportional to $\xi$, i.e.
+$\pi(a)\xi = \lambda \xi$
+for some $\lambda\in\mathbb C$.
+
+In other words, $\xi$ must be an eigenvector of $\pi(a)$. 
+Only in this case does the state assign a definite value to the observable $a$, and 
+only then does the relation hold.
+More generally, expanding
+$$
+\Delta_\xi(a)^2
+:=
+\omega(a^2)-\omega(a)^2
+$$
+we find
+$$
+\Delta_\xi(a)^2
+=
+\|\pi(a)\xi - \omega(a)\xi\|^2 \ge 0
+$$
+Thus $\omega(a^2)=\omega(a)^2$ if and only if the variance $\Delta_\xi(a)^2$ vanishes.
+
+Therefore, unlike the commutative case, a state on a non-commutative 
+$C^*$-algebra does not contain intrinsic values for all observables.
+The failure of multiplicativity,
+$$
+\omega(a^2)\neq \omega(a)^2
+$$
+is the result of the higher-dimensional nature of the representation 
+and expresses the intrinsic fluctuations of quantum observables. We can still find a way to interpret the quantity $\omega(a)$ in the following way. \\
+By the spectral theorem, every self-adjoint observable $a=a^*\in\mathcal A$
+admits a decomposition
+$$
+\pi(a)=\int_{\sigma(a)} \lambda\, dE_a(\lambda)
+$$
+where $E_a(\lambda)$ is a projection-valued measure and $\sigma(a)$
+are the eigenvalues of $a$. In the discrete case,
+$$
+\pi(a)=\sum_{\lambda} \lambda P_\lambda
+$$
+with mutually orthogonal projections satisfying
+$$
+P_\lambda P_\mu=\delta_{\lambda\mu}P_\lambda
+\qquad
+\sum_\lambda P_\lambda=I
+$$
+Thus an observable is a weighted sum (or integral) of projection operators, and if we require the outcome of repeated measurements to be consistent, we must intepret measurements to be outputs which are exactly the eigenvalues
+$\lambda$, with the probability of a given eigenvalue determined by how orthogonal the state being measured is from its eigenvector. \\
+If we go by this probabilistic interpretetation, where for the state $\xi$, the probability of obtaining the value
+$\lambda$ is
+$$
+p_\lambda=\langle \xi, P_\lambda \xi\rangle
+$$
+The expectation value of repeated measurements would therefore be our missing interpretation:
+$$
+\omega(a)=\int_{\sigma(a)} \lambda\, d\mu_\xi(\lambda)
+$$
+where $d\mu_\xi(\lambda):=\langle \xi,dE_a(\lambda)\xi\rangle$ is a
+probability measure. Similarly,
+$$
+\omega(a^2)=\int_{\sigma(a)} \lambda^2\, d\mu_\xi(\lambda)
+$$
+
+and we have
+$$
+\omega(a^2)=\omega(a)^2
+\quad\Longleftrightarrow\quad
+\Delta_\xi(a)^2=0
+$$
+which holds precisely when the measure $d\mu_\xi$ is supported at a single
+point $\lambda_0$. Equivalently,
+$$
+P_{\lambda_0}\xi=\xi
+$$
+so $\xi$ lies entirely in a single eigenspace.
+Only in this case does the state assign a definite value to $a$.
+
+In general, however, we can write
+$$
+{\xi}=\int_{\sigma(a)} dE_a(\lambda)\,\xi
+$$
+and a measurement projects onto one of these components:
+$$
+{\xi} \mapsto
+\frac{E_a(\lambda)\xi}{\|E_a(\lambda)\xi\|}
+$$
+Thus measurement necessarily alters the state unless it was already
+supported in a single eigenspace.
+
+Now consider two observables $a,b\in\mathcal A$.
+If $\pi(a)$ and $\pi(b)$ commute, their spectral projections commute:
+$$
+[E_a(\lambda),E_b(\mu)]=0
+$$
+In this case one may form joint projections
+$$
+E_{a,b}(\lambda,\mu)
+=
+E_a(\lambda)E_b(\mu)
+$$
+and the Hilbert space decomposes into their eigenspaces.
+There exist states supported in a single joint eigenspace,
+so both observables may be sharp simultaneously.
+
+If instead $[\pi(a),\pi(b)]\neq 0$, then in general
+$$
+[E_a(\lambda),E_b(\mu)]\neq 0
+$$
+and there is no nonzero vector $\xi$ satisfying
+$$
+\pi(a)\xi=\lambda\xi
+\qquad
+\pi(b)\xi=\mu\xi
+$$
+A state sharply localized in one eigenspace of $a$
+necessarily spreads across several of $b$.
+Therefore,
+$$
+\Delta_\xi(a)=0
+\quad\Rightarrow\quad
+\Delta_\xi(b)>0
+$$
+in general. 
+
+This failure of simultaneous sharpness is the precise algebraic
+manifestation of quantum incompatibility. The obstruction is entirely
+encoded in the non-commutativity of the observable algebra.
+
+\medskip
+
+In such a physical system, the classical notion of a point of phase space: a configuration
+assigning definite values to all observables, no longer exists.
+
+The only consistent replacement is the following:
+observables must be represented by operators on a Hilbert space,
+and states by vectors (or density operators) upon which these operators act.
+The passage from classical mechanics to quantum mechanics therefore
+requires replacing
+$$
+C(M)
+\quad\longrightarrow\quad
+\text{a non-commutative algebra of operators}.
+$$
+
+%\mathscriptsmode 2
+Since classical observables are functions on phase space,
+this replacement demands a systematic procedure that associates to each
+function $f\in C^\infty(M)$ an operator $\hat f$ on a Hilbert space,
+in such a way that:
+\begin{enumerate}[label=\textnormal{(\arabic*)}]
+  \item $f \mapsto \hat{f}$ is a $\mathbb{R}$ linear map
+\item Constants map to scalar multiples of the identity,
+\item Poisson brackets correspond (in an appropriate limit)
+to commutators,\footnote{The reason for this condition is discussed later in chapter 3, along with why the imaginary number appears}
+\eqref{eq:lieal} 
+$$
+\{f,g\}
+\;\longrightarrow\;
+\frac{1}{i\hslash} [\hat f,\hat{g}]
+$$
+\end{enumerate}
+These set of conditions are known as the \textit{correspondence principle}. \\ Thus the algebraic analysis above compels us to abandon the classical
+phase space picture and to find a construction that converts functions
+on a symplectic manifold into operators on a Hilbert space while
+respecting the underlying physical structure.
+
+Providing such a construction is precisely the aim of
+\emph{geometric quantization}\cite{Woodhouse1997}.\\
+Before introducing it, we define some objects which we would need to translate physical constructions into math.
+
+%\mathscriptsmode 0
+
+\section{Some definitions}
+The geometric background collected here is largely standard and is based mainly on Woodhouse and Cannas da Silva \cite{Woodhouse1997,CannasdaSilva2001}.
+
+
+\begin{definition}[Symplectic manifold]
+A symplectic manifold $(M,\omega)$ is an even dimensional smooth manifold $M$ with a 2-form $\omega$ called the symplectic form. It satisfies 
+\begin{enumerate}[label=\textnormal{(\arabic*)}]
+\item \textit{closure} : $d\omega=0$ 
+\item \textit{non-degeneracy} : $\omega(x,y)=0 \: \forall \: x \in TM \implies y = 0$
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Hamiltonian vector field]
+Let $(M,\omega)$ be a symplectic manifold and let 
+$f\in C^\infty(M)$. 
+The \textit{Hamiltonian vector field} associated to $f$ is the unique vector field 
+$X_f$ satisfying
+$$
+\iota_{X_f}\omega = df
+$$
+Equivalently,
+$$
+\omega(X_f,\cdot)=df
+$$
+\end{definition}
+
+The non-degeneracy of $\omega$ guarantees existence and uniqueness of $X_f$.
+The \textit{Poisson bracket} of two smooth functions $f,g\in C^\infty(M)$ is defined by\footnote{The actual definition describes a bivector acting on forms as $\{ df,dg\}$, but in literature it is often written as $\{ f,g\}$, as we will do from now on. However it is important to remember that the Poisson bracket is a bivector and not a general differential operator}
+$$
+\{f,g\}
+:=
+\omega(X_f,X_g) = X_{f}(g)
+$$
+This equips $C^\infty(M)$ with the structure of a Lie algebra, since the closure of $\omega$ implies the Jacobi identity
+$$
+\{ f,\{ g,h\}\} + \{ h,\{ f,g\}\} + \{ g,\{ h,f\}\} = 0, \quad \forall \:f,g,h \in C^\infty(M)
+$$
+\begin{remark}
+We often write the Poisson bivector in coordinates as 
+$$
+\{ f,g\} = \omega^{ij}\partial_{i}f \partial_{j}g
+$$
+Where $\omega^{ij}$ is the inverse of the symplectic form components $\omega_{ij}$ in the same coordinates, thus they satisfy
+$$
+\omega^{ij}\omega_{jk} = \delta^{i}_{k}
+$$
+\end{remark}
+\begin{proposition}
+The Jacobi identity of the Poisson bracket is equivalent to a Lie algebra homomorphism between $C^\infty(M)$ and the set of Hamiltonian vector fields on $M$:
+
+\begin{equation}
+    [X_{f},X_{g}] = X_{\{ f,g\}} \label{eq:liealghom}
+\end{equation}
+\vspace{1.5em}
+\end{proposition}
+
+\begin{definition}[Integrality condition]
+Let $(M,\omega)$ be a symplectic manifold. 
+We say that $\omega$ satisfies the \emph{integrality condition} if
+$$
+\left[\frac{\omega}{2\pi}\right]
+\in
+H^2(M,\mathbb Z)
+$$
+\end{definition}
+\subsection*{Complex Structures and Kähler Manifolds}
+
+\begin{definition}[Almost Complex Structure]
+Let $M$ be a smooth manifold of dimension $2n$.
+An \emph{almost complex structure} on $M$ is a smooth bundle map
+$$
+J : TM \to TM
+$$
+such that
+$$
+J^2 = - \mathrm{Id}_{TM}
+$$
+\end{definition}
+
+An almost complex structure is \textit{integrable} if it is induced by a coordinate system whose transition maps are holomorphic functions. A smooth manifold equipped with an integrable almost complex structure
+is called a \emph{complex manifold}.
+
+\begin{definition}[Hermitian Metric]
+Let $(M,J)$ be a complex manifold.
+A Riemannian metric $g$ on $M$ is called \emph{Hermitian}
+if it is compatible with $J$, i.e.
+$$
+g(JX,JY) = g(X,Y)
+\quad
+\text{for all } X,Y \in TM
+$$
+\end{definition}
+
+
+\begin{definition}[Kähler Form]
+Let $(M,J,g)$ be a Hermitian manifold.
+The skew symmetric non-degenerate $2$-form
+$$
+\omega(X,Y) := g(JX,Y)
+$$
+is called the \textit{Kähler form}
+\end{definition}
+
+\begin{definition}[Kähler Manifold]
+A \emph{Kähler manifold} is a complex manifold $(M,J)$
+equipped with a Hermitian metric $g$
+whose corresponding Kähler form $\omega$ satisfies
+$$
+d\omega = 0
+$$
+\end{definition}
+
+Equivalently, a Kähler manifold is a triple $(M,g,J)$ such that
+
+\begin{enumerate}
+\item $J^2 = -\mathrm{Id}$
+\item $g(JX,JY)=g(X,Y)$
+\item  $d\omega=0$
+\end{enumerate}
+
+
+\begin{proposition}
+On a Kähler manifold, the Kähler form satisfies
+$$
+\omega = i \partial \bar\partial \Phi
+$$
+locally for some real-valued function $\Phi$,
+called a \emph{Kähler potential}.
+\end{proposition}
+Thus every Kähler manifold is simultaneously:
+\begin{itemize}
+\item a complex manifold,
+\item a symplectic manifold (since $\omega$ is closed and nondegenerate),
+\item and a Riemannian manifold,
+\end{itemize}
+with the three structures mutually compatible.
+\begin{definition}[Quantum line bundle]
+Let $(M,\omega)$ be a symplectic manifold. 
+A \emph{quantum line bundle} over $M$ is a Hermitian complex line bundle
+$L \to M$ along with a Hermitian connection $\,\nabla$
+whose curvature satisfies
+$$
+  F_{\,\nabla} = -\, i\, \omega
+$$
+\end{definition}
+\chapter{Quantizing manifolds}
+\section{The naïve approach}
+This section follows the usual introductory discussion of geometric quantization and is based mainly on Woodhouse \cite{Woodhouse1997}.
+
+
+The aim of quantization is to associate to each classical observable
+$f \in C^\infty(M)$ a linear operator $\hat f$
+acting on a Hilbert space $\mathcal H$, such that the correspondence principle holds. A natural first attempt is to take
+$$
+\mathcal H = L^2(M)
+$$
+the square integrable functions on $M$, and define
+$$
+\hat f_0 = -\, i \hbar X_f
+$$
+where $X_f$ is the Hamiltonian vector field of $f$. Using \eqref{eq:liealghom}, we get
+$$
+[\hat f_0,\hat g_0]
+=
+-\, i \hbar X_{({-i \hbar\{f,g\}})}
+=
+-\, i \hbar \widehat{\{f,g\}}_0
+$$
+Thus condition (3) of the correspondence principle holds. However, this construction fails condition (1). Indeed, if $f$ is constant, then $X_f=0$ and $\hat f_0 = 0,$
+so constants act trivially instead of by multiplication.
+Secondly, observables act only as derivations,
+and multiplication by functions is not represented.
+
+The failure arises because the Poisson algebra
+is not simply the Lie algebra of Hamiltonian vector fields,
+but includes the functions themselves.
+
+\bigskip
+
+\section{Prequantization}
+The presentation of prequantization, including the curvature and holonomy conditions, is based mainly on Woodhouse \cite{Woodhouse1997}.
+
+
+To repair this, we enlarge the representation space.
+
+Let $L\to M$ be a Hermitian line bundle
+with connection $\nabla$.
+We now consider
+$$
+\mathcal H_{\mathrm{pre}} = L^2(M,L)
+$$
+the space of square-integrable sections of $L$.
+
+We modify the operator by adding multiplication by $f$:
+$$
+\hat f
+=
+-\, i \hbar \nabla_{X_f} + f
+$$
+
+Constants now act correctly:
+if $f=c$ is constant, then $X_f=0$ and
+$$
+\hat c = c
+$$
+
+We compute the commutator.
+Using
+$$
+[\nabla_X,\nabla_Y]
+=
+\nabla_{[X,Y]} + F_{\,\nabla(X,Y)}
+$$
+we obtain
+$$
+[\hat f,\hat g]
+=
+-\hbar^{2}\nabla_{[X_f,X_g]}
+- \hbar^{2} F_{\,\nabla}(X_f,X_g)
+-i \hbar(X_f(g)-X_g(f))
+$$
+
+Since $X_f(g)-X_g(f) = 2\{f,g\},$ this becomes
+$$
+\frac{i}{\hbar}[\hat f,\hat g]
+=
+-\, i \hbar \nabla_{X_{\{f,g\}}}
+ + 2\{f,g\}
+ -\, i \hbar F_{\,\nabla}(X_f,X_g)
+$$
+
+Comparing with
+$$
+\widehat{\{f,g\}}
+=
+-\, i \hbar \nabla_{X_{\{f,g\}}}
++
+\{f,g\}
+$$
+we see that condition (3) holds precisely when
+$$
+  F_{\,\nabla}(X_f,X_g)
+=
+-\frac{i}{\hbar}\, \omega(X_f,X_g) \iff F_{\,\nabla} = -\frac{i}{\hbar}\omega
+$$
+Thus we see that the quantum line bundle is the natural setup for geometric quantization. This construction is called \emph{prequantization}\cite{Woodhouse1997}.
+
+\bigskip
+
+\subsection{Holonomy constraints}
+
+We now examine when such a line bundle exists.
+
+Suppose there is a Quantum line bundle
+$L \to M$ with connection $\nabla$. Let $\gamma:[0,1]\to M$ be a smooth closed loop with
+$\gamma(0)=\gamma(1)=m$.
+
+Given a vector $v\in L_m$, we extend it to a section
+$\psi(t)$ along $\gamma$ by parallel transport along the connection $\nabla$.
+At $t=1$ we obtain a new vector
+$$
+\psi(1)\in L_m
+$$
+Because the fibre $L_m$ is one-dimensional,
+there exists a complex number $\lambda\in\mathbb C$
+such that
+$$
+\psi(1)=\lambda v
+$$
+
+Since a connection compatible with the Hermitian structure is norm preserving, this implies $|\lambda|=1$,
+so $\lambda\in U(1)$.
+
+We call this complex number the holonomy of $\nabla$
+around the loop $\gamma$:
+$$
+\mathrm{Hol}_\gamma(\nabla)=\lambda
+$$
+
+Thus holonomy measures the phase acquired by a section
+after being parallel transported around a closed loop.
+
+To compute this phase, choose a local trivialization of $L$
+over a neighbourhood containing $\gamma$.
+In such a trivialization, the connection takes the form
+$$
+\nabla = d - \Gamma
+$$
+where $\Gamma$ is a one-form.
+
+The parallel transport equation becomes
+$$
+\frac{d\psi}{dt}
+=
+\Gamma(\dot\gamma(t))\,\psi
+$$
+
+Solving this first-order equation gives
+$$
+\psi(1)
+=
+\exp\!\left(
+ \int_\gamma \Gamma
+\right)\psi(0)
+$$
+
+Hence
+$$
+\mathrm{Hol}_\gamma(\nabla)
+=
+\exp\!\left(
+ \int_\gamma \Gamma
+\right)
+$$
+
+Since $d\Gamma=-i\omega$,
+Stokes' theorem gives
+$$
+\mathrm{Hol}_\gamma(\nabla)
+=
+\exp\!\left(
+-i \int_\Sigma \omega
+\right)
+$$
+
+
+where $\Sigma$ is an oriented surface with boundary
+$\partial \Sigma = \gamma$.
+
+If $\Sigma_1$ and $\Sigma_2$ are two surfaces with
+$\partial\Sigma_1=\partial\Sigma_2=\gamma$,
+then their difference
+$$
+\Sigma=\Sigma_1-\Sigma_2
+$$
+is a closed oriented surface.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\columnwidth]{figure1.pdf}
+\end{figure}
+Since
+$$
+\int_{\Sigma_1}\omega
+=
+\int_{\Sigma_2}\omega
++
+\int_{\Sigma}\omega
+$$
+we have
+$$
+\exp\!\left(-i\int_{\Sigma_1}\omega\right)
+=
+\exp\!\left(-i\int_{\Sigma_2}\omega\right)
+\exp\!\left(-i\int_{\Sigma}\omega\right)
+$$
+
+Thus holonomy is independent of the choice of spanning surface
+if and only if
+$$
+\exp\!\left(-i\int_{\Sigma}\omega\right)=1
+$$
+for every closed oriented surface $\Sigma\subset M$.
+Hence
+$$
+\int_{\Sigma}\omega \in 2\pi\mathbb Z
+$$
+ This condition is equivalent to the integrality condition, since it implies that ${\omega}/{2\pi}$ must be in the integral class in the de Rham cohomology group $H^{2}_{\text{deRham}}(M,\mathbb{R})$, which is isomorphic to the singular cohomology group by de Rham's theorem. 
+
+Thus, the integral condition is necessary for the existence
+of a line bundle whose curvature equals $-i\omega$.
+
+Conversely, if the integral condition holds for a symplectic manifold $M$, one can reconstruct a Hermitian line bundle on it
+as follows.
+
+Fix a base point $m_0\in M$.
+For each $m\in M$, consider triples $(m,\gamma,z)$
+where $\gamma$ is a path from $m_0$ to $m$
+and $z\in\mathbb C$.
+Declare two triples equivalent if
+$$
+(m,\gamma_1,z_1) \sim (m,\gamma_2,z_2)
+$$
+whenever
+$$
+z_2
+=
+z_1
+\exp\!\left(
+-\, i \int_\Sigma \omega
+\right)
+$$
+where $\Sigma$ is any surface bounded by
+$\gamma_2 - \gamma_1$.
+
+The integrality condition ensures that this definition
+is independent of the choice of $\Sigma$.
+The set of equivalence classes defines a complex line bundle.
+A connection is defined by differentiating
+with respect to path deformations,
+and its curvature is $-i\omega$.
+
+Thus we obtain:
+
+\medskip
+
+\begin{theorem}[Integrality condition]
+The symplectic form $\omega$
+is the curvature of a Hermitian line bundle
+if and only if
+$$
+\left[\frac{\omega}{2\pi}\right]
+\in H^2(M,\mathbb Z)
+$$
+\end{theorem}
+
+\medskip
+
+Prequantization therefore exists precisely
+when the symplectic form represents
+an integral cohomology class.
+\subsection{Polarization}\label{subsec:polarization}
+
+Although prequantization correctly represents the Poisson algebra,
+the space
+$$
+\mathcal H_{\mathrm{pre}} = L^2(M,L)
+$$
+is too large. It contains wavefunctions depending on all classical
+degrees of freedom.
+
+To understand the issue, consider classical phase space
+$$
+M=\mathbb R^{2n}
+$$
+with coordinates $(x^i,p_i)$ and symplectic form
+$$
+\omega = \sum_i dx^i \wedge dp_i
+$$
+
+Classically, observables are functions of both $x$ and $p$.
+However, in standard quantum mechanics,
+states are wavefunctions $\psi(x)$ depending only on position,
+or alternatively $\tilde\psi(p)$ depending only on momentum.
+One never has wavefunctions depending simultaneously
+on both $x$ and $p$ as independent variables.
+
+Thus physical states depend only on “half” of the phase space variables.
+
+One of the methods to implement this geometrically is to select a Lagrangian distribution $\mathcal{P} \subset TM$. A section $s$ of $L$ is said to be polarized\cite{Woodhouse1997} if
+$$
+\nabla_X s = 0
+\qquad
+\text{for all } X\in\mathcal P
+$$
+
+In the model case $M=\mathbb R^{2n}$,
+choosing the polarization spanned by
+$\{\partial_{p_i}\}$
+forces wavefunctions to depend only on $x$,
+recovering the Schrödinger representation.
+
+The true quantum Hilbert space is therefore
+$$
+\mathcal H
+=
+\{ \text{polarized sections of } L \}
+$$
+
+Geometric quantization thus proceeds in two stages:
+
+\begin{enumerate}
+\item Prequantization: represent observables using a line bundle
+      whose curvature equals $\omega$.
+\item Polarization: reduce the space of states by selecting
+      half of the classical degrees of freedom.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=32em]{figure2.pdf}
+    \caption{The Borel-Weil quantization of $S² ≅ SU(2)/U(1)$: sections of $L^{(n)}$ as matrix coefficients of the spin $n/2$ representation\cite{Hall2013}}
+\end{figure}
+\section{Berezin Quantization, Coherent States and Reproducing Kernel Hilbert Spaces}
+This section draws on the standard coherent-state and Berezin quantization literature, especially Rawnsley and Schlichenmaier, and on the induced compact-manifold constructions of Dey--Ghosh and Dey \cite{Rawnsley1977,Schlichenmaier2000,deyghosh-induceddq,dey_rkhs_berezin_odzijewicz}.
+
+
+Let $\mathbb{CP}^n$ denote complex projective space with homogeneous coordinates
+$[\mu_0:\mu_1:\dots:\mu_n]$.
+
+For each $i=0,\dots,n$, define the open set
+$$
+U_i = \{[\mu_0:\dots:\mu_n] \mid \mu_i \neq 0\}
+$$
+
+On $U_i$, introduce affine coordinates
+$$
+z^{(i)}_j = \frac{\mu_j}{\mu_i}, \quad j \neq i
+$$
+
+\begin{definition}[Hyperplane line bundle]
+The hyperplane line bundle $\mathcal O(1)\to\mathbb{CP}^n$ is a holomorphic line bundle on $\mathbb{CP}^{n}$ and is defined by transition functions
+$$
+g_{ij}=\frac{z_j}{z_i}
+\qquad
+\text{on } U_i\cap U_j
+$$
+\end{definition}
+
+We can construct a higher powers of a hyperplane line bundle as follows. For $m\in\mathbb N$, define
+$$
+\mathcal O(m) := \mathcal O(1)^{\otimes m}
+$$
+whose transition functions are
+$$
+g_{ij}^{(m)} = \left(\frac{\mu_j}{\mu_i}\right)^m
+$$
+.
+\begin{theorem}
+Holomorphic sections of $\mathcal O(m)$ are in one-to-one correspondence
+with homogeneous polynomials of degree $m$ in $(\mu_0,\dots,\mu_n)$
+\label{thm:hyperplanetheorem}
+\end{theorem}
+
+\begin{proof}
+Let $s$ be a global holomorphic section of $\mathcal O(m)$.
+On $U_i$, write
+$$
+s|_{U_i} = f_i(z^{(i)})
+$$
+where $f_i$ is holomorphic in the affine coordinates.
+
+On overlaps $U_i\cap U_j$,
+$$
+f_j = g_{ij}^{(m)} f_i
+= \left(\frac{\mu_j}{\mu_i}\right)^m f_i
+$$
+
+Define
+$$
+F(\mu_0,\dots,\mu_n)
+=
+\mu_i^m
+f_i\!\left(
+\frac{\mu_0}{\mu_i},
+\dots,
+\widehat{\frac{\mu_i}{\mu_i}},
+\dots,
+\frac{\mu_n}{\mu_i}
+\right)
+$$
+
+Using the transition relation, we can check that $F$ is independent of $i$.
+Thus $F$ is a globally defined holomorphic function on
+$\mathbb C^{n+1}\setminus\{0\}$ satisfying
+
+$$
+F(\lambda \mu) = \lambda^m F(\mu)
+$$
+
+Hence $F$ is homogeneous of degree $m$.
+
+Conversely, any homogeneous polynomial of degree $m$
+defines a section of $\mathcal O(m)$.
+\end{proof}
+
+\subsubsection{Fubini-Study setup}
+On $U_0 \simeq \mathbb C^n$, there is a natural Kähler structure defined using a potential known as the Fubini-Study potential
+$$
+\Phi_{FS}(z,\bar z)
+=
+\log(1+|z|^2)
+\quad
+|z|^2 = \sum_{i=1}^n |z_i|^2
+$$
+
+The Kähler form is $\omega_{FS}
+=
+i\partial\bar\partial \Phi_{FS}.$, with curvature of the hyperplane line bundle $\mathcal{O}(m)$ over it being $F_{\,\nabla} = -i m \omega_{FS}$
+
+\subsection{Hilbert Space Structure}
+
+Define the inner product on sections of $\mathcal O(m)$ by
+
+$$
+\langle s_1,s_2\rangle
+=
+c(m)
+\int_{\mathbb C^n}
+\frac{s_1(z)\overline{s_2(z)}}{(1+|z|^2)^m}
+\, dV(z)
+$$
+
+where the volume form $dV$ is defined as
+$$
+dV(z)
+=
+\frac{dz \wedge d\bar z}{(1+|z|^2)^{n+1}}
+$$
+and $c(m)$ is a normalization constant chosen such that $\braket{s,s} = 1$.
+This gives us a Hilbert space on $U_{0}$ realized as holomorphic sections of a hyperplane line bundle on $U_{0} \subset \mathbb{CP}^{n}$
+$$
+\mathcal H_m
+=
+H(\mathbb{CP}^{n},\mathcal{O}(m))|_{U_{0}} \subset \Gamma(\mathbb{CP}^n,\mathcal O(m))
+$$
+
+The next step is to build an orthonormal basis for this Hilbert space. We use theorem \ref{thm:hyperplanetheorem} as inspiration to define the basis as homogeneous polynomials of the base coordinates. \\ Define
+$$
+\Phi_{q_1,\dots,q_n}(z)
+=
+\frac{z_1^{q_1}\dots z_n^{q_n}}{\sqrt{D(q_1,\dots,q_n)}}, \qquad 
+q_1+\dots+q_n = q,
+\quad
+0\le q\le m
+$$
+
+where $D$ is the normalizing term
+
+$$
+D(q_1,\dots,q_n)
+=
+c(m)
+\int_{\mathbb C^n}
+\frac{|z_1|^{2q_1}\dots|z_n|^{2q_n}}{(1+|z|^2)^m}
+dV(z)
+$$
+
+These form an orthonormal basis of $\mathcal H_m$. 
+\begin{remark}
+The index $q$ runs from $0$ to $m$ since it represents the power of the $\mu_{0} \ne 0$ term dividing the affine coordinates
+\end{remark}
+With this, we now have a Hilbert space, and the bounded linear operators that act on it are implicitly a representation of an observable $C^{*}$ algebra. To see this relation explicitly, we go into a different basis defined using \textit{Rawnsley coherent states}.
+
+\begin{definition}[Rawnsley coherent states]
+For $z\in\mathbb C^n$, define the coherent states labeled by $z$ as
+$$
+\psi_z(w)
+=
+\sum_I \Phi_I(\bar{z})\Phi_I(w) = (1+ \bar{z}w)^{m} 
+$$
+\end{definition}
+
+
+We call these family of $\psi$ the \textit{reproducing kernel} since they satisfy the reproducing property : 
+$$
+\langle \psi_z, s\rangle = s(z)  \quad \forall \, s \in \mathcal{H}_{m}
+$$
+
+
+
+Thus $\psi_z$ represents the evaluation functional at $z$.
+In this sense, coherent states play the role of
+delta distributions:
+$$
+\langle \psi_z , s \rangle = s(z)
+\quad
+\text{analogous to}
+\quad
+\langle \delta_z , f \rangle = f(z)
+$$
+After we normalize
+$$
+\widetilde{\psi}_z
+=
+\frac{\psi_z}{\sqrt{\langle \psi_z,\psi_z\rangle}}
+$$
+the overlap between two coherent states satisfies
+$$
+|\langle \widetilde{\psi}_z , \widetilde{\psi}_w \rangle|^2
+=
+\left(
+\frac{|1+\bar z \cdot w|^2}
+{(1+|z|^2)(1+|w|^2)}
+\right)^m
+$$
+which becomes sharply peaked at $z=w$ as $m\to\infty$.
+Hence coherent states localize around classical points in the semiclassical limit.
+
+\begin{proposition}[Resolution of Identity]
+We have
+$$
+c(m)
+\int_{\mathbb C^n}
+|\psi_z\rangle\langle\psi_z|
+\, e^{-m\Phi_{FS}(z)}\, dV(z)
+=
+\mathrm{Id}_{\mathcal H_m}
+$$
+\end{proposition}
+
+\begin{proof}
+For $s_1,s_2 \in \mathcal H_m$,
+$$
+\langle s_1 , s_2 \rangle
+=
+c(m)
+\int
+\langle s_1,\psi_z\rangle
+\langle\psi_z,s_2\rangle
+e^{-m\Phi_{FS}(z)}\, dV(z)
+$$
+Using the reproducing property,
+$$
+\langle s_1,\psi_z\rangle = \overline{s_1(z)}, 
+\quad
+\langle\psi_z,s_2\rangle = s_2(z)
+$$
+so the identity follows.
+\end{proof}
+
+Now, let $\hat A$ be a bounded operator on $\mathcal H_m$.
+Insert the resolution of identity on both sides:
+$$
+\hat A
+=
+\mathrm{Id}\,\hat A\,\mathrm{Id}
+$$
+
+Using the integral form,
+$$
+\hat A
+=
+c(m)^2
+\int\!\!\int
+|\psi_z\rangle
+\langle\psi_z|\hat A|\psi_w\rangle
+\langle\psi_w|
+e^{-m(\Phi(z)+\Phi(w))}
+\, dV(z)dV(w)
+$$
+\subsubsection*{Localization for Toeplitz Operators}
+
+To relate the above construction to semiclassical mechanics,
+we restrict to operators arising from classical observables.
+
+Let $f \in C^\infty(M)$ and define the Toeplitz operator
+$$
+\hat A_f := \Pi_m \circ M_f \circ \Pi_m
+$$
+where $M_f$ denotes multiplication by $f$
+and $\Pi_m$ is the orthogonal projection onto $\mathcal H_m$.
+
+\begin{remark}
+Multiplication by a smooth function does not preserve holomorphicity.
+The projection ensures that $\hat A_f$ maps $\mathcal H_m$
+into itself, preserving the chosen polarization.
+\end{remark}
+
+We compute the coherent-state matrix elements (using self-adjoint property of $\Pi_{m}$)
+$$
+\langle \psi_z , \hat A_f \psi_w \rangle
+= \left\langle \psi_{z},\Pi_{m}(f\psi_{w}) \right\rangle =
+\langle \psi_z , f \psi_w \rangle
+=
+\int_M \overline{\psi_z(x)}\, f(x)\, \psi_w(x)\, d\mu(x)
+$$
+
+For large $m$, the kernel behaves the asymptotically in powers of $\frac{1}{m}$ (ref. \cite{BMS1994})
+
+$$
+\langle \psi_z , \hat A_f \psi_w \rangle
+=
+\psi_z(w)\Big(f(z) + O(1/m)\Big)
+$$
+
+The rapidly varying part is entirely contained in $\psi_z(w)$,
+whose modulus behaves as
+$$
+|\psi_z(w)|^2
+\sim
+\exp\!\big(-m\, d_{FS}(z,w)^2\big)
+$$
+
+Hence, as $m \to \infty$, the double integral localizes
+to the diagonal $z \approx w$ and we obtain the asymptotic
+diagonal representation
+$$
+\hat A_f
+=
+c(m)
+\int
+f(z)
+\frac{|\psi_z\rangle\langle\psi_z|}
+{\langle\psi_z,\psi_z\rangle}
+\, d\mu(z)
++
+O(1/m)
+$$
+
+\medskip
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=30em]{gaussian.pdf}
+    \caption{The coherent states are the minimum uncertainty states for momentum and position, with $\hbar \sim \frac{1}{m}$ being the area of inherent uncertainty. The annihilation operator $\hat{z} \rightarrow z$ as $m \rightarrow \infty$. This generalizes to functions $f,g$ where this area would be $|\langle[\hat{A}_f,\hat{A}_g]\rangle| = \frac{1}{m}\{f,g\} + O \left( \frac{1}{m^{2}} \right)$}
+\end{figure}
+
+\subsection{Berezin Symbols}
+
+In the introduction we saw that measurement of an observable
+in a pure state yields an eigenvalue.
+For coherent states $\psi_z$, which localize at classical points,
+the diagonal matrix element
+$$
+\frac{\langle \psi_z,\hat A \psi_z\rangle}
+{\langle \psi_z,\psi_z\rangle}
+$$
+plays the role of the value of the observable at $z$.
+
+\begin{definition}
+For a bounded operator $\hat A$ on $\mathcal H_m$,
+its \textit{Berezin symbol} is defined by
+$$
+A(z,\bar z)
+=
+\frac{\langle \psi_z,\hat A\psi_z\rangle}
+{\langle \psi_z,\psi_z\rangle}
+$$
+\end{definition}
+
+For Toeplitz operators one has
+$$
+A_f(z) = f(z) + O(1/m)
+$$
+so the symbol represents the classical observable
+in the semiclassical limit.
+
+\subsubsection{Star Product}
+
+Given operators $\hat A_1$ and $\hat A_2$,
+define their symbols $A_1$ and $A_2$ as above.
+We define the symbol of the composition $\hat{A_{1}} \hat{A_{2}}$ to be the \textit{star product} of their symbols
+$$
+(A_1 * A_2)(z,\bar z)
+=
+\frac{\langle \psi_z,\hat A_1\hat A_2\psi_z\rangle}
+{\langle \psi_z,\psi_z\rangle}
+$$
+
+Using the resolution of identity we obtain
+$$
+(A_1 * A_2)(z,\bar z)
+=
+c(m)
+\int
+A_1(z,\bar w)
+A_2(w,\bar z)
+\frac{|K_m(z,\bar w)|^2}
+{K_m(z,\bar z)K_m(w,\bar w)}
+\, d\mu(w)
+$$
+
+This defines a noncommutative product on symbols, which we will later see as the stepping stone to deformation quantization.
+
+\subsection{Induced Quantization on Embedded Manifolds}
+In \cite{deyghosh-induceddq,Rawnsley1977}, Dey and Ghosh induce a deformation quantization scheme on compact smooth manifolds by embedding them into $\mathbb{CP}^{n}$, and inducing a Hilbert space and coherent states which satisfy the reproducing kernel property using pullback of the embedding map. We briefly describe this procedure here. \\ 
+Let $X$ be a compact smooth manifold
+and let
+$$
+\epsilon: X \hookrightarrow \mathbb{CP}^n
+$$
+be a smooth embedding.
+
+The coherent states restrict to $X$ via
+$$
+\Psi_p(q)
+=
+\psi_{\epsilon(p)}(\epsilon(q))
+$$
+
+The restricted kernel
+$$
+K_m^X(p,q)
+=
+K_m(\epsilon(p),\overline{\epsilon(q)})
+$$
+is positive definite and therefore defines
+a reproducing kernel Hilbert space
+$\mathcal H_m^X$ of functions on $X$.
+
+Given an operator $\hat A$ on $\mathcal H_m$,
+we define the induced operator on $\mathcal H_m^X$
+by restriction of its kernel:
+$$
+\hat B(p,q)
+=
+\hat A(\epsilon(p),\epsilon(q))
+$$
+
+The induced symbol is
+$$
+B(p)
+=
+A(\epsilon(p))
+$$
+
+Because the star product localizes near the diagonal,
+the semiclassical limit respects the embedding.
+Hence
+$$
+B_1 * B_2 \to B_1 B_2
+$$
+and
+$$
+m(B_1*B_2 - B_2*B_1)
+\to i\{B_1,B_2\}_{\epsilon^*\omega_{FS}}
+$$
+where $\epsilon^*\omega_{FS}$ is the induced symplectic form on $X$, and the correspondence principle is satisfied.
+
+\medskip
+
+Thus any compact manifold smoothly embedded into
+$\mathbb{CP}^n$ inherits a Berezin-type
+deformation quantization via restriction
+of coherent states.
+\bigskip
+
+\section{Obstructions due to degeneracy}
+
+Uptil now we had only considered physical states as being represented using non-degenerate symplectic forms. The condition of non-degeneracy of the forms is a strong condition, and only describes idealized physical systems, where every variable in the phase space is assumed to be dynamic. For a large class of systems however, this is not the case and the symplectic form turns degenerate, primarily due to the presence of constraints on some of the phase space coordinates. For instance, the presence of conservation laws resulting from symmetries disallows a large portion of the phase space which does not conserve the given quantity. Additionally, there could be other arbitrary constraints that are imposed due to physical barriers limiting the system to only certain allowed configurations. To see how this shows up as degeneracy, take the simplest case of $\mathbb{R}^{2n}$, with the canonical constant symplectic structure 
+$$
+\omega =  \sum_{i= 1}^{n} dx^{i} \wedge dp^{i}
+$$ 
+Here, let us say for some reason the $x^{1}$ direction is not free, and we impose $x^{1} = const.$ which implies $dx^{1} = 0$. Thus the rank of the symplectic form is now $2n-1$. Notice however, that the coordinate conjugate to it, which is $p^{1}$, also has no representation in the form, and must also then be non-dynamical. But the equations of motion we solve imposing $x^{1} = 0$ do not account for that, and so we get incorrect results. This discrepancy naturally also affects any quantization scheme we build on the space, and thus we need to study systems with constraints in more detail. Before we do that, we introduce a more algebraic viewpoint on quantization, stripping down geometric quantization to its essense - the deformation of Poisson structures.
+
+\chapter{The algebraic approach}
+In Chapter 2 we saw the most general mathematical apparatus that contains descriptions of physical systems at both the classical commutative and quantum non-commutative levels. The $C^{*}$ algebra description allowed us to picture states as vectors in a specific representational vector space, and observables as operators acting on them - allowing us to use the tools of functional analysis to make predictions about observable quantities, if not exact then the expected average over multiple measurements. This approach has yielded great success in a large class of systems, where the systems interact largely independent of their surroundings, and free of any configurational constraints. As we discuss towards the end, the work is still not done. The presence of symmetry and other constraints means that many configurations that our equations think are different are actually physically the same. This is realized mathematically as a degeneracy in the symplectic structure, or the presence of vector fields $X \in TM$ such that 
+$$
+\omega(X,Y) = 0 \enskip \forall \, Y \in TM
+$$
+
+Given our formula of starting with the algebraic scaffolding, which is later given functional theoretic representations for actual calculations, we deal with the degeneracy problem in the same vein. To begin with, we familiarize ourselves with this algebraic scaffolding a little more, and motivate why the "semiclassical limit" plays a  primary role in the study of complex quantum systems. 
+
+In the case of Berezin quantization, we saw that classical observables give rise to Toeplitz operators whose matrix elements localize around classical points in the large $m$ limit. Also in this limit, the basis of homogenous degree $m$ polynomials grow infinite. Thus there are a large number of possible states, yet the eigenstates of operators behave like classical configuration points. This limit is known as the \textit{semiclassical limit}, since the states are classical, yet the symbol algebra is not commutative: 
+$$
+f * g = fg + O(\hbar)
+$$
+
+Since any "classical" observation we make collapses the mixed state into one of its eigenvalues, it is worth studying how this semiclassical observable algebra behaves. We thus start with the set of axioms these non-commuting observable symbols must follow, and see how freedom in their explicit constructions affect their interpretation as expectation values. More precisely, starting with the commutative algebra $C^\infty(M)$ equipped with the Poisson bracket, we seek a product
+$$
+f * g = fg + \hbar B_1(f,g) + \hbar^2 B_2(f,g) + \cdots
+$$
+such that it is associative and the antisymmetric part of the first-order term reproduces the Poisson structure:
+$$
+B_1(f,g) - B_1(g,f) = i\{f,g\}
+$$
+
+A product of this form is what we will call a \emph{star product}, and its existence
+provides a purely algebraic formulation of quantization known as
+\emph{deformation quantization}. In this approach the Hilbert space and operator representation appear only later, while the primary object of study is the deformation of the associative algebra of observables.
+
+The problem of constructing such deformations turns out to have a natural description in terms of graded algebraic structures controlling associative deformations and Lie algebra cohomology. In particular, Hochschild cochains, differential graded Lie algebras, and their higher category versions provide the appropriate language for formulating the deformation problem.
+
+We therefore begin by introducing the algebraic structures that will appear in the deformation theoretic description of quantization.
+
+\section{More definitions}
+The algebraic preliminaries in this section are assembled from standard deformation-theoretic background, especially the expositions surrounding Hochschild cochains, DGLAs and formality in \cite{GraciaSaz2003,Kontsevich2003}.
+
+\begin{definition}[Graded vector space]
+A \emph{graded vector space} is a vector space $V$ decomposed as a direct sum
+$$
+V = \bigoplus_{k\in\mathbb{Z}} V^k 
+$$
+where $V^k$ is called the component of degree $k$. 
+An element $v\in V$ is said to have degree $k$ if $V \in V^{k}$ (written as $|v|=k$), and a map $f : V^{n} \longrightarrow V^{r+n}$ is called a degree $r$ map. \\
+\end{definition}
+
+
+\begin{definition}[Differential graded algebra and Lie algebra]
+A \emph{differential graded algebra} (DGA) is a graded vector space 
+$A=\bigoplus_k A^k$ along with
+
+\begin{itemize}
+\item an associative graded product $A^p\times A^q \to A^{p+q}$,
+\item a differential $d:A^k\to A^{k+1}$,
+\end{itemize}
+
+such that
+$$
+d^2=0
+$$
+and the graded Leibniz rule 
+$$
+d(ab)= (da)b + (-1)^{|a|} a(db)
+$$
+
+A \emph{differential graded Lie algebra} (DGLA) is a graded vector space 
+$L=\bigoplus_k L^k$ equipped with
+
+\begin{itemize}
+\item a graded Lie bracket $[\cdot,\cdot]:L^p\times L^q \to L^{p+q}$
+\item a differential $d:L^k\to L^{k+1}$
+\end{itemize}
+
+satisfying
+$$
+d^2=0, \qquad
+d[x,y] = [dx,y] + (-1)^{|x|}[x,dy]
+$$
+Note that the bracket of a DGLA is not associative, thus it is not a DGA
+\end{definition}
+
+
+
+\begin{definition}[Hochschild complex]\label{def:hochschild}
+Let $A$ be an associative algebra. The \emph{Hochschild cochain complex} of $A$ 
+is the graded vector space of multilinear operators on $A$ 
+$$
+C^n(A,A) = \mathrm{Hom}(A^{\otimes n},A)
+$$
+with the Hochschild differential $\delta : C^n(A,A) \to C^{n+1}(A,A)$ defined as
+$$
+(\delta f)(a_1,\dots,a_{n+1})
+=
+a_1 f(a_2,\dots,a_{n+1})
++
+\sum_{i=1}^n (-1)^i 
+f(a_1,\dots,a_i a_{i+1},\dots,a_{n+1})
++
+(-1)^{n+1}
+f(a_1,\dots,a_n)a_{n+1}
+$$
+
+The resulting cohomology $H^{n}(A,\delta)$ is called the \emph{Hochschild cohomology}.
+
+It also has a non-associative product called the Gerstenhaber product:
+$$
+(\phi \circ \psi)(a_1,\dots,a_{p+q-1})
+=
+\sum_{i=1}^{p}
+(-1)^{(i-1)(q-1)}
+\phi\big(a_1,\dots,a_{i-1},
+\psi(a_i,\dots,a_{i+q-1}),
+a_{i+q},\dots,a_{p+q-1}\big)
+$$
+and its antisymmetrization defines a Lie bracket:
+$$
+[\psi,\phi] = \psi \circ\phi - (-1)^{(p-1)(q-1)}\phi\circ\psi
+$$
+which makes $(C^{\bullet+1},\delta,[\,,\,])$ into a DGLA. 
+
+\end{definition}
+
+
+\begin{definition}[BRST/Chevalley-Eilenberg complex]
+Let $\mathfrak g$ be a Lie algebra acting on a vector space $V$. 
+The \emph{Chevalley-Eilenberg complex} is the set of alternating multilinear maps
+$$
+C^k(\mathfrak g,V) = \mathrm{Hom}(\wedge^k \mathfrak g, V)
+$$
+The differential $Q$ is the unique degree $1$ derivation determined by:  
+$$ 
+Q(v\otimes c^a) = (e_{d}\cdot v)c^dc^a - \frac{1}{2}f^a_{bc}v\otimes c^bc^c 
+$$
+where $\{e_{a}\}$ is a basis of $\mathfrak{g}$ with dual basis $\{c^a\}$ in $\mathfrak{g}^*[1]$ and $[e_{a},e_{b}] = f^c_{ab}e_{c}$ 
+In the physics literature, an equivalent construction encoding gauge symmetries 
+using ghost variables is known as the \emph{BRST complex}.
+\end{definition}
+
+\subsection*{DGLAs in geometry}
+\begin{definition}[Polyvector fields]\label{def:polyvector}
+Let $M$ be a smooth manifold. The space of polyvector fields on $M$ is the graded vector space
+
+$$
+T_{\text{poly}}(M) = \bigoplus_{k=-1}^{\infty} T_{\text{poly}}^k(M) = \bigoplus_{k=-1}^{\infty} \Gamma(\wedge^{k+1} TM)
+$$
+
+Elements of $T_{\text{poly}}^k(M)$ are skew-symmetric contravariant tensor fields 
+$$
+\sum v^{i_{1}i_{2} \ldots i_{k+1}} \partial_{i_{1}} \wedge \partial_{i_{2}} \wedge \cdots \wedge \partial_{i_{k+1}}
+$$
+and can be interpreted as $(k+1)$-vector fields.
+\end{definition}
+\begin{definition}[Schouten-Nijenhuis bracket]
+ The \textit{Schouten-Nijenhuis bracket} is a graded bilinear map on Polyvector fields
+$$
+[\cdot,\cdot]_S :
+T_{\mathrm{poly}}^k(M)\times T_{\mathrm{poly}}^l(M)
+\to T_{\mathrm{poly}}^{k+l}(M)
+$$
+defined by extending the Lie bracket of vector fields and satisfying the following properties:
+\begin{enumerate}
+
+\item For functions $f,g\in C^\infty(M)$,
+$$
+[f,g]_S=0
+$$
+
+\item For a vector field $X$ and a function $f$,
+$$
+[X,f]_S=X(f)
+$$
+
+\item For vector fields $X,Y$,
+$$
+[X,Y]_S
+$$
+is the usual Lie bracket.
+
+\item For homogeneous polyvector fields $P,Q,R$,
+$$
+[P,Q\wedge R]_S
+=
+[P,Q]_S\wedge R
++
+(-1)^{k(l+1)} Q\wedge [P,R]_S
+$$
+where $P\in T_{\mathrm{poly}}^k(M)$ and $Q\in T_{\mathrm{poly}}^l(M)$.
+
+\end{enumerate}
+The space of Polyvector fields $\big(T_{\mathrm{poly}}(M),[\cdot,\cdot]_S ,d\big)$ is a DGLA with the Schouten-Nijenhuis bracket and the trivial differential $d = 0$.
+
+\end{definition}
+
+
+\begin{definition}[Polydifferential operators]
+Let $A=C^\infty(M)$. A $k$-polydifferential operator is a multilinear map
+$$
+D : A^{\otimes k} \to A
+$$
+which is a differential operator in each argument.
+The space of such operators is denoted $D_{\text{poly}}^k(M)$, and one can see that it has a Hochschild complex structure.
+\end{definition}
+\begin{definition}[Maurer-Cartan equation] \label{def:MCeqn}
+Let $(L,d,[\cdot,\cdot])$ be a differential graded Lie algebra.
+An element $\gamma \in L^1$ satisfies the Maurer-Cartan equation if
+$$
+d\gamma + \frac12[\gamma,\gamma]=0
+$$
+\end{definition}
+
+\subsection*{Associativity and the emergence of the Hochschild complex}
+The idea of deformation quantization is to keep the vector space of classical observables
+$A = C^\infty(M)$ intact, but to deform its commutative product into a new
+non-commutative associative product depending on a formal parameter $\hbar$.
+More generally, in mathematics a deformation of an object $X$ is a family of
+objects $X_\varepsilon$ depending on a parameter $\varepsilon$ such that
+$X_{\varepsilon_0} = X$ for some value $\varepsilon_0$.
+
+In the current setting we therefore seek a family of products
+\[
+\times_\hbar : A \times A \to A
+\]
+depending smoothly on $\hbar$, such that when $\hbar = 0$ we recover the
+ordinary pointwise multiplication of functions.
+
+To avoid problems of convergence, this dependence is taken formally: the
+product is required to be a formal power series in $\hbar$. Thus the product
+is defined on the algebra of formal power series
+$A[[\hbar]] = C^\infty(M)[[\hbar]]$ by
+\[
+f \star g = \sum_{n=0}^{\infty} B_n(f,g)\hbar^n 
+\]
+where each
+$B_n : A \times A \to A$
+is a bidifferential operator and
+$B_0(f,g) = fg$.
+
+The requirement that $\star$ be associative,
+\[
+(f\star g)\star h=f\star(g\star h)
+\]
+imposes recursive conditions on the operators $B_n$.
+
+Expanding both sides in powers of $\hbar$ results in the relations
+\[
+\sum_{k+m=n} B_m(B_k(f,g),h)
+=
+\sum_{k+m=n} B_m(f,B_k(g,h))
+\]
+
+
+\textbf{Order $\symbf{\hbar}^0$}
+
+At zeroth order we get
+\[
+B_0(B_0(f,g),h)=B_0(f,B_0(g,h))
+\]
+which is simply the associativity of the classical multiplication
+$(fg)h=f(gh)$
+
+
+\textbf{Order $\symbf{\hbar}$}
+
+At first order,
+\[
+B_1(fg,h)-B_1(f,gh)
+=
+fB_1(g,h)-B_1(f,g)h
+\]
+This equation measures the failure of the operation $B_1$ to commute with
+the multiplication $B_0$. In other words, associativity at first order
+requires that the multiplication and the operation $B_1$ commute in a suitable sense.
+This suggests expressing the relation as a commutator
+\[
+[B_0,B_1]=0
+\]
+
+To make this a definition we must define how multilinear operators compose. This is exactly what the Gerstenhaber product (\ref{def:hochschild}) does.
+
+Let $\phi:A^{\otimes k}\to A$ and $\psi:A^{\otimes l}\to A$ be multilinear
+maps. Then their Gerstenhaber product is defined by
+\[
+(\phi\circ\psi)(a_1,\dots,a_{k+l-1})
+=
+\sum_{i=1}^{k}
+(-1)^{(i-1)(l-1)}
+\phi(a_1,\dots,\psi(a_i,\dots,a_{i+l-1}),\dots,a_{k+l-1})
+\]
+Antisymmetrizing this operation defines the \emph{Gerstenhaber bracket}
+\[
+[\phi,\psi]
+=
+\phi\circ\psi
+-
+(-1)^{(k-1)(l-1)}\psi\circ\phi 
+\]
+
+With this definition the first associativity condition becomes 
+\[
+[B_0,B_1]=0
+\]
+\textbf{Order $\symbf{\hbar}^2$}
+
+At second order the associativity condition is
+\[
+B_2(fg,h)+B_1(B_1(f,g),h)+B_2(f,g)h
+=
+B_2(f,gh)+B_1(f,B_1(g,h))+fB_2(g,h)
+\]
+Using the bracket this can be written compactly as
+\[
+[B_0,B_2]+\frac{1}{2}[B_1,B_1]=0
+\]
+It is therefore natural to combine the operators $B_{n>0}$ into a single formal
+series
+\[
+m_\hbar=B_0+ C_{\hbar} \qquad C_{\hbar} = \hbar B_{1} + \hbar^{2}B_{2} + \cdots
+\]
+With respect to the Gerstenhaber bracket the associativity of the star
+product is equivalent to the single equation
+\[
+  [m_\hbar,m_\hbar]=0 \iff [B_{0},C_{\hbar}] + \frac{1}{2}[C_{\hbar},C_{\hbar}] := dC_{\hbar} + \frac{1}{2}[C_{\hbar},C_{\hbar}] = 0
+\]
+where we have defined the commutator with $B_0$ 
+to be a differential. For 
+
+$\phi\in C^n(A)$,
+\[
+d\phi=[B_0,\phi]
+\]
+We can also check that 
+$d^{2}\phi = [B_0,[B_0,\phi]]=0$
+.Thus the space
+\[
+C^n(A)=\{\phi:A^{\otimes n}\to A\}
+\]
+together with the differential $d=[B_0,\cdot]$ forms the
+Hochschild complex of the algebra $A$, and deformation quantization can be interpreted as a Maurer-Cartan
+equation (\ref{def:MCeqn}) in a differential graded Lie algebra. 
+\bigskip
+
+The classic prototype for a star product discovered by Dirac is known as the Moyal product\cite{Moyal1949,BayenEtAl1978}. It is defined as 
+\begin{align}
+f \star g 
+&= e^{\hbar \omega}(f,g) \notag \\
+&= fg + \hbar\,\omega^{ij}\partial_i f\,\partial_j g
++ \frac{\hbar^2}{2}\omega^{ij}\omega^{kl}\partial_i\partial_k f\,\partial_j\partial_l g + \cdots  \\
+&= \sum_{n=0}^{\infty}\frac{\hbar^n}{n!}
+\left(\omega^{i_1 j_1}\cdots\omega^{i_n j_n}\right)
+(\partial_{i_1}\cdots\partial_{i_n}f)
+(\partial_{j_1}\cdots\partial_{j_n}g) \notag
+\end{align}
+where $\omega$ is the Poisson structure with the Poisson bivector $\omega^{ij}\partial_{i} \wedge \partial_{j}$. \\ 
+This definition however cannot hold under coordinate transformations which are not affine. This is because although the coefficients $\omega^{ij}$ transform tensorially as the
+components of a bivector field, the higher derivatives appearing in the
+formula do not. Under a coordinate change $x \mapsto y$ we have 
+\[
+\partial_a\partial_b f
+=
+\frac{\partial x^i}{\partial y^a}
+\frac{\partial x^j}{\partial y^b}\partial_i\partial_j f
++
+\frac{\partial^2 x^i}{\partial y^a\partial y^b}\partial_i f 
+\]
+The second term shows that second derivatives of functions do not
+transform tensorially. Substituting this into the higher-order terms of
+the formula produces additional contributions which do not cancel in
+general. Thus the expression does not define a global star product on an arbitrary Poisson manifold. 
+\bigskip
+
+This suggests introducing a geometric structure which keeps track of how derivatives transform under coordinate changes. Such a structure is provided by a connection. A connection  on a vector bundle $E \rightarrow M$ (the tangent bundle in our example) is a map $\nabla : \Gamma(E) \longrightarrow \Gamma(E) \otimes \Omega^{1}(M)$ that follows the Leibniz rule
+$$
+\nabla(fs) = df \otimes s + f \nabla s
+$$
+It assigns to each coordinate chart coefficients $\Gamma^k_{ij}$ called the Christoffel symbols, which encode precisely how the coordinate vector basis intrinsically varies from point to point.
+$$
+\nabla = d + \Gamma \qquad \nabla_{\partial_{j}}\partial_{i} = \Gamma^{k}_{ij}\partial_{k}
+$$
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=32em]{connection.pdf}
+    \caption{The tangent basis changes along $X$ as $\partial_{i'} = \partial_{i} - \varepsilon\Gamma^{j}_{ki}X^{k}\partial_{j}$. The holonomy transformation $
+    \mathrm{Hol}_{\nabla}(\gamma) \approx \mathrm{Id} + \int_{\Sigma, \partial \Sigma = \gamma} R
+    $ becomes identity when the curvature $R$ vanishes}
+\end{figure}
+
+The defining property of a connection is that its coefficients transform under a change of coordinates $x \mapsto y$ according to the following transformation law, which is a consequence of the Leibniz rule: 
+\[
+\Gamma^c_{ab}
+=
+\frac{\partial y^c}{\partial x^k}
+\Gamma^k_{ij}
+\frac{\partial x^i}{\partial y^a}
+\frac{\partial x^j}{\partial y^b}
++
+\frac{\partial^2 x^k}{\partial y^a \partial y^b}
+\frac{\partial y^c}{\partial x^k}
+\]
+The second term in this transformation law records the nonlinear part of
+the coordinate change. In this way the Christoffel symbols keep track of
+the failure of second derivatives to transform tensorially.
+
+Using a connection one can define the covariant second derivative of a
+function
+\[
+\nabla_a \nabla_b f
+=
+\partial_a \partial_b f
+-
+\Gamma^c_{ab}\partial_c f
+\]
+Substituting the previous equation for $\partial_{a}\partial_{b}f$ and $\Gamma^c_{ab}$ shows that the non-tensorial terms cancel:
+\[
+\nabla_a \nabla_b f
+=
+\frac{\partial x^i}{\partial y^a}
+\frac{\partial x^j}{\partial y^b}
+\nabla_i \nabla_j f
+\]
+Thus the covariant second derivative always transforms tensorially. 
+
+This observation suggests replacing the partial derivatives appearing in
+the Moyal formula with covariant derivatives. In
+order for the resulting construction to respect the Poisson structure,
+the connection must be compatible with the symplectic form. A connection
+$\nabla$ is called a \emph{symplectic connection} if
+\begin{equation}\label{eq:symplectic-connection}
+    \nabla \omega = 0 
+\end{equation}
+This is an analogue of the closedness condition, but corrected by excluding the effects of coordinate changes. Such connections always exist on symplectic manifolds\cite{Fedosov1994}.
+
+Using a symplectic connection one can construct globally defined
+differential operators by replacing the coordinate expression appearing in
+the Moyal product with the connection. However, because covariant derivatives do
+not commute in general, curvature corrections must be added to
+restore associativity. Fedosov's construction provides a systematic way to incorporate these corrections by moving the setup to a bundle of Weyl algebras over the manifold. This method yields a globally defined star product on any symplectic manifold.
+\section{Symplectic structures and Fedosov}
+This section is based mainly on Fedosov's original construction \cite{Fedosov1994}.
+
+
+The main idea in Fedosov~\cite{Fedosov1994} is to replace the
+algebra of functions on a symplectic manifold by sections of a bundle of formal Weyl algebras and to introduce a flat symplectic connection on this bundle. The flat sections of this connection will be in bijection with smooth functions, and the star product will be obtained by transporting the fiberwise Weyl product along this bijection map.
+
+\subsection*{The Weyl algebra and Weyl bundle}
+
+Let $(M,\omega)$ be a symplectic manifold of dimension $2n$. At each
+point $x\in M$, the tangent space $T_xM$ is a symplectic vector space
+with symplectic form $\omega_x$. The Weyl algebra associated to this
+vector space is the algebra of formal power series in variables
+$y^i$ with coefficients in $\mathbb{C}$,
+\[
+W_x = \left\{
+\sum_{k=0}^\infty a_{i_1\cdots i_k}(x)\,y^{i_1}\cdots y^{i_k}
+\right\}[[\hbar]]
+\]
+with the Moyal product defined as before
+\[
+a\circ b
+=
+\sum_{k=0}^{\infty}
+\left(\frac{i\hbar}{2}\right)^k
+\frac{1}{k!}
+\omega^{i_1 j_1}\cdots \omega^{i_k j_k}
+\frac{\partial^k a}{\partial y^{i_1}\cdots\partial y^{i_k}}
+\frac{\partial^k b}{\partial y^{j_1}\cdots\partial y^{j_k}}
+\]
+Moving along the base we require the functions $a(x)$ to change smoothly with $x$. This gives us the Weyl bundle $W(M)$ which is the bundle over $M$ whose fiber at each point
+$x\in M$ is the Weyl algebra $W_x$. Sections of $W(M)$ are formal power
+series of the form
+\[
+a(x,y,\hbar)
+=
+\sum_{k=0}^{\infty}
+a_{i_1\cdots i_k}(x,\hbar)
+\,y^{i_1}\cdots y^{i_k}
+\]
+
+The fiberwise product $\circ$ extends to sections of $W(M)$ by applying the Moyal product pointwise, and smoothness of $a$ ensures the image is also a section.
+
+\subsection*{Fedosov Connection}
+
+Let $\nabla$ be a symplectic connection \eqref{eq:symplectic-connection} on $(M,\omega)$, satisfying $\nabla \omega = 0$. This connection extends naturally to a connection on the Weyl bundle. \\
+We consider the space of $W(M)$-valued
+differential forms
+\[
+\Omega^\bullet(M,W) = \Gamma(W(M)\otimes \Lambda^\bullet T^*M)
+\]
+Also, we define the operator $\delta : \Omega^q(M,W) \to \Omega^{q+1}(M,W)$ as
+\[
+\delta a = dx^i \otimes \frac{\partial a}{\partial y^i}
+\]
+
+This operator increases the form degree by one and decreases the degree
+in the fiber variables $y^i$ by one. We also define the inverse operator $\delta^{-1} : \Omega^q(M,W) \to \Omega^{q-1}(M,W)$ by
+\[
+\delta^{-1} a =
+\begin{cases}
+\displaystyle
+\frac{1}{p+q} y^i \iota_{\partial_i} a & p+q>0 \\
+0 & p+q=0
+\end{cases}
+\]
+where $p$ is the degree in the variables $y^i$ and $q$ is the degree in
+$dx^i$, and $\iota_{\partial_{i}}$ denotes contracting the $dx^{i}$ term from the section. \\
+The operators $\delta$ and $\delta^{-1}$ satisfy the identity
+\begin{equation}\label{eq:delta-identity}
+    a = \sigma(a) + \delta\delta^{-1}a + \delta^{-1}\delta a
+\end{equation}
+where $\sigma(a)$ denotes the projecting to the part independent of
+the variables $y^i$ and $dx^i$, that is
+\[
+\sigma(a) = a(x,0,\hbar)
+\]
+
+\begin{lemma}
+The operator $\delta$ satisfies $\delta^2 = 0$ and provides a homotopy for the complex
+$(\Omega^\bullet(M,W),\delta)$
+\end{lemma}
+
+Finally, we construct the Fedosov connection
+\[
+D = \partial - \delta + \frac{1}{i\hbar}[r,\cdot]
+\]
+where we select the value of $r$ so that $D^2=0$. Let
+\[
+W_D = \{ a \in \Gamma(W(M)) \mid Da = 0 \}
+\]
+be the space of flat sections of this connection. Define the symbol of sections using the projection $\sigma : \Gamma(W(M)) \to C^\infty(M)[[\hbar]]$ 
+\[
+\sigma(a) = a(x,0)
+\]
+\begin{theorem}
+The projection $\sigma$ restricts to a bijection for flat sections of $D$ : 
+\[
+\sigma : W_D \to C^\infty(M)[[\hbar]]
+\]
+\end{theorem}
+\begin{proof}
+Let $a_{0} \in C^\infty(M)[[\hbar]]$. We need to find a section $a \in \Gamma(W(M))$ such that
+\[
+Da = 0 \qquad \sigma(a) = a_{0}
+\]
+Write $a$ as a formal series in the Weyl degree
+\[
+a = a_{0} + a_1 + a_2 + \cdots
+\]
+where $a_k$ is degree $k$ in the variables $y^i$. The equation $Da=0$ can be written as
+\[
+\delta a = \partial a + \frac{1}{i\hbar}[r,a]
+\]
+Applying the operator $\delta^{-1}$ on both sides and using the identity \eqref{eq:delta-identity}
+gives
+\[
+a = a_{0} + \delta^{-1}\left(\partial a + \frac{1}{i\hbar}[r,a]\right)
+\]
+
+The $\delta^{-1}$ operator necessarily increases the $y^{i}$ degree. Thus, we may solve this equation recursively by comparing the
+matching degree terms on both sides. Thus a unique solution $a$ exists satisfying $Da=0$ and $\sigma(a)=a_{0}$.
+
+Conversely, suppose $a$ is a flat section with $\sigma(a)=0$. A similar recursive argument shows that all coefficients of $a$ vanish, so $a=0$. Therefore $\sigma$ is injective.
+
+This proves that $\sigma$ is a bijection between flat sections and functions of $M$
+\end{proof}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=30em]{fedosov.pdf}
+    \caption{The flat lifts $\sigma^{-1}(f)$ are the Taylor series of $f$ with distances measured along the geodesic of the symplectic connection $\nabla$}
+\end{figure}
+\subsection*{The Fedosov Star Product}
+
+Let $\tau = \sigma^{-1}$ denote the lifting map sending a function to
+its corresponding flat section. The Fedosov star product is defined by
+\[
+f \star g =
+\sigma\left(\tau(f)\circ\tau(g)\right)
+\]
+where $\circ$ is the fiberwise Moyal product. Associativity follows from the associativity of the Weyl product and
+the fact that the Fedosov connection $D$ is a derivation of $\circ$, satisfying 
+$$
+D(a \circ b) = D(a) \circ b + a \circ D(b)
+$$
+We now try to understand why this definition is truly global. Since the Weyl bundle is constructed by gluing the formal $y^{i}$ directions pointwise, we see that it is a trivial vector bundle over $M$. It can be written as 
+$$
+W = M \times N
+$$
+Where $N \cong W_{x}$ at each point, is the fibre over the base $M$. Moreover, the fibre symplectic connection $\partial$ which we can write in coordinates as 
+$$
+\partial = dx^{i} \otimes \left( \partial_{i} + \Gamma^{k}_{ij}\omega_{kl}y^{l}\pdv{}{y^{j}} \right)
+$$
+ $\Gamma$ being the Christoffel symbols of the original base connection, is a connection on $W$ which determines how the base derivatives $\partial_{i}$ twist as we move along the base at different $y$ levels, while letting the $y=0$ section which is $M$ itself have the standard connection. It is clear that the Moyal product of two sections flat for this connection (which recall is also a symplectic connection) do not see any changes at all, since both the main ingredients, the Poisson bivector $\omega$ and higher derivatives $\nabla_{i}\nabla_{j} \cdots f$ are built to not change their formation as one moves on the base. \\
+ The only difficulty we now have is that of curvature. A non zero curvature would mean that parallel transporting this product along a small path and returning to the starting point does \textit{not} bring the tangent basis back to the same starting configuration. This is what Fedosov's iteratively constructed $r$ is there to fix. After enruring flatness, we finally have a well defined product. 
+ \bigskip
+ 
+ One might worry that if $M$ has non-trivial topology, then even with a flat connection we might end up with a twisted basis going along a path which isn't contractible. Thus the remaining question is whether such global twisting could lead to incompatible star products. 
+Fedosov shows that this does not occur. Star products constructed by his method are classified, up 
+to equivalence, by a single formal closed $2$-form
+\begin{equation}
+\Omega = \omega + \hbar \Omega_1 + \hbar^2 \Omega_2 + \cdots \in \Omega^2(M)[[\hbar]]
+\end{equation}
+whose de Rham cohomology class completely determines the resulting deformation quantization. 
+Different choices of symplectic connection or of the correction term $r$ which produce the same 
+$\Omega$ lead to equivalent star products.
+
+Suppose $D$ and $D'$ are two Fedosov connections of the form
+$$
+D = -\delta + \nabla + \frac{1}{\hbar}[r,-] \qquad 
+D' = -\delta + \nabla + \frac{1}{\hbar}[r',-]
+$$
+which have the same Weyl curvature $\Omega$. Fedosov proves that there exists a section 
+$a \in \Gamma(W)$ such that the Weyl bundle automorphism
+$$
+A = \exp\!\left(\frac{1}{\hbar}\mathrm{ad}(a)\right)
+$$
+relates the two connections by conjugation,
+$$
+D' = A^{-1} D A 
+$$
+These transformations act fiberwise by inner automorphisms of the Weyl algebra and can be interpreted as gauge transformations of the Weyl bundle.
+
+If the Fedosov connection is changed from $D$ to $D'$, the corresponding automorphism $A$ maps 
+$D$-flat sections to $D'$-flat sections. Restricting to functions through the projection $\sigma$ 
+therefore gives us an operator
+$$
+T = \sigma \circ A \circ \tau 
+$$
+which is a formal differential operator of the form
+\begin{equation}
+T = \mathrm{id} + \hbar T_1 + \hbar^2 T_2 + \cdots 
+\end{equation}
+Thus, the star products associated with the two different symplectic connections are related by $T$ as 
+$$
+T(f \star g) = Tf \star' Tg 
+$$
+
+
+This means that although the Weyl bundle connection may show a  nontrivial holonomy when parallel transported 
+along noncontractible loops, the induced deformation quantization depends only on the cohomology 
+class of the formal $2$-form $\Omega$. Different Fedosov connections producing the same class give equivalent star products, and the star product is independent of which fundamental group element the path belongs in, as long as we keep the symplectic connection fixed. 
+
+\section{Poisson structures and Kontsevich}
+The material here follows Kontsevich's formality theorem and standard expository accounts of Poisson geometry and deformation quantization \cite{Kontsevich2003,GraciaSaz2003,CannasdaSilva2001}.
+
+Fedosov's construction of the star product hinges on the existence of the symplectic connection allowing a global invariant transport of the Moyal product algebra. If we move up in generality and consider Poisson structures whose coordinate matrices $\omega^{ij}$ are degenerate, then there is no inverse symplectic form $\omega_{ij}$, and thus no connection to proceed with the construction. Even if one tries to find a connection that preserves the Poisson bivector, its global existence is not guaranteed, since in general the degeneracy does not behave nicely. To see the problem, let us start with local coordinates around a point $p$ at which the matrix $\omega^{ij}$ has rank\footnote{A skew symmetric matrix always has even rank} $2k < n$ (where $n$ is the dimension of M), and it splits into the block form
+\begin{equation}
+  \begin{bmatrix}
+  A_{2k} & 0 \\
+  0 & 0 \\
+  \end{bmatrix} = 
+  \begin{bmatrix}
+  \begin{bmatrix}
+  0 & I_{k} \\
+  -I_{k} & 0 \\
+  \end{bmatrix} & 0 \\
+  0 & 0 \\
+  \end{bmatrix}
+\end{equation}
+Where $A_{2k}$ is the standard $2k$ dimensional symplectic form. This is always possible locally, as proved in \cite{CannasdaSilva2001}. In coordinates, this is 
+$$
+\omega = \sum_{i=1}^{k} \partial_{x^{i}} \wedge \partial_{y^{i}}
+$$
+Where we split the $M$ coordinates as $\{ x^{i}, y^{i},z^{j}\}$ with $i = 1 \ldots k$ and $j = 1 \ldots n-2k$. Thus the submanifold locally defined as $\{z^{j} = 0\}$ is infact a symplectic manfold. This is known as a \textit{symplectic leaf}, since varying $z$ takes us between different symplectic structures for each $z$ like leaves attached to a stalk. 
+
+
+
+Now assume that at a nearby point $q$, the rank of $\omega$ is $2k-2$. If a Poisson connection $\nabla$ satisfying $\nabla\omega = 0$ exists on a region containing both $p$ and $q$, then the parallel transport of $\omega$ from $p$ to $q$ must necessarily preserve its rank, since $\omega(p)$ and $\omega(q)$ are related by a linear isomorphism. This contradicts the rank condition, so no such connection can exist. 
+\bigskip
+
+
+Maxim Kontsevich~\cite{Kontsevich2003} provides an algebraic approach where the star product need not rely on any connection, and is defined entirely with the data already present on the manifold : the Poisson bivector and the functions themselves. \\
+To understand how it works, we revisit the algebraic machinery we had defined at the beginning of the chapter, and how they relate to the deformation probem. 
+
+\subsection{The formality theorem}
+We have already seen the quantum side, where a non-commutative star product is described via a single commutation equation :
+$$
+[m_{\hbar},m_{\hbar}] = 0
+$$
+
+in the differential graded Lie algebra of polydifferential operators acting on $C^\infty(M)[[\hbar]]$, where $m_{\hbar}$ is a degree 1 element.
+In the previous section we described deformation quantization in terms of a star
+product
+$$
+f \star g = fg + \hbar B_1(f,g) + \hbar^2 B_2(f,g) + \cdots
+$$
+whose antisymmetric first order part reproduces the Poisson bracket. 
+Inspired by $B_{n}$ being part of a larger DGLA of all polydifferential operators, we do the same for the classical side, and see the Poisson bivector as part of a larger DGLA of multivector fields. 
+
+As we know, the Poisson bracket on a manifold can equivalently be described by a bivector field $\pi \in \Gamma(\wedge^2 TM)$. However, not every bivector defines a Poisson structure. The only other condition that decides whether a bivector is a Poisson bivector is the Jacobi identity, is equivalent to the condition
+\begin{equation}
+[\pi,\pi]_S = 0 
+\end{equation}
+where $[\cdot,\cdot]_S$ denotes the Schouten-Nijenhuis bracket on polyvector fields (\ref{def:polyvector}). Thus Poisson structures are precisely those bivector fields satisfying
+this commutation condition.
+
+Thus both the classical and quantum structures are governed by similar
+commutation equations, which are infact Maurer Cartan equations of DGLAs, if we give the polyvector field Lie algebra a trivial differential $d_{S} = 0$
+\begin{equation}
+  d_{S}\pi + \frac{1}{2}[\pi,\pi]_{S} = 0 \enskip \longleftrightarrow \enskip d_{h}C_{\hbar} + \frac{1}{2}[C_{\hbar},C_{\hbar}]_{G} = 0
+\end{equation}
+
+The problem of deformation quantization can therefore be phrased as follows:
+given a Poisson bivector $\pi$, construct an associative multiplication
+\begin{equation}
+m_{\hbar} = B_{0} + C_{\hbar} = B_{0} + \hbar B_{1} + \hbar^{2} B_{2} + \cdots
+\end{equation}
+with $B_{0}$ being ordinary multiplication, whose first order antisymmetric\footnote{Note that we do not necessarily require $B_{1}$ to be antiymmetric, since the correspondence principle only cares about the difference $B_{1}(f,g) - B_{1}(g,f)$, but we can safely ignore the symmetric part as it can only change the star product into another equivalent star product} part $B_{1}$ reproduces $\pi$. In other words, we seek
+a solution of the Maurer-Cartan equation in the Hochschild complex that
+corresponds to the classical Poisson structure.
+
+The difficulty is that these two structures live in different graded Lie
+algebras. The Poisson bivector belongs to the DGLA of
+polyvector fields
+\begin{equation}
+T_{\mathrm{poly}}(M) = \bigoplus_{k=-1}^{\infty}
+\Gamma(\wedge^{k+1} TM)
+\end{equation}
+with the Schouten bracket and trivial differential, while the deformation of the associative product lives in the Hochschild complex of multidifferential operators
+\begin{equation}
+D_{\mathrm{poly}}(M) = \bigoplus_{k=-1}^{\infty}
+\mathrm{Hom}(C^\infty(M)^{\otimes (k+1)},C^\infty(M))
+\end{equation}
+with the Gerstenhaber bracket.
+
+To relate these two complexes we must consider a notion of morphism
+between differential graded Lie algebras. This notion is provided by an \textit{$L_{\infty}$ morphism} between two \textit{$L_{\infty}$-algebras}.
+
+\begin{definition}[$L_{\infty}$-algebra]
+An $L_\infty$-algebra consists of a graded vector space $V$
+together with multilinear maps
+$$
+\ell_n : V^{\otimes n} \to V
+\qquad n \ge 1
+$$
+of degree $2-n$ satisfying the following properties.
+\begin{enumerate}
+
+\item \textbf{Graded skew-symmetry.}  
+For every permutation $\sigma \in S_n$ and homogeneous elements
+$v_1,\dots,v_n \in V$,
+$$
+\ell_n(v_{\sigma(1)},\dots,v_{\sigma(n)})
+=
+\chi(\sigma;v_1,\dots,v_n)\,
+\ell_n(v_1,\dots,v_n)
+$$
+where $\chi(\sigma;v_1,\dots,v_n)$ is the graded sign determined by the rule that swapping two adjacent homogeneous elements $v_i$ and $v_j$ introduces a factor $(-1)^{|v_i||v_j|}$, and extending multiplicatively to arbitrary permutations.
+
+\item \textbf{Higher Jacobi identities.}  
+For every $n \ge 1$ and homogeneous $v_1,\dots,v_n \in V$,
+\begin{equation}
+\sum_{i+j=n+1}
+\sum_{\sigma\in \mathrm{Sh}(i,n-i)}
+(-1)^{i(j-1)}
+\chi(\sigma;v_1,\dots,v_n)\,
+\ell_j\!\left(
+\ell_i(v_{\sigma(1)},\dots,v_{\sigma(i)}),
+v_{\sigma(i+1)},\dots,v_{\sigma(n)}
+\right)
+=0 
+\end{equation}
+Where we sum over the permutations which preserve the order of the first $i$ and the rest $n-i$ elements.
+\end{enumerate}
+The first two maps reproduce the structure of a DGLA: $\ell_1$ acts as a differential 
+and $\ell_2$ behaves as a graded Lie bracket, while the higher maps encode the failure of an $L_{\infty}$-algebra to be a DGLA, where $\ell_{3}$ encodes the failure of $\ell_{2}$ to satisfy the Jacobi identity, and so on.
+\end{definition}
+
+Thus a DGLA is a special case of an $L_{\infty}$ algebra with $\ell_{k>2} = 0$. 
+
+\begin{definition}[$L_\infty$-morphism]
+Let $(V,\ell_n)$ and $(W,m_n)$ be $L_\infty$-algebras. 
+An $L_\infty$-morphism $U:V \to W$ consists of a sequence of graded multilinear maps
+$$
+U_n : V^{\otimes n} \to W \qquad n \ge 1
+$$
+of degree $1-n$, satisfying for all $n \ge 1$ and homogeneous $v_1,\dots,v_n \in V$
+\begin{align*}
+&\sum_{i+j=n+1}
+\sum_{\sigma \in \mathrm{Sh}(i,n-i)}
+\chi(\sigma;v_1,\dots,v_n)\,
+U_j\!\left(
+\ell_i(v_{\sigma(1)},\dots,v_{\sigma(i)}),
+v_{\sigma(i+1)},\dots,v_{\sigma(n)}
+\right) \\
+&=
+\sum_{k=1}^{n}
+\frac{1}{k!}
+\sum_{\substack{i_1+\cdots+i_k=n}}
+\sum_{\sigma\in \mathrm{Sh}(i_1,\dots,i_k)}
+\chi(\sigma;v_1,\dots,v_n)\,
+m_k\!\big(
+U_{i_1}(\cdots),\dots,U_{i_k}(\cdots)
+\big).
+\end{align*}
+The first component $U_1 : V \to W$ is a chain map with respect to the differentials
+$\ell_1$ and $m_1$, while the higher maps $U_n$ encode the higher homotopies
+
+ensuring compatibility of the $L_\infty$-structures.
+\end{definition}
+If the first component $U_1$ induces an isomorphism on the cohomologies 
+\begin{equation}
+    U_{1} : H^{\bullet}(V,\ell_{1}) \xrightarrow{\cong} H^{\bullet}(W,m_{1})
+\end{equation}
+the map is
+called an \textit{$L_\infty$ quasi-isomorphism}.
+
+The importance of this structure for deformation quantization is that solutions
+of the Maurer-Cartan equation are transported along $L_\infty$-morphisms.
+Thus, if there exists an $L_\infty$ quasi-isomorphism relating polyvector fields
+to multidifferential operators, then every Poisson structure should induce a
+corresponding associative deformation.
+
+This is precisely the content of Kontsevich's formality theorem\cite{Kontsevich2003}.
+
+\begin{theorem}[Kontsevich Formality Theorem]
+Let $M$ be a smooth manifold. There exists an $L_\infty$ quasi-isomorphism
+\begin{equation}
+\mathcal{U} : T_{\mathrm{poly}}(M) \longrightarrow D_{\mathrm{poly}}(M)
+\end{equation}
+between the differential graded Lie algebra of polyvector fields with
+the Schouten bracket and the differential graded Lie algebra of multidifferential
+operators with the Gerstenhaber bracket.
+\end{theorem}
+
+As a consequence of this theorem, every Poisson bivector $\pi$ determines a solution of the
+Maurer-Cartan equation in the Hochschild complex, and therefore gives rise to
+an associative star product on $C^\infty(M)$. 
+\subsection*{Kontsevich star product}
+In proving this theorem, Kontsevich constructs an explicit set of maps $U_{n}$ taking $\pi \in T^{1}_{\mathrm{poly}}(M)$ to $D_{\mathrm{poly}}(M)$ 
+$$
+U_{n} : (\pi, \ldots ,\pi) \longmapsto \left( \sum_{r>1} C^\infty(M)[[\hbar]]^{\otimes r} \rightarrow C^\infty(M)[[h]] \right)$$
+Note that each $U_{n}$ is of degree $1-n$. Acting on $n$ degree 1 elements $\pi$, the degree of the image is $n + 1 - n = 1$. Thus, the image exactly lands in bidifferential operators $C^\infty(M) \otimes C^\infty(M) \rightarrow C^\infty(M)$ and we can define the star product to be 
+\begin{equation}
+    f \star g = m_{\hbar}(f,g) = fg + \sum_{n \ge 1} \hbar^{n} U_{n}(\pi, \ldots, \pi)(f,g)
+\end{equation}
+and since $\mathcal{U}$ takes the Maurer-Cartan element $\pi$ to another Maurer-Cartan element $C_{\hbar}$, we know that this star product is associative. Moreover, a corollary of the theorem is that\cite{GraciaSaz2003,Kontsevich2003} 
+$$
+B_{1}(f,g) - B_{1}(g,f)  = \pi(f,g)
+$$
+
+\section{The unifying idea : Maurer-Cartan equations and flat connections}    
+The interpretation developed in this section is guided by the deformation-theoretic viewpoint in \cite{GraciaSaz2003,Kontsevich2003}.
+
+Both the classical and quantum structures appearing in deformation quantization were interpreted as flatness conditions for certain differential graded Lie algebras. In this section we show how this viewpoint generalizes the familiar notion of curvature of a connection and provides a common language for geometric
+and algebraic constructions.
+
+\subsection*{Curvature as a Maurer-Cartan equation}
+
+Let $E \to M$ be a vector bundle with a connection $\nabla$.
+We choose a local frame $\{e_i\}$ of $TM$ and write the connection in this frame as
+\[
+\nabla e_i = \omega_i^{j} \otimes e_j
+\]
+where $\omega_i^{j}$ are matrix valued $1$-forms known as the connection forms
+
+Recall that in the coordinate frame $e_i = \partial_i$, the connection coefficients were defined using Christoffel symbols, and thus we can identify them as the coefficients of the matrix valued connection forms 
+\[
+\omega^k_{j} = \Gamma^k_{ij} dx^i 
+\]
+The curvature of this connection is the $2$-form
+\[
+\Omega = d\omega + \omega \wedge \omega 
+\]
+In components,
+\[
+\Omega^k_{j}
+=
+d\omega^k_{j}
++
+\omega^k_{l}\wedge \omega^l_{j}
+\]
+
+The condition that the connection be flat is therefore
+\[
+d\omega + \frac12[\omega,\omega] = 0 
+\]
+which we now know is a Maurer-Cartan equation in the DGLA
+\[
+\Omega^{\bullet}(M,E) := \Gamma(\Lambda^{\bullet}T^{*}M\otimes E) \cong\Omega^{\bullet}(M)\otimes_{\Omega^{0}(M)}\Gamma(E)
+\]
+of differential forms with values in $E$.
+Conceptually, the common theme between this and the DGLAs of polyvector and polydifferential operators is that all three are conditions on a certain structure over the base $M$, vector bundles in the polyvector and tangent bundle case (infinite dimensional for the Fedosov-Weyl bundle case), or more generally a sheaf of differential graded Lie algebra over it. \\
+This M-C condition encodes the well-definedness of the M-C element that satisfies it, as we move along the base. For example in the Hochschild DGLA, $C_{\hbar}$ being an M-C element means that the product defined by it stays associative when parallel transported in the base. 
+\bigskip
+
+
+We therefore obtain the following parallel picture.
+\[
+\begin{array}{c|c|c}
+  \text{Tensor geometry} & \text{Poisson geometry} & \text{Quantization} \\
+\hline
+  \text{forms} & \text{polyvector fields} & \text{polydifferential operators} \\
+  \text{wedge product} & \text{Schouten bracket} & \text{Gerstenhaber bracket} \\
+  \text{tangent basis}&\text{Poisson structure} & \text{star product}
+\end{array}
+\]
+Kontsevich's formality theorem establishes a correspondence between the second two structures, while Fedosov's flat connection combines the first two into a common bundle which is then made to transport an already existing associative product. 
+
+\chapter{Fedosov quantization of Poisson manifolds and quantum moment maps}
+
+Kontsevich's quantization procedure for Poisson manifolds in full generality is purely algebraic. Computing the bidifferential operators at higher orders involves constructing graphs encoding all the possible ways the derivatives can act on the Poisson components and the functions, and then evaluating an integral over the complex half plane for the weight of each graph. As a result, it is difficult to study how additional structures on the manifold, such as symmetries of a group action, interact with the quantized product.
+
+In this chapter we present a more geometric route to construct star products on Poisson manifolds, which is the subject of the author's own work \cite{mypaper}. The idea is to embed the Poisson manifold into a formal symplectic manifold, perform Fedosov quantization there using the tools of \S 3.2, and descend the resulting star product back to the original manifold. When the manifold carries a Hamiltonian group action, the descended star product is invariant and admits quantum moment maps given by explicit formulas. This provides a concrete realization of the existence results recently obtained by Esposito-Nest-Schnitzer-Tsygan \cite{ENST} through $\mathfrak{g}$-adapted formality. We describe the quantum moment map condition briefly in the following section.
+
+
+\section*{Quantum symmetries and moment maps}
+This section follows the setup and notation of our construction together with the symplectic quantum moment map literature \cite{mypaper,ENST}.
+
+
+In Chapter 1 we saw that symmetries of a classical system are encoded by a Lie group $G$ acting on the phase space $(M, \pi)$, together with a moment map $\rho : \mathfrak{g} \to C^\infty(M)$ satisfying
+\[
+\{\rho(\xi), \rho(\eta)\}_M = \rho([\xi, \eta]), \qquad X^M_\xi = \{\rho(\xi), \cdot\}_M
+\]
+for all $\xi, \eta \in \mathfrak{g}$. The moment map thus realizes the Lie algebra as a subalgebra of the Poisson algebra of observables, and its Hamiltonian vector fields generate the symmetry action infinitesimally.
+
+When we move to a deformed algebra $(C^\infty(M)[[\hbar]], \star)$, the Poisson bracket is replaced by the commutator $\frac{1}{i\hbar}[f, g]_\star = \frac{1}{i\hbar}(f \star g - g \star f)$, and we could ask whether the symmetry still holds. There are two separate requirements. The first is \emph{$G$-invariance} of the star product:
+\[
+\phi_g^*(f \star h) = \phi_g^* f \star \phi_g^* h \qquad \text{for all } g \in G,\; f, h \in C^\infty(M)[[\hbar]]
+\]
+This says that the group action is still an automorphism of the deformed algebra, and is the direct analogue of the classical condition that the Poisson bracket be $G$-invariant. On its own, however, invariance does not guarantee that the moment map survives quantization.
+
+The second, stronger requirement is the existence of a \emph{quantum moment map}: a linear map $\hat{\rho} : \mathfrak{g} \to C^\infty(M)[[\hbar]]$ with $\hat{\rho}(\xi) = \rho(\xi) + O(\hbar)$, satisfying
+\begin{equation}\label{eq:qmm-def}
+\frac{1}{i\hbar}\big[\hat{\rho}(\xi), \hat{\rho}(\eta)\big]_\star = \hat{\rho}([\xi, \eta]) \qquad \text{for all } \xi, \eta \in \mathfrak{g}
+\end{equation}
+This is the quantum analogue of the classical moment map relation: the Lie algebra homomorphism from $\mathfrak{g}$ into the Poisson algebra is lifted to a Lie algebra homomorphism into the deformed algebra. When such a map exists, each $\hat{\rho}(\xi)$ generates the $\xi$-action as an inner derivation of $\star$, and the full algebraic content of the symmetry is preserved at the quantum level.
+
+The existence of a quantum moment map is not automatic. Even when the star product is $G$-invariant, the classical relation $\frac{1}{i\hbar}[\rho(\xi), \rho(\eta)]_\star = \rho([\xi, \eta])$ may fail at higher orders in $\hbar$. The failure is measured by the \emph{defect cocycle}
+\[
+\lambda(\xi, \eta) = \frac{1}{i\hbar}\big[\rho(\xi), \rho(\eta)\big]_\star - \rho([\xi, \eta]) \in \mathbb{C}[[\hbar]]
+\]
+which defines a class $[\lambda] \in H^2(\mathfrak{g}, \mathbb{C})[[\hbar]]$ in the Chevalley--Eilenberg cohomology of $\mathfrak{g}$. A quantum moment map exists if and only if this class vanishes, in which case $\hat{\rho}(\xi) = \rho(\xi) - a(\xi)$ for a cochain $a$ satisfying $\lambda = \delta a$. The obstruction therefore lives in the same cohomology group that classifies central extensions of $\mathfrak{g}$: for semisimple Lie algebras, where $H^2(\mathfrak{g}, \mathbb{C}) = 0$ by the second Whitehead lemma, the obstruction always vanishes.
+
+In the symplectic setting, the interplay between $G$-invariant star products and quantum moment maps has been studied by Gutt-Rawnsley \cite{GR}, M\"uller-Bahns-Neumaier \cite{MBN}, and Reichert-Waldmann \cite{RW}. For general Poisson manifolds, Esposito-Nest-Schnitzer-Tsygan \cite{ENST} recently proved the existence of quantum moment maps using $\mathfrak{g}$-adapted formality morphisms. In what follows, we provide a concrete geometric construction achieving the same result under a weaker assumption: the existence of a $G$-invariant torsion-free connection on $M$.
+\section*{Embedding into a formal symplectic manifold}
+The embedding picture used here is informed by the formal symplectic groupoid and equivariant Fedosov literature, especially \cite{GR,MBN,RW,ENST}.
+
+$$
+\begin{tikzcd}
+  \Gamma(\mathcal{W}_M)&& \ker(D^\perp)& \ker(D_\mathrm{Fed})\subset \Gamma(\mathcal{W}) \\
+   \\
+  C^\infty(M)[[\hbar]] && \ker(D) &  C^\infty(X)[[\hbar]]
+  \arrow["{\sigma^{-1}}"',leftrightarrow, from=3-1,to=3-3]
+	\arrow["{\bar\sigma}^{-1}"',from=3-1, to=1-1]
+	\arrow[hook, from=3-3, to=3-4]
+	\arrow[hook, from=1-3, to=1-4]
+	\arrow["{\sigma_\mathrm{Fed}^{-1}}"',leftrightarrow,from=3-4, to=1-4]
+	\arrow["{\bar{\sigma}}"', from=1-1, to=3-1]
+	\arrow["{\Phi^{-1}}"',leftrightarrow, from=1-3, to=1-1]
+	\arrow["{\bar{\sigma}}"', from=1-1, to=3-1]
+\end{tikzcd} $$
+\begin{center}
+    \textit{Schematic diagram of the embedding procedure}
+\end{center}
+Let $(M^n, \pi)$ be a Poisson manifold. We view $M$ as being embedded inside a $2n$-dimensional manifold $X$, locally defined using constraint equations
+\[
+M := \{ x \in X \mid x^\alpha = 0,\; \alpha = 1, \ldots, n \}
+\]
+where the Poisson bivector on $M$ has coefficients $\pi^{ij}(x)$ for $x \in M$. Throughout, Latin superscripts denote coordinates on $M$ and Greek superscripts denote coordinates on $X$ normal to $M$.
+
+We equip $X$ with a bi-Lagrangian symplectic structure as follows. Let $\Gamma^i_\alpha$ and $\omega^{i\alpha}$ be functions on $X$ satisfying
+\begin{align}
+\pi^{ij} &= \omega^{j\alpha} \Gamma^i_\alpha - \omega^{i\alpha} \Gamma^j_\alpha \label{eq:pi-decomp} \\
+\operatorname{Rank}(\omega^{i\alpha}) &= n \label{eq:rank-cond}
+\end{align}
+for all $\alpha, \beta, i, j$. Then $\omega$ is a bi-Lagrangian symplectic form, after setting $\omega_{ij} = \omega_{\alpha\beta} = 0$ and requiring $d\omega = 0$.
+
+A pair satisfying these conditions always exists. The trivial solution
+\[
+\omega^{i\alpha} = \delta^{i\alpha}, \qquad \Gamma^i_\alpha = \frac{1}{2}\delta_{j\alpha} \pi^{ij}
+\]
+can be verified directly. One may think of a more general choice of $(\omega, \Gamma)$ as being relevant when $M$ is a genuine Lagrangian submanifold of a physical symplectic manifold, where the embedding is fixed by the ambient setup rather than chosen freely. This trivial solution and the rest of the construction can be globalized using the jet bundle approach of \cite{CFT}.
+
+\subsection*{The partial connection and flat sections}
+
+We construct a partial connection in the normal directions
+\begin{equation}\label{eq:partial-conn}
+D = dx^\alpha \otimes D_\alpha = dx^\alpha \otimes \left( \partial_\alpha + \Gamma^i_\alpha \partial_i + x^\beta A^i_{\alpha\beta} \partial_i + x^\beta x^\gamma A^i_{\alpha\beta\gamma} \partial_i + \cdots \right)
+\end{equation}
+where the higher coefficients $A^i_{\alpha\beta\ldots}$ are chosen iteratively to ensure flatness. For example, the first order coefficient is
+\[
+A^i_{\alpha\beta} = -\left( \partial_\alpha(\Gamma^i_\beta) + \Gamma^j_\alpha \partial_j(\Gamma^i_\beta) \right)
+\]
+
+\begin{lemma}\label{lem:flat-sections}
+Flat sections of $D$ correspond to functions on $M$.
+\end{lemma}
+\begin{proof}
+We construct an explicit lifting map $\sigma^{-1} : C^\infty(M) \to C^\infty(X)$, with the reverse direction being the projection $\sigma$ defined as restriction to $x^\alpha = 0$. Let $f(x^i) \in C^\infty(M)$ and write $F(x^i, x^\alpha) = \sigma^{-1}(f)$ as a formal Taylor series in the normal variables
+\[
+F(x^\alpha, x^i) = f + f_\alpha x^\alpha + f_{\alpha\beta} x^\alpha x^\beta + \cdots
+\]
+where the coefficients $f_{\alpha\beta\ldots}$ are functions on $M$. Each coefficient is determined uniquely by solving $D(F) = 0$ iteratively in powers of $x^\alpha$.
+\end{proof}
+
+\begin{proposition}\label{prop:lift-existence}
+For a given product $\omega^{i\alpha}\Gamma^j_\alpha$, there exists a unique lifting map $\sigma^{-1}$ satisfying
+\begin{equation}\label{eq:poisson-compat}
+\{f, g\}_M = \sigma\{\sigma^{-1}f, \sigma^{-1}g\} = \{F, G\}\big|_M
+\end{equation}
+where $\{\ ,\ \}$ and $\{\ ,\ \}_M$ are the Poisson brackets defined by $\omega$ and $\pi$ respectively.
+\end{proposition}
+\begin{proof}
+The flatness condition $D^2 = 0$ determines the higher coefficients $A^i_{\alpha\beta\ldots}$ uniquely at each order, so uniqueness of the lifting map for a given $(\omega, \Gamma)$ follows from Lemma~\ref{lem:flat-sections}.
+\end{proof}
+
+The lifting map $\sigma^{-1}$ should be thought of as the pullback of the deformed source map in \cite{CDF}, which identifies $M$ with the ``source'' Lagrangian submanifold of the formal symplectic groupoid $X$.
+
+
+\section*{Fedosov quantization and descent to $M$}
+The descent argument in this section combines Fedosov quantization with the formal symplectic groupoid point of view developed in \cite{Fedosov1994,CDF}.
+
+
+With $(X, \omega)$ now a symplectic manifold, we can apply Fedosov's construction as described in \S 3.2 to obtain a star product $\star_X$ on $C^\infty(X)[[\hbar]]$. Let $W$ denote the Weyl bundle over $X$, with its Moyal product $\circ$ and Fedosov connection $D_{\mathrm{Fed}}$ as defined in (\ref{eq:fedosov-conn}). We now show how to descend this star product to $M$.
+
+\subsection*{Tangent--normal decomposition}
+
+The bi-Lagrangian structure splits the tangent bundle of $X$ at $M$ into tangent and normal components:
+\[
+T_M X = TM \oplus NM
+\]
+where $NM$ is the normal distribution generated by $\partial_\alpha$ restricted to $M$. Accordingly, the Fedosov connection decomposes as
+\begin{equation}\label{eq:fed-decomp}
+D_{\mathrm{Fed}} = D^\perp + D^\parallel = dx^\alpha D^\perp_\alpha + dx^i D^\parallel_i
+\end{equation}
+
+\begin{lemma}\label{lem:Dperp-props}
+$D^{\perp 2} = 0$, and $D^\perp$ is a derivation of the Moyal product $\circ$.
+\end{lemma}
+\begin{proof}
+Since $TX$ splits along $M$, the identity $D_{\mathrm{Fed}}^2 = 0$ can be decomposed into $dx^i \wedge dx^j$, $dx^i \wedge dx^\alpha$, and $dx^\alpha \wedge dx^\beta$ components, each of which must vanish separately. In particular, the $dx^\alpha \wedge dx^\beta$ component gives $D^{\perp 2} = 0$. The derivation property follows similarly from the distributive property of $D_{\mathrm{Fed}}$ with respect to $\circ$.
+\end{proof}
+
+\begin{proposition}\label{prop:Wperp-subalg}
+$W^\perp := \ker D^\perp$ is a subalgebra of the Weyl algebra $W$.
+\end{proposition}
+
+This is an immediate consequence of the derivation property: if $D^\perp \tilde{s}_1 = 0$ and $D^\perp \tilde{s}_2 = 0$, then $D^\perp(\tilde{s}_1 \circ \tilde{s}_2) = (D^\perp \tilde{s}_1) \circ \tilde{s}_2 + \tilde{s}_1 \circ (D^\perp \tilde{s}_2) = 0$.
+
+
+\subsection*{The isomorphism with the Weyl bundle on $M$}
+
+Let $W_M = (C^\infty(M)[[\hbar]])[[y^i]]$ be the Weyl bundle restricted to $M$ in both its module and algebra structures. The sections $\Gamma(W_M)$ are power series in $y^i$ with coefficients in $C^\infty(M)[[\hbar]]$. This is a subalgebra of $W$, and the original Moyal product acts trivially on it since $\omega_{ij} = 0$. We now induce a different product on this subalgebra using a lift whose image lands in $W^\perp$. Define
+\begin{align}
+\Phi : \Gamma(W_M) &\longrightarrow \Gamma(W^\perp) \subset \Gamma(W) \nonumber \\
+s(x^i, y^i) &\longmapsto \tilde{s}(x^i, x^\alpha, y^i, y^\alpha) \label{eq:Phi-def}
+\end{align}
+
+\begin{theorem}\label{thm:Phi-iso}
+$\Phi$ is an algebra isomorphism, with inverse given by projection to $W_M$. The product on $\Gamma(W_M)$ defined as
+\[
+s_1 \circ_M s_2 = (\tilde{s}_1 \circ \tilde{s}_2)\big|_{y^\alpha, x^\alpha = 0}
+\]
+is well-defined and associative.
+\end{theorem}
+\begin{proof}
+Let $\delta_n$ denote the Koszul operator present in $D^\perp$ and let $\delta_n^{-1}$ be its inverse:
+\[
+\delta_n = dx^\alpha \frac{\partial}{\partial y^\alpha} \qquad \delta_n^{-1} = \frac{1}{p+q}\, y^\alpha \iota_{\partial/\partial x^\alpha}
+\]
+when acting on a homogeneous element $s \in W \otimes \Sigma$ of $y^\alpha$-degree $p$ and $dx^\alpha$-degree $q$. These satisfy
+\begin{equation}\label{eq:hodge-decomp}
+s = s_{00} + \delta_n \delta_n^{-1} s + \delta_n^{-1} \delta_n s
+\end{equation}
+where $s_{00}$ denotes the restriction of $s$ to $W_M$.
+
+Let $\tilde{s} \in W^\perp = \ker(D^\perp)$. By the definition of $D^\perp$ this means
+\[
+\delta_n \tilde{s} = \partial_n \tilde{s} + \frac{i}{\hbar}[r_n, \tilde{s}] =: A(\tilde{s})
+\]
+where $\partial_n = dx^\alpha \partial_\alpha$ collects the normal derivatives, and similarly $r_n$ collects the normal components of the correction term. Applying $\delta_n^{-1}$ to both sides and using (\ref{eq:hodge-decomp}) gives
+\begin{equation}\label{eq:recursion}
+\tilde{s} = s_{00} + \delta_n^{-1}(A(\tilde{s}))
+\end{equation}
+Since $\delta_n^{-1}$ necessarily increases the $y^\alpha$-degree, we see that $\Phi^{-1}\tilde{s} = s_{00}$ and $W^\perp \subset \operatorname{Im}(\Phi)$.
+
+Conversely, suppose $\tilde{s}$ satisfies (\ref{eq:recursion}). Set $B = D^\perp \tilde{s} = -\delta_n \tilde{s} + A(\tilde{s})$. Since $D^{\perp 2} = 0$, we have $D^\perp B = 0$, and therefore $\delta_n B = A(B)$. Applying $\delta_n^{-1}$ and using that $B$ is a 1-form (so $B_{00} = 0$) yields
+\[
+B = \delta_n^{-1} A(B)
+\]
+Because $\delta_n^{-1}$ increases the $y$-degree, solving this equation iteratively implies $B = 0$.
+
+Finally, since $D^\perp$ is a derivation of $\circ$, the Moyal product is closed inside $W^\perp$. Combined with the fact that $\Phi$ is a bijection, this proves that it is also an algebra homomorphism.
+\end{proof}
+
+
+\subsection*{The star product on $M$}
+
+Using $\Phi$ we can transport the parallel component of the Fedosov connection directly to $M$. Define
+\begin{equation}\label{eq:Dbar-def}
+\bar{D} := \Phi^{-1} D^\parallel \Phi
+\end{equation}
+
+\begin{lemma}\label{lem:Dbar-flat}
+$\bar{D}$ is flat and a derivation of $\circ_M$.
+\end{lemma}
+\begin{proof}
+Flatness of $\bar{D}$ follows from the flatness of $D^\parallel$ and Theorem~\ref{thm:Phi-iso}.
+\end{proof}
+
+Repeating the same arguments as in \S 3.2, there is a bijection between $C^\infty(M)[[\hbar]]$ and flat sections of $\bar{D}$ in $W_M$. We call this map $\bar{\sigma}^{-1}$, and descend the algebra structure via $\bar{\sigma}$.
+
+\begin{theorem}[Star product on a Poisson manifold]\label{thm:star-M}
+The product on $C^\infty(M)[[\hbar]]$ defined as
+\[
+f \star_M g := \bar{\sigma}\!\left(\bar{\sigma}^{-1}(f) \circ_M \bar{\sigma}^{-1}(g)\right)
+\]
+is well-defined and associative.
+\end{theorem}
+\begin{proof}
+This follows from the fact that $\bar{\sigma}$ is an algebra isomorphism.
+\end{proof}
+
+\subsection*{Classical limit}
+
+We now verify that $\star_M$ satisfies the correspondence principle. Let $f \in C^\infty(M)[[\hbar]]$ and let $\bar{\sigma}^{-1} f$ be its lift to $\Gamma(W_M)$.
+
+\begin{proposition}\label{prop:fed-flat}
+$\Phi(\bar{\sigma}^{-1} f)$ is a flat section of $(W, D_{\mathrm{Fed}})$.
+\end{proposition}
+\begin{proof}
+Since $\bar{D}\bar{\sigma}^{-1}f = 0$, we have $\Phi^{-1} D^\parallel (\Phi \bar{\sigma}^{-1}f) = 0$, so $\Phi(\bar{\sigma}^{-1}f)$ is $D^\parallel$-flat. It is $D^\perp$-flat by definition of $\Phi$.
+\end{proof}
+
+\begin{theorem}\label{thm:classical-limit}
+$\star_M$ satisfies the correspondence principle:
+\[
+f \star_M g = fg + O(\hbar) \qquad [f, g]_{\star_M} = i\hbar\{f, g\}_M + O(\hbar^2)
+\]
+\end{theorem}
+\begin{proof}
+Since every flat section of $D_{\mathrm{Fed}}$ is the lift of a function on $X$,
+\[
+\Phi(\bar{\sigma}^{-1}f) \circ \Phi(\bar{\sigma}^{-1}g) = \sigma_{\mathrm{Fed}}^{-1}(F) \circ \sigma_{\mathrm{Fed}}^{-1}(G) = \sigma_{\mathrm{Fed}}^{-1}(F \star_X G)
+\]
+where $F, G \in C^\infty(X)[[\hbar]]$ are such that $\Phi(\bar{\sigma}^{-1}f) = \sigma_{\mathrm{Fed}}^{-1}(F)$ and similarly for $g$. Applying $\bar{\sigma} \circ \Phi^{-1}$ to both sides gives
+\begin{equation}\label{eq:descent-star}
+f \star_M g = (F \star_X G)\big|_M
+\end{equation}
+Taking the $\hbar = 0$ limit shows that $F|_M = f$ and $G|_M = g$.
+
+For the Poisson bracket, recall from \S 3.2 that Fedosov star products are classified up to equivalence by the central curvature $\Omega \in \hbar H^2_{\mathrm{dR}}(M, \mathbb{C})[[\hbar]]$, and that for any fixed $\omega$ and $\Omega$,
+\[
+F \star_X G - G \star_X F = i\hbar\{F, G\} + O(\hbar^2)
+\]
+Restricting to $M$ using (\ref{eq:descent-star}):
+\[
+f \star_M g - g \star_M f = i\hbar\{F, G\}\big|_M = i\hbar(\pi^{ij}\partial_i f\, \partial_j g) + O(\hbar^2)
+\]
+which is the required Poisson bracket on $M$. The last equality uses (\ref{eq:poisson-compat}).
+\end{proof}
+
+
+\section*{$G$-invariance and the cotangent lift}
+The equivariant arguments in this section are based mainly on the Fedosov quantum moment map framework in \cite{MBN,RW}.
+
+
+Let $G$ be a Lie group with Lie algebra $\mathfrak{g}$, acting on $(M, \pi)$ by a Hamiltonian action, and let $\rho : \mathfrak{g} \to C^\infty(M)$ be a classical moment map satisfying
+\begin{equation}\label{eq:class-moment}
+\{\rho(\xi), \rho(\eta)\}_M = \rho([\xi, \eta]) \qquad X_\xi^M = \{\rho(\xi), \cdot\}_M \qquad \text{for all } \xi, \eta \in \mathfrak{g}
+\end{equation}
+Since $X$ is formally the symmetric tensor algebra of the cotangent bundle, the $G$-action induces a canonical action on $X$ which preserves $M$ as the zero section. The canonical symplectic form $\omega$ is also invariant under this induced action.
+
+Every symplectic manifold admits torsion-free symplectic connections, and if a Lie group acts by symplectomorphisms then one can choose such a connection to be $G$-invariant, for instance by averaging when the action is proper. We therefore fix a $G$-invariant symplectic connection $\nabla_X$ on $X$ compatible with $\omega$.
+
+Given such a $G$-action and a $G$-invariant symplectic form, all the ingredients of the Fedosov construction automatically become $G$-invariant, since there is no other $G$-dependent input except the central curvature $\Omega$, which we are free to choose.
+
+\begin{proposition}\label{prop:G-inv}
+Let $(M, \pi)$ be a Poisson manifold with a Hamiltonian $G$-action, and suppose $M$ admits a $G$-invariant torsion-free connection. Then for any $G$-invariant $\Omega$, the star product $\star_M$ constructed in Theorem~\ref{thm:star-M} is $G$-invariant:
+\[
+\phi_g^*(f \star_M h) = \phi_g^* f \star_M \phi_g^* h \qquad \forall\, g \in G,\; f, h \in C^\infty(M)[[\hbar]]
+\]
+\end{proposition}
+\begin{proof}
+The connection $\nabla_X$ is $G$-invariant by construction and $\Omega$ is $G$-invariant by assumption. By Theorem~3.8 of \cite{MBN}, the star product $\star_X$ on $X$ is $G$-invariant. Since $\sigma_{\mathrm{Fed}}$, $\Phi$, and $\bar{\sigma}$ are all built from $G$-equivariant data, the descended product is also $G$-invariant.
+\end{proof}
+
+
+\section*{Quantum moment maps}
+This section is based on the equivariant Fedosov literature, especially \cite{MBN,RW}, together with the descent construction developed in Chapter 4.
+
+
+\subsection*{Lifting the classical moment map}
+
+For each $\xi \in \mathfrak{g}$, the element $\Phi(\bar{\sigma}^{-1}(\rho(\xi)))$ lies in $\ker D_{\mathrm{Fed}} \cap W^\perp$ by the argument of Proposition~\ref{prop:fed-flat}. Define $J(\xi) \in C^\infty(X)[[\hbar]]$ by
+\begin{equation}\label{eq:J-def}
+\sigma_X^{-1}(J(\xi)) = \Phi(\bar{\sigma}^{-1}(\rho(\xi)))
+\end{equation}
+Then $J(\xi)\big|_M = \rho(\xi)$. This is the lifted moment map on $X$.
+
+Using the $G$-invariance of $\star_X$ and the fact that the Hamiltonian flow $X_\xi$ of $J(\xi)$ preserves the symplectic structure, one can show that $J(\xi)$ acts as a quantum Hamiltonian for the $\mathfrak{g}$-action on $(C^\infty(X)[[\hbar]], \star_X)$:
+\begin{equation}\label{eq:inner-deriv}
+\frac{1}{i\hbar}\operatorname{ad}_{\star_X}(J(\xi))(F) := \frac{1}{i\hbar}\big(J(\xi) \star_X F - F \star_X J(\xi)\big) = -\mathcal{L}_{X_\xi} F
+\end{equation}
+for all $F \in C^\infty(X)[[\hbar]]$. We now study the obstruction to $J$ being a Lie algebra homomorphism.
+
+
+\subsection*{The quantum defect}
+
+The defect of $J$ from being a Lie algebra homomorphism is
+\begin{equation}\label{eq:defect-def}
+\lambda(\xi, \eta) := \frac{1}{i\hbar}\big[J(\xi), J(\eta)\big]_{\star_X} - J([\xi, \eta])
+\end{equation}
+
+\begin{lemma}\label{lem:defect-central}
+$\lambda(\xi, \eta) \in \mathbb{C}[[\hbar]]$ for all $\xi, \eta \in \mathfrak{g}$.
+\end{lemma}
+\begin{proof}
+For any $F \in C^\infty(X)[[\hbar]]$, the Jacobi identity for $\star_X$ and equation (\ref{eq:inner-deriv}) give
+\[
+\frac{1}{i\hbar}\big[\lambda(\xi, \eta), F\big]_{\star_X} = -\mathcal{L}_\xi \mathcal{L}_\eta F + \mathcal{L}_\eta \mathcal{L}_\xi F + \mathcal{L}_{[\xi,\eta]} F = 0
+\]
+Since $X$ is symplectic, the centre of $(C^\infty(X)[[\hbar]], \star_X)$ is $\mathbb{C}[[\hbar]]$.
+\end{proof}
+
+By Proposition~4.8 of \cite{MBN}, the defect is given explicitly by
+\[
+\lambda(\xi, \eta) = (\omega + \Omega)(X_\xi, X_\eta) - J([\xi, \eta])
+\]
+Since $J([\xi, \eta]) = \omega(X_\xi, X_\eta)$ and $\Omega$ starts at first order in $\hbar$, this simplifies to
+\begin{equation}\label{eq:defect-Omega}
+\lambda(\xi, \eta) = \Omega(X_\xi, X_\eta)
+\end{equation}
+Moreover, $[\lambda] \in H^2(\mathfrak{g}, \mathbb{C}[[\hbar]])$.
+
+
+\subsection*{Correcting the moment map}
+
+A quantum moment map on $X$ is a correction $J^a(\xi) = J(\xi) - a(\xi)$ with $a \in C^1(\mathfrak{g}, \mathbb{C})[[\hbar]]$ satisfying $\lambda = \delta a$, that is, $\lambda(\xi, \eta) = -a([\xi, \eta])$. When such a correction exists, we have
+\begin{equation}\label{eq:QMM-X}
+\frac{1}{i\hbar}\big[J^a(\xi), J^a(\eta)\big]_{\star_X} = J^a([\xi, \eta]) \qquad \text{for all } \xi, \eta \in \mathfrak{g}
+\end{equation}
+Such an $a$ exists if and only if $[\lambda] = 0$ in $H^2(\mathfrak{g}, \mathbb{C}[[\hbar]])$.
+
+There are two important cases. When $\Omega = 0$, equation (\ref{eq:defect-Omega}) gives $\lambda = 0$ immediately, so $a = 0$ and the classical moment map is already quantum, for any $\mathfrak{g}$.
+
+When $\mathfrak{g}$ is semisimple, the second Whitehead lemma gives $H^2(\mathfrak{g}, \mathbb{C}) = 0$, so $\lambda = \delta a$ for a unique $a \in C^1(\mathfrak{g}, \mathbb{C})[[\hbar]]$. Uniqueness follows from $H^1(\mathfrak{g}, \mathbb{C}) = 0$ by the first Whitehead lemma, since the ambiguity in $a$ lies in $Z^1(\mathfrak{g}, \mathbb{C}) = 0$. Explicitly, writing $\xi = \sum_k [\zeta^{(k)}, \eta^{(k)}]$ (possible since $[\mathfrak{g}, \mathfrak{g}] = \mathfrak{g}$), the Whitehead homotopy gives
+\begin{equation}\label{eq:whitehead-a}
+a(\xi) = -\sum_k \lambda(\zeta^{(k)}, \eta^{(k)}) = -\sum_k \Omega(X_{\zeta^{(k)}}, X_{\eta^{(k)}})
+\end{equation}
+
+
+\subsection*{Descent to $M$}
+
+\begin{proposition}\label{prop:Ja-in-Wperp}
+$\sigma_X^{-1}(J^a(\xi))$ lies in $\ker D_{\mathrm{Fed}} \cap W^\perp$ for all $\xi \in \mathfrak{g}$.
+\end{proposition}
+\begin{proof}
+We have $\sigma_X^{-1}(J^a(\xi)) = \sigma_X^{-1}(J(\xi)) - a(\xi) \cdot \mathbf{1}$, where $\mathbf{1}$ is the unit of $W$. The first term lies in $\ker D_{\mathrm{Fed}} \cap W^\perp$ by construction (\ref{eq:J-def}). The constant section $a(\xi) \cdot \mathbf{1}$ satisfies $D_{\mathrm{Fed}} \mathbf{1} = 0$ and $D^\perp \mathbf{1} = 0$.
+\end{proof}
+
+Since $\sigma_X^{-1}(J^a(\xi)) \in \ker D_{\mathrm{Fed}} \cap W^\perp$, it descends to $M$ via $\bar{\sigma} \circ \Phi^{-1}$:
+\begin{equation}\label{eq:qmm-M}
+\hat{\rho}(\xi) := \bar{\sigma}\!\left(\Phi^{-1}(\sigma_X^{-1}(J^a(\xi)))\right) = \rho(\xi) - a(\xi)
+\end{equation}
+
+We can now state the main result.
+
+\begin{theorem}[Quantum moment map on Poisson manifolds]\label{thm:QMM}
+Let $(M, \pi)$ be a Poisson manifold with Hamiltonian $G$-action, classical moment map $\rho : \mathfrak{g} \to C^\infty(M)$, and $G$-invariant torsion-free connection $\nabla_M$. Let $\Omega$ be $G$-invariant. Then:
+\begin{enumerate}
+\item For $\Omega = 0$, the star product $\star_M$ admits the quantum moment map $\hat{\rho} = \rho$ for any Lie algebra $\mathfrak{g}$:
+\[
+\frac{1}{i\hbar}\big[\rho(\xi), \rho(\eta)\big]_{\star_M} = \rho([\xi, \eta])
+\]
+\item For general $\Omega$, the obstruction to the existence of a quantum moment map is $[\lambda] \in H^2(\mathfrak{g}, \mathbb{C})[[\hbar]]$, where $\lambda(\xi, \eta) = \Omega(X_\xi, X_\eta)$.
+\item If $\mathfrak{g}$ is semisimple, then $H^2(\mathfrak{g}, \mathbb{C}) = 0$, so the obstruction vanishes for every $G$-invariant $\Omega$. The quantum moment map $\hat{\rho}(\xi) = \rho(\xi) - a(\xi)$, with $a \in C^1(\mathfrak{g}, \mathbb{C})[[\hbar]]$ given by (\ref{eq:whitehead-a}), is the unique map satisfying
+\[
+\frac{1}{i\hbar}\big[\hat{\rho}(\xi), \hat{\rho}(\eta)\big]_{\star_M} = \hat{\rho}([\xi, \eta]) \qquad \text{for all } \xi, \eta \in \mathfrak{g}
+\]
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+\item Equation (\ref{eq:defect-Omega}) gives $\lambda = 0$ when $\Omega = 0$, so $a = 0$ and $J^a = J$. The Lie homomorphism property (\ref{eq:QMM-X}) holds on $X$ with no correction.
+\item This follows directly from (\ref{eq:defect-Omega}).
+\item $H^2(\mathfrak{g}, \mathbb{C}) = 0$ by the second Whitehead lemma, so $\lambda = \delta a$ with $a$ unique by $H^1(\mathfrak{g}, \mathbb{C}) = 0$.
+For the Lie algebra homomorphism property on $M$: the map $\bar{\sigma} \circ \Phi^{-1} : \ker D_{\mathrm{Fed}} \cap W^\perp \to (C^\infty(M)[[\hbar]], \star_M)$ is an algebra homomorphism by Theorem~\ref{thm:Phi-iso} and the definition of $\star_M$. Applying it to (\ref{eq:QMM-X}) gives the result. \qedhere
+\end{enumerate}
+\end{proof}
+
+\section*{Obstruction analysis and dependence on  \texorpdfstring{$\boldsymbol\Omega$}{Omega}}
+The obstruction-theoretic discussion here follows the symplectic classification results of \cite{MBN,RW}.
+
+
+For general $\mathfrak{g}$, the obstruction to the existence of a quantum moment map for $\star_M$ with Fedosov class $\Omega$ is the cohomology class $[\lambda] \in H^2(\mathfrak{g}, \mathbb{C})[[\hbar]]$. Writing $\Omega = \hbar\Omega_1 + \hbar^2\Omega_2 + \cdots$ with each $\Omega_n$ closed,
+\[
+\lambda(\xi, \eta) = \hbar\, \Omega_1(X_\xi, X_\eta) + \hbar^2\, \Omega_2(X_\xi, X_\eta) + \cdots
+\]
+and the obstruction at order $\hbar^n$ is $[\Omega_n(X_\xi, X_\eta)] \in H^2(\mathfrak{g}, \mathbb{C})$. If $H^2(\mathfrak{g}, \mathbb{C}) \neq 0$, this can be nonzero for generic $G$-invariant $\Omega$.
+
+Different $G$-invariant choices of $\Omega$ produce star products with different obstruction classes. By Corollary~4.7 of \cite{MBN}, the condition $\iota_{X_\xi}\Omega = 0$ for all $\xi \in \mathfrak{g}$ implies $\Omega(X_\xi, X_\eta) = 0$ and hence $\lambda = 0$. This is the condition for the star product to be \emph{strongly invariant}, in which case the classical moment map is already quantum: $\hat{\rho} = \rho$.
+
+The space of $G$-invariant Fedosov classes admitting a quantum moment map is therefore
+\[
+\left\{\Omega \in \hbar H^2_{\mathrm{dR}}(X)^G[[\hbar]] \;\middle|\; [\Omega(X_\xi, X_\eta)] = 0 \text{ in } H^2(\mathfrak{g}, \mathbb{C})[[\hbar]] \right\}
+\]
+For semisimple $\mathfrak{g}$ this is all of $\hbar H^2_{\mathrm{dR}}(X)^G[[\hbar]]$. For non-semisimple $\mathfrak{g}$ with $H^2(\mathfrak{g}, \mathbb{C}) \neq 0$, this is a nontrivial restriction, generalizing the M\"uller-Bahns--Neumaier condition from symplectic to Poisson manifolds.
+
+We conjecture that the equivariant classification of pairs $(\star_M, \hat{\rho})$ by the second equivariant cohomology, described in the symplectic setting by Reichert-Waldmann \cite{RW}, can also be extended to the Poisson setting from the present construction by transferring their arguments to the formal symplectic manifold $X$ and descending to $M$ via the algebra isomorphism $\bar{\sigma} \circ \Phi^{-1}$.
+\chapter{Discussion}
+
+One may find the results of deformation quantization to be too abstracted away from any applicable physical systems. Indeed, there is no discussion of a Hilbert space for an arbitrary manifold, and the star product is defined only as a formal power series in $\hbar$ with no guarantee of convergence. In the Berezin approach of Chapter 2 we had both, a Hilbert space of holomorphic sections and a star product of symbols that converges in the semiclassical limit, but only for K\"ahler manifolds satisfying the integrality condition. For a general Poisson manifold, neither a Hilbert space nor a convergent product is available, and the formal deformation is all we have.
+
+Despite this, the algebraic structures underlying deformation quantization turn out to be exactly the ones that govern the consistency of quantum field theories. The Maurer-Cartan equations, $L_\infty$ morphisms, and flat connections that appeared in Chapter 3 reappear in the quantization of gauge theories, where they control not just the deformation of a product but the consistency of the entire quantum theory. In this chapter we indicate how this connection works, beginning with the observation that Kontsevich's star product has a direct physical origin as the perturbative expansion of a two-dimensional topological field theory.
+
+
+\section{The Poisson sigma model and the origin of Kontsevich's formula}
+This section is based primarily on the Poisson sigma model interpretation of Kontsevich's formula due to Cattaneo--Felder, together with the expository account in \cite{CF-PSM,GraciaSaz2003}.
+
+
+In \S 3.3 we saw Kontsevich's star product as the output of an $L_\infty$ quasi-isomorphism $\mathcal{U} : T_{\mathrm{poly}}(M) \to D_{\mathrm{poly}}(M)$, constructed by summing over graphs with specific weights given by integrals over configuration spaces. The formula works, but its origin appears mysterious from the algebraic perspective alone. Cattaneo and Felder \cite{CF-PSM} \cite[for an introduction]{GraciaSaz2003} showed that this formula is in fact the perturbative expansion of a path integral, and that the combinatorics of the graphs, the integrals giving the weights, and the associativity of the resulting product all have natural explanations in terms of a two-dimensional field theory.
+
+The theory in question is the Poisson sigma model. Let $\Sigma$ be a surface and let $(M, \pi)$ be a Poisson manifold. The fields are a smooth map $X : \Sigma \to M$ together with a 1-form $\eta \in \Omega^1(\Sigma, X^*T^*M)$ with values in the pulled-back cotangent bundle. The action functional is
+\begin{equation}\label{eq:PSM-action}
+S = \int_\Sigma \eta_i \wedge dX^i + \frac{1}{2}\pi^{ij}(X)\,\eta_i \wedge \eta_j
+\end{equation}
+The first term is a kinetic term coupling the map to the momentum field, and the second encodes the Poisson structure as a self-interaction. Only $\pi^{ij}$ appears and not its inverse, so the action makes sense for any Poisson manifold, including degenerate ones where symplectic methods fail. The gauge invariance of this action requires the Jacobi identity $[\pi, \pi]_S = 0$, so the Poisson condition enters the physics as a consistency condition for the field theory.
+
+Now take $\Sigma$ to be a disk with two marked points $0, 1$ on its boundary. The star product is formally defined by the path integral
+\[
+(f \star g)(x) = \int f(X(0))\, g(X(1))\, e^{iS/\hbar}\, \mathcal{D}X\, \mathcal{D}\eta
+\]
+where $f$ and $g$ are functions on $M$, evaluated at the images of the two boundary points. To make sense of this integral, one expands perturbatively around the trivial classical solution $X = x$, $\eta = 0$. At each order in $\hbar$, the contributions are given by Feynman diagrams: graphs whose internal vertices carry copies of $\pi^{ij}$ and its derivatives, whose boundary vertices carry $f$ and $g$, and whose edges represent the propagator determined by the kinetic term. Each graph specifies a bidifferential operator acting on $(f, g)$, and its coefficient is an integral over the configuration space of vertex positions in the upper half-plane (equivalently, the closed disc). These are precisely Kontsevich's graphs and weights.
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=17em]{PSM.pdf}
+     
+    \caption{The graph corresponding with the term $\pi^{i_{1}i_{2}}\pi^{i_{5}i_{6}}\partial_{i_{2}}\pi^{i_{3}i_{4}}\partial_{i_{1}}\partial_{i_{5}}\partial_{i_{3}}f \, \partial_{i_{4}}\partial_{i_{6}}g$}
+\end{figure}
+%The associativity of the resulting star product has a striking geometric explanation. Consider three boundary points and the two ways of bracketing $(f \star g) \star h$ and $f \star (g \star h)$. Their difference corresponds to a boundary term in the configuration space integral. The compactification of the configuration space has boundary strata where clusters of vertices collide, and each such stratum contributes a composition of lower-order operators. The vanishing of the total boundary integral (by Stokes' theorem) is exactly the associativity equation. Thus, unlike in the Fedosov approach where associativity follows from the algebraic properties of the Weyl product, here it is a topological consequence of the geometry of the disk.
+
+\subsection*{Relation to the formal symplectic groupoid}
+
+The construction of Chapter 4 is closely related to this picture. The formal symplectic groupoid $X$ of Cattaneo-Dherin-Felder \cite{CDF}, which we used as the ambient symplectic manifold for the Fedosov construction, arises in the Poisson sigma model as the space of semiclassical solutions on a strip with appropriate boundary conditions. Its groupoid multiplication corresponds to the composition of paths.
+
+The Fedosov construction on $X$ can therefore be understood as a reformulation of the perturbative path integral into a closed-form algebraic expression. The Koszul differential $\delta$ and its homotopy inverse $\delta^{-1}$, which drive the iterative construction, play the role of the propagator in the sigma model. The even variables $y^i$ in the Weyl bundle encode the same degrees of freedom as the field $\eta_i$ on the worldsheet, after the path integral over $\eta$ has been performed. This is why both approaches yield the same star product: they are two different computational schemes, one analytic and one algebraic, for the same underlying topological field theory.
+
+
+\section{Vertical categorification of symmetry}
+The discussion in this section draws mainly on Baez--Crans and on the AKSZ viewpoint on higher gauge structures \cite{BaezCrans,AKSZ}.
+
+
+\subsection*{From Lie algebras to \texorpdfstring{$\mathbf{L_{\infty}}$}{L-infinity} algebras}
+
+In Chapter 3 we encountered three levels of algebraic structure controlling the deformation problem:
+\begin{enumerate}
+\item Lie algebras, acting on Poisson manifolds via moment maps (Chapter 1),
+\item Differential graded Lie algebras (DGLAs), governing deformations of associative products and Poisson structures (\S 3.1--3.4),
+\item $L_\infty$ algebras and $L_\infty$ morphisms, relating the classical and quantum DGLAs (\S 3.3).
+\end{enumerate}
+This hierarchy is an instance of \emph{vertical categorification}: the passage from strict algebraic structures to their homotopy-coherent generalizations.
+
+A Lie algebra has a bracket satisfying the Jacobi identity on the nose. A DGLA adds a differential compatible with the bracket, but the bracket itself is still strict. An $L_\infty$ algebra (Definition 24) goes further: the binary bracket $l_2$ need not satisfy the Jacobi identity, provided the failure is controlled by a ternary operation $l_3$, whose own coherence is controlled by $l_4$, and so on. When the $L_\infty$ algebra is concentrated in degrees $0, \ldots, n-1$, it is equivalent to a Lie $n$-algebra in the sense of Baez-Crans \cite{BaezCrans}.
+
+There is a clean way to package this hierarchy using graded geometry. Given a graded vector space $V = V_0 \oplus V_1 \oplus \cdots \oplus V_{n-1}$, form the graded manifold $\mathcal{M} = V_0[1] \oplus V_1[2] \oplus \cdots \oplus V_{n-1}[n]$, where the bracket denotes a degree shift. The most general degree-1 vector field $Q$ on $\mathcal{M}$ encodes all the multilinear maps $l_1, l_2, l_3, \ldots$\,, and the single equation
+\begin{equation}\label{eq:Q-squared}
+Q^2 = 0
+\end{equation}
+is equivalent to the full tower of higher Jacobi identities from Definition 24. Thus the entire $L_\infty$ structure is captured by a nilpotent vector field on a graded manifold. Such a pair $(\mathcal{M}, Q)$ is called an NQ-manifold.
+
+For an ordinary Lie algebra $\mathfrak{g}$ with structure constants $f^c_{ab}$, the graded manifold is $\mathfrak{g}[1]$ with degree-1 coordinates $\xi^a$, and $Q = \frac{1}{2}f^c_{ab}\xi^a\xi^b \frac{\partial}{\partial \xi^c}$. Then $Q^2 = 0$ reduces to the ordinary Jacobi identity. For a Lie 2-algebra on a 2-term complex $V_1 \xrightarrow{d} V_0$, the graded manifold is $V_0[1] \oplus V_1[2]$, and $Q^2 = 0$ decomposes into: compatibility of $l_1$ and $l_2$, the homotopy Jacobi identity
+\[
+l_2(l_2(\xi, \eta), \zeta) + \text{cyclic} = d\,l_3(\xi, \eta, \zeta)
+\]
+with label $l_3$, and a coherence condition on $l_3$ itself. The bracket does not satisfy Jacobi on the nose --- it satisfies it up to a homotopy, and $l_3$ is that homotopy.
+
+\subsection*{The role of $L$-infinity in Kontsevich's theorem}
+
+In \S 3.3 we noted that both the classical and quantum sides of the deformation problem are governed by Maurer--Cartan equations in DGLAs:
+\[
+d_S\pi + \frac{1}{2}[\pi, \pi]_S = 0 \qquad \longleftrightarrow \qquad d_h C_\hbar + \frac{1}{2}[C_\hbar, C_\hbar]_G = 0
+\]
+in the DGLA of polyvector fields and polydifferential operators respectively. The DGLAs themselves are strict, their brackets satisfy Jacobi exactly. However, the map between them cannot be made strict. The Hochschild-Kostant-Rosenberg map $U_1$, which sends a polyvector field to the corresponding antisymmetrized polydifferential operator, is a quasi-isomorphism on cohomology but does not respect the brackets at the cochain level.
+
+Kontsevich's formality theorem shows that this failure can be coherently corrected by higher maps $U_2, U_3, \ldots$\,, making $\mathcal{U} = (U_1, U_2, \ldots)$ into an $L_\infty$ quasi-isomorphism. The map $U_2$ measures the failure of $U_1$ to be a bracket morphism, $U_3$ measures the failure of the correction introduced by $U_2$ to be coherent, and so on. This is categorification in action: the relationship between classical and quantum is not a strict algebraic map but an inherently higher-categorical one.
+
+\subsection*{Higher dimensions and higher categories}
+
+The Poisson sigma model is a two-dimensional field theory whose target carries a Lie algebroid structure. The AKSZ construction of Alexandrov-Kontsevich-Schwarz-Zaboronsky \cite{AKSZ} generalizes this to arbitrary dimensions: an $(n+1)$-dimensional topological sigma model whose target carries a degree-$n$ symplectic structure and a Hamiltonian $\Theta$ satisfying $\{\Theta, \Theta\} = 0$. At $n = 1$ this recovers the Poisson sigma model. At $n = 2$ the target data is a \textit{Courant algebroid}, which is a structure on $TM \oplus T^*M$ whose bracket satisfies Jacobi only up to an exact term, which is precisely the Lie 2-algebra condition. At $n = 3$ and beyond, the target encodes Lie $n$-algebroid structures with successively higher towers of homotopies. In each case, the $(n+1)$-dimensional field theory has $n$ layers of form fields, each serving as a gauge field for the one below it, and each layer of gauge-of-gauge symmetry corresponds to a higher bracket $l_k$ in the $L_\infty$ algebra. The condition $Q^2 = 0$ on the target is exactly what ensures consistency of all these layers. Thus %the categorical level of the symmetry algebra is tied to the spacetime dimension, and 
+the structures developed in this thesis : Maurer-Cartan equations, $L_\infty$ morphisms, flat connections on bundle algebras are the $n = 1$ case of a pattern that repeats at every dimension.
+
+
+\section{Outlook}
+Some of the directions proposed here are motivated by the compact-manifold Berezin-type constructions developed in \cite{dey_berezin_even_2023,dey_rkhs_berezin_odzijewicz}.
+
+
+Several natural questions emerge from the constructions of this thesis.
+
+The formal symplectic groupoid used in Chapter 4 produces star products classified by a de Rham class $\Omega \in H^2_{\mathrm{dR}}(X)[[\hbar]]$, whereas the full moduli space of star products on a Poisson manifold is controlled by the Poisson cohomology $H^2_\pi(M)[[\hbar]]$. Determining the precise image of our construction inside this moduli space, and whether it can be enlarged by varying the embedding data, remains open.
+
+The connection between geometric and deformation quantization for Lagrangian submanifolds of K\"ahler manifolds is another direction worth exploring. The Berezin-type constructions on compact manifolds developed in \cite{dey_berezin_even_2023,dey_rkhs_berezin_odzijewicz} suggest that one can often obtain meaningful quantization data by inducing it from an ambient complex projective space even when the manifold itself does not come equipped with a global K\"ahler structure. In the setting of Chapter 4, this raises the natural question of whether the descended star product on $M$ can be related more directly to a reproducing kernel Hilbert space obtained from an ambient K\"ahler quantization. When a Poisson manifold $M$ embeds as a Lagrangian submanifold of a genuine K\"ahler manifold $(X, \omega, J)$ satisfying the integrality condition, one obtains simultaneously a star product on $M$ from the construction of Chapter 4 and a Hilbert space from Berezin--Toeplitz quantization of $X$ as described in Chapter 2. The restricted coherent states on $M$ provide a reproducing kernel Hilbert space whose Toeplitz operator symbols should recover the star product in the semiclassical limit, connecting the formal deformation with a convergent operator algebra. The question of which Poisson structures arise from such genuine Lagrangian embeddings is constrained by the topology and appears to be largely unexplored.
+
+Finally, the equivariant classification of pairs $(\star_M, \hat{\rho})$ by the second equivariant cohomology, described in the symplectic setting by Reichert-Waldmann \cite{RW}, should extend to the Poisson setting via the formal symplectic groupoid and the descent maps constructed in Chapter 4. We leave these questions for future work.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

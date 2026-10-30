@@ -18,4 +18,4 @@ My broader interests include AKSZ theories, Lie algebroids and groupoids,
 perturbative quantization on manifolds with boundary, relational symplectic
 geometry, and derived and shifted symplectic geometry.
 
-I’d also like to explore homotopy type theory and the ideas it is based on: Grothendieck’s view of spaces as ∞-groupoids, the intuitionistic logic of Brouwer, and Lawvere’s categorical logic. I’m especially drawn to its cohesive extension, which builds on Lawvere’s mathematical reading of Hegel and lets differential geometry and field theory be formulated synthetically and is a place where my mathematical and philosophical interests meet.
+I’d also like to explore homotopy type theory and the ideas it is based on: Grothendieck’s view of spaces as ∞-groupoids, the intuitionistic logic of Brouwer, and Lawvere’s categorical logic. I’m especially drawn to its cohesive extension, which builds on Lawvere’s mathematical reading of Hegel and lets differential geometry and field theory be formulated synthetically, which is a place where my mathematical and philosophical interests meet.

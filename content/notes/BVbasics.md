@@ -1,6 +1,6 @@
 ---
 title: "Basics of BFV-BV"
-date: 2026-05-20T00:00:00+05:30
+date: 2026-07-20
 draft: false
 math: true
 ---

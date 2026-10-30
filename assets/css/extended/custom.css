@@ -221,3 +221,10 @@ mjx-container.MathJax svg * {
   border-bottom: 1px dashed var(--secondary);
   cursor: help;
 }
+
+/* Listing titles: the theme makes these flex rows (to push a draft/pinned
+   icon right), which splits titles containing math into separate columns.
+   Let them flow as normal text instead. */
+.entry-hint-parent {
+  display: block;
+}
