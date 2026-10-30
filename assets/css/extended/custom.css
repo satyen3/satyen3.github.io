@@ -95,7 +95,6 @@ mjx-container.MathJax svg * {
 
 .callout {
   border: 1px solid #ccc;
-  border-left: 4px solid #888;
   border-radius: 6px;
   padding: 1em 1.2em;
   margin: 1.5em 0;
@@ -110,25 +109,6 @@ mjx-container.MathJax svg * {
 
 .callout-content p:last-child {
   margin-bottom: 0;
-}
-
-/* Color variants per type */
-.callout-definition {
-  border-left-color: #4a6fa5;
-}
-
-.callout-theorem {
-  border-left-color: #6b4a8a;
-  background: #faf7fc;
-}
-
-.callout-example {
-  border-left-color: #5a8a4a;
-  background: #f7faf6;
-}
-
-.callout-remark {
-  border-left-color: #888;
 }
 
 /* Personal notes: folder browser */
