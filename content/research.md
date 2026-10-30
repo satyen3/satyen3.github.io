@@ -9,7 +9,7 @@ boundary data, and cutting and gluing.
 
 ### Previous work
 
-My thesis work, carried out at ICTS-TIFR Bengaluru under Rukmini Dey, studied the frameworks of geometric and deformation quantization, primarily those of Berezin, Fedosov and Kontsevich formality, along with how they all trade between levels of generality and physical imterpretability. In addition, I also worked on constructing quantum moment maps for Poisson manifolds equipped with suitable connections, using Fedosov-type star products on their symplectic realizations (revised version in preparation).
+My thesis work, carried out at ICTS-TIFR Bengaluru under Rukmini Dey, studied the frameworks of geometric and deformation quantization, primarily those of Berezin, Fedosov and Kontsevich formality, along with how they all trade between levels of generality and physical interpretability. In addition, I also worked on constructing quantum moment maps for Poisson manifolds equipped with suitable connections, using Fedosov-type star products on their symplectic realizations (revised version in preparation).
 
 ### Interests 
 
