@@ -1,1 +1,1 @@
-Notes on various things 
+Expository notes
