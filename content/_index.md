@@ -6,4 +6,6 @@ Hello! I'm Satyen. I'm a mathematical physics graduate, currently based at ICTS-
 *“How can I tell what I think till I see what I say?”* (E. M. Forster). \
 This site is a recent undertaking in that spirit, a place where my thinking and work take objective form, and remain in progress.
 
+My thesis can be found [here](/papers/thesis.pdf).
+
 Contact: satyen2003 [at] gmail [dot] com 
