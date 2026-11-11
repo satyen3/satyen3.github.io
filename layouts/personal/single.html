@@ -2,7 +2,7 @@
 {{- $root := site.GetPage "/personal" }}
 
 <details class="notes-browser notes-browser-side">
-  <summary>Browse notes</summary>
+  <summary></summary>
   <nav aria-label="Notes">
     {{- partial "personal/tree.html" (dict "dir" "personal/" "pages" $root.RegularPagesRecursive "page" . "openAll" false) }}
   </nav>
